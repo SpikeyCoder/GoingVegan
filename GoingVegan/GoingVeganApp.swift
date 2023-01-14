@@ -9,12 +9,21 @@ import SwiftUI
 
 @main
 struct GoingVeganApp: App {
+    @State var isLoggedIn: Bool = false
+    
     let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if isLoggedIn {
+                HomeScreenView()
+            }
+            else {
+                LoginView(isLoggedIn: $isLoggedIn)
+                    //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
+            
+                
         }
     }
 }
+

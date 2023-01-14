@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
-		C1448930296CD7D4006A9BEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892F296CD7D4006A9BEB /* ContentView.swift */; };
 		C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448931296CD7D5006A9BEB /* Assets.xcassets */; };
 		C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448934296CD7D5006A9BEB /* Preview Assets.xcassets */; };
 		C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448936296CD7D5006A9BEB /* Persistence.swift */; };
@@ -16,6 +15,10 @@
 		C1448945296CD7D5006A9BEB /* GoingVeganTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448944296CD7D5006A9BEB /* GoingVeganTests.swift */; };
 		C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144894E296CD7D5006A9BEB /* GoingVeganUITests.swift */; };
 		C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */; };
+		C144899A297218E6006A9BEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448999297218E6006A9BEB /* ContentView.swift */; };
+		C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */; };
+		C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
+		C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A0297231F9006A9BEB /* HomeScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,6 @@
 /* Begin PBXFileReference section */
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganApp.swift; sourceTree = "<group>"; };
-		C144892F296CD7D4006A9BEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1448931296CD7D5006A9BEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1448934296CD7D5006A9BEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C1448936296CD7D5006A9BEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -49,6 +51,11 @@
 		C144894A296CD7D5006A9BEB /* GoingVeganUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoingVeganUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144894E296CD7D5006A9BEB /* GoingVeganUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganUITests.swift; sourceTree = "<group>"; };
 		C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C1448999297218E6006A9BEB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C144899B29722AFD006A9BEB /* GoingVegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoingVegan.entitlements; sourceTree = "<group>"; };
+		C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSignInWithApple.swift; sourceTree = "<group>"; };
+		C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleViewModel.swift; sourceTree = "<group>"; };
+		C14489A0297231F9006A9BEB /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +106,17 @@
 		C144892C296CD7D4006A9BEB /* GoingVegan */ = {
 			isa = PBXGroup;
 			children = (
+				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
-				C144892F296CD7D4006A9BEB /* ContentView.swift */,
+				C1448999297218E6006A9BEB /* ContentView.swift */,
+				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
 				C1448931296CD7D5006A9BEB /* Assets.xcassets */,
 				C1448936296CD7D5006A9BEB /* Persistence.swift */,
 				C144893B296CD7D5006A9BEB /* Info.plist */,
 				C1448938296CD7D5006A9BEB /* GoingVegan.xcdatamodeld */,
 				C1448933296CD7D5006A9BEB /* Preview Content */,
+				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
+				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -265,9 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */,
+				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
 				C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */,
-				C1448930296CD7D4006A9BEB /* ContentView.swift in Sources */,
+				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
+				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,12 +438,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
 				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -453,12 +470,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
 				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
