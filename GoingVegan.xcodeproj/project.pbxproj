@@ -19,6 +19,14 @@
 		C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */; };
 		C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
 		C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A0297231F9006A9BEB /* HomeScreenView.swift */; };
+		C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A629724293006A9BEB /* MultiDatePicker.swift */; };
+		C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */; };
+		C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */; };
+		C14489B2297242BC006A9BEB /* MDPMonthYearPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A9297242A5006A9BEB /* MDPMonthYearPickerButton.swift */; };
+		C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AE297242A5006A9BEB /* MDPModel.swift */; };
+		C14489B4297242BC006A9BEB /* MDPContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AC297242A5006A9BEB /* MDPContentView.swift */; };
+		C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AA297242A5006A9BEB /* MDPDayView.swift */; };
+		C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AB297242A5006A9BEB /* MDPMonthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +64,15 @@
 		C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSignInWithApple.swift; sourceTree = "<group>"; };
 		C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleViewModel.swift; sourceTree = "<group>"; };
 		C14489A0297231F9006A9BEB /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		C14489A52972422C006A9BEB /* MultiDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiDatePicker.swift; path = "GoingVegan/MultiDatePicker Source/MultiDatePicker.swift"; sourceTree = "<group>"; };
+		C14489A629724293006A9BEB /* MultiDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDatePicker.swift; sourceTree = "<group>"; };
+		C14489A9297242A5006A9BEB /* MDPMonthYearPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPickerButton.swift; sourceTree = "<group>"; };
+		C14489AA297242A5006A9BEB /* MDPDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayView.swift; sourceTree = "<group>"; };
+		C14489AB297242A5006A9BEB /* MDPMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthView.swift; sourceTree = "<group>"; };
+		C14489AC297242A5006A9BEB /* MDPContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPContentView.swift; sourceTree = "<group>"; };
+		C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPicker.swift; sourceTree = "<group>"; };
+		C14489AE297242A5006A9BEB /* MDPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPModel.swift; sourceTree = "<group>"; };
+		C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayOfMonth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +107,7 @@
 				C1448943296CD7D5006A9BEB /* GoingVeganTests */,
 				C144894D296CD7D5006A9BEB /* GoingVeganUITests */,
 				C144892B296CD7D4006A9BEB /* Products */,
+				C14489A42972422C006A9BEB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +124,15 @@
 		C144892C296CD7D4006A9BEB /* GoingVegan */ = {
 			isa = PBXGroup;
 			children = (
+				C14489A9297242A5006A9BEB /* MDPMonthYearPickerButton.swift */,
+				C14489AA297242A5006A9BEB /* MDPDayView.swift */,
+				C14489AB297242A5006A9BEB /* MDPMonthView.swift */,
+				C14489AC297242A5006A9BEB /* MDPContentView.swift */,
+				C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */,
+				C14489AE297242A5006A9BEB /* MDPModel.swift */,
+				C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */,
+				C14489A8297242A5006A9BEB /* Components */,
+				C14489A629724293006A9BEB /* MultiDatePicker.swift */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
 				C1448999297218E6006A9BEB /* ContentView.swift */,
@@ -144,6 +171,21 @@
 				C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */,
 			);
 			path = GoingVeganUITests;
+			sourceTree = "<group>";
+		};
+		C14489A42972422C006A9BEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C14489A52972422C006A9BEB /* MultiDatePicker.swift */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C14489A8297242A5006A9BEB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,13 +318,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */,
 				C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
+				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
+				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
+				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
+				C14489B2297242BC006A9BEB /* MDPMonthYearPickerButton.swift in Sources */,
+				C14489B4297242BC006A9BEB /* MDPContentView.swift in Sources */,
 				C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */,
+				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
 				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
+				C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
