@@ -110,6 +110,12 @@ struct SignInButtonText : View {
     }
 }
 
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(isLoggedIn: .constant(true))
+    }
+}
+
 struct SignInWithAppleSwiftUIButton: View {
     @Environment(\.colorScheme) var colorScheme
 
@@ -123,6 +129,7 @@ struct SignInWithAppleSwiftUIButton: View {
     }
 
     func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
+        print("Made it here")
         return SignInWithAppleButton(.signIn) { request in
             request.requestedScopes = [.fullName, .email]
         } onCompletion: { result in
