@@ -27,9 +27,11 @@ struct HomeScreenView: View {
                 .padding(.trailing, 120)
             ZStack {
                 Text("Animals Saved")
+                    .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.white)
                 Text("lbs of CO2 Emissions Saved")
                     .offset(x: 200)
+                    .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.white)
             }.frame(width: 300, height: 60, alignment: .leading)
                 .padding(.bottom, 0)
@@ -45,12 +47,12 @@ struct HomeScreenView: View {
     }
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
        if(anyDays.count == Int(1)){
-          return Text("\(anyDays.count)").padding().background(
+           return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
             Circle()
               .stroke(.gray, lineWidth: 4)
               .padding(6))
        }
-         return Text("\(anyDays.count)").padding().background(
+        return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
               Circle()
                 .stroke(.gray, lineWidth: 4)
                 .padding(6))

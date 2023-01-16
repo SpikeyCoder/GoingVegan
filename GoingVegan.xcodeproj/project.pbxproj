@@ -27,6 +27,7 @@
 		C14489B4297242BC006A9BEB /* MDPContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AC297242A5006A9BEB /* MDPContentView.swift */; };
 		C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AA297242A5006A9BEB /* MDPDayView.swift */; };
 		C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AB297242A5006A9BEB /* MDPMonthView.swift */; };
+		C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489B72976143D006A9BEB /* RecipeListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPicker.swift; sourceTree = "<group>"; };
 		C14489AE297242A5006A9BEB /* MDPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPModel.swift; sourceTree = "<group>"; };
 		C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayOfMonth.swift; sourceTree = "<group>"; };
+		C14489B72976143D006A9BEB /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				C1448933296CD7D5006A9BEB /* Preview Content */,
 				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
 				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
+				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
+				C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */,
 				C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
