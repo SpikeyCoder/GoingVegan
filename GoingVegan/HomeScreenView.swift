@@ -42,9 +42,8 @@ struct HomeScreenView: View {
         }.background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
-        
-        
     }
+    
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
        if(anyDays.count == Int(1)){
            return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
@@ -95,7 +94,6 @@ struct HomeScreenView: View {
         }
     }
 
-    
     struct ProgressCalendar : View {
         @State private var date = Date()
         var body: some View {

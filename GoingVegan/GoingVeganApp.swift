@@ -15,7 +15,8 @@ struct GoingVeganApp: App {
     var body: some Scene {
         WindowGroup {
             if isLoggedIn {
-                HomeScreenView()
+                AppTabView()
+                //HomeScreenView()
             }
             else {
                 LoginView(isLoggedIn: $isLoggedIn)
