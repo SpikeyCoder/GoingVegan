@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C7660B35-730E-48D9-B7A3-13A2A3919161"
-            shouldBeEnabled = "No"
+            uuid = "CF00CB50-B433-4B0D-A0C2-24699009285C"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoingVegan/GoingVeganApp.swift"
+            filePath = "GoingVegan/MapViewAdvance.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "body"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "checkpoints"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

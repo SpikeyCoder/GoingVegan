@@ -28,10 +28,15 @@ struct AppTabView : View {
                      Label("Home", systemImage: "house")
                  }
                  .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-             
+            RestaurantMapView()
+                .tabItem {
+                    Label("Eat Out", systemImage: "fork.knife")
+                }
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            
              RecipeListView()
                  .tabItem {
-                     Label("Recipe List", systemImage: "list.dash")
+                     Label("Cook At Home", systemImage: "list.dash")
                  }
                  .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                  .background(LinearGradient(gradient: Gradient(colors: [.gray, .gray]), startPoint: .top, endPoint: .bottom)

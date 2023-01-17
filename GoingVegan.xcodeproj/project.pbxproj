@@ -29,6 +29,8 @@
 		C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489AB297242A5006A9BEB /* MDPMonthView.swift */; };
 		C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489B72976143D006A9BEB /* RecipeListView.swift */; };
 		C14489BE297737F0006A9BEB /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489BD297737F0006A9BEB /* NavBarView.swift */; };
+		C14489C029773AA7006A9BEB /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */; };
+		C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489C129773C54006A9BEB /* MapViewAdvance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayOfMonth.swift; sourceTree = "<group>"; };
 		C14489B72976143D006A9BEB /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		C14489BD297737F0006A9BEB /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
+		C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
+		C14489C129773C54006A9BEB /* MapViewAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewAdvance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
 				C1448999297218E6006A9BEB /* ContentView.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
+				C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */,
+				C14489C129773C54006A9BEB /* MapViewAdvance.swift */,
 				C1448931296CD7D5006A9BEB /* Assets.xcassets */,
 				C1448936296CD7D5006A9BEB /* Persistence.swift */,
 				C144893B296CD7D5006A9BEB /* Info.plist */,
@@ -334,8 +340,10 @@
 				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
 				C14489B2297242BC006A9BEB /* MDPMonthYearPickerButton.swift in Sources */,
 				C14489B4297242BC006A9BEB /* MDPContentView.swift in Sources */,
+				C14489C029773AA7006A9BEB /* RestaurantMapView.swift in Sources */,
 				C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */,
 				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
+				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
 				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
