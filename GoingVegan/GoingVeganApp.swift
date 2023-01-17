@@ -11,7 +11,7 @@ import SwiftUI
 struct GoingVeganApp: App {
     @State var isLoggedIn: Bool = false
     
-    let persistenceController = PersistenceController.shared
+    static let persistenceController = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
             if isLoggedIn {
