@@ -81,6 +81,7 @@
 		C14489BD297737F0006A9BEB /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		C14489C129773C54006A9BEB /* MapViewAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewAdvance.swift; sourceTree = "<group>"; };
+		C14489C32977436E006A9BEB /* fremont_seattle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fremont_seattle.gpx; path = GoingVegan/fremont_seattle.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 		C1448921296CD7D3006A9BEB = {
 			isa = PBXGroup;
 			children = (
+				C14489C32977436E006A9BEB /* fremont_seattle.gpx */,
 				C144892C296CD7D4006A9BEB /* GoingVegan */,
 				C1448943296CD7D5006A9BEB /* GoingVeganTests */,
 				C144894D296CD7D5006A9BEB /* GoingVeganUITests */,
