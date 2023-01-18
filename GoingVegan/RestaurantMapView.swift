@@ -66,9 +66,8 @@ struct RestaurantMapView: View {
             guard let data = data else {return}
             if (error != nil) {
                 print(error as Any)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-            }
+            } else {}
+           
             if let decodedData = try? JSONDecoder().decode(RestaurantData.self, from: data) {
                 DispatchQueue.main.async {
                     self.restaurantData = decodedData
