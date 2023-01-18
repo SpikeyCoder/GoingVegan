@@ -8,40 +8,90 @@
 import SwiftUI
 import MapKit
 
+
 struct RestaurantMapView: View {
+    @State private var restaurantData: RestaurantData?
+    
     var body: some View {
         VStack {
             MapView()
             Text("Select a restaurant:")
+            RestaurantListButton()
+                .onAppear(perform: loadData)
+            Text(restaurantData?.businesses[0].name ?? "Test Failed")
         }
         
     }
-}
-
-struct MapView: UIViewRepresentable {
-    var locationManager = CLLocationManager()
-    func setupManager() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
+    
+    struct MapView: UIViewRepresentable {
+        var locationManager = CLLocationManager()
+        func setupManager() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
+        }
+        
+        func makeUIView(context: Context) -> MKMapView {
+            setupManager()
+            let mapView = MKMapView(frame: UIScreen.main.bounds)
+            mapView.showsUserLocation = true
+            mapView.userTrackingMode = .follow
+            return mapView
+        }
+        
+        func updateUIView(_ uiView: MKMapView, context: Context) {
+        }
     }
-
-    func makeUIView(context: Context) -> MKMapView {
-      setupManager()
-      let mapView = MKMapView(frame: UIScreen.main.bounds)
-      mapView.showsUserLocation = true
-      mapView.userTrackingMode = .follow
-      return mapView
+    
+    struct RestaurantListButton: View {
+        var body: some View {
+            return Button {
+                Task {
+                   // loadData()
+                } }label: {
+                    Text("Fetch Restaurants")
+                }
+        }
     }
-
-    func updateUIView(_ uiView: MKMapView, context: Context) {
+        
+        private func loadData() {
+            let headers = [
+                "accept": "application/json",
+                "Authorization": "Bearer K8sE8-KQi-rfbrHzdSwfp7a4jfTk-znfH9r_45Q4fX4xNNBEmP8PkVayZp8y2XhTH5F-p64z3iEalzIPdVPVD0cspnL9cQtXfsP-zo8eYFPk86q1HBsZHPbG1RDHY3Yx"
+            ]
+            
+            let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?location=Seattle&latitude=47.6511&longitude=122.3475&sort_by=best_match&limit=20")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+                guard let data = data else {return}
+                if (error != nil) {
+                    print(error as Any)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse)
+                }
+                if let decodedData = try? JSONDecoder().decode(RestaurantData.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.restaurantData = decodedData
+                    }
+                }
+            }.resume()
+        }
+    
+    struct RestaurantData: Decodable {
+        var businesses: Array<Restaurant>
     }
-}
-
-
-
-struct RestaurantMapView_Previews: PreviewProvider {
-    static var previews: some View {
-        RestaurantMapView()
+    
+    struct Restaurant: Decodable {
+        var name: String
+    }
+    
+    struct RestaurantMapView_Previews: PreviewProvider {
+        static var previews: some View {
+            RestaurantMapView()
+        }
     }
 }
