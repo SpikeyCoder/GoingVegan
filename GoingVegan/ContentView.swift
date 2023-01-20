@@ -9,8 +9,16 @@ import SwiftUI
 import CoreData
 import AuthenticationServices
 
+let storedUsername = "Myusername"
+let storedPassword = "Mypassword"
+
 struct LoginView: View {
     @Binding var isLoggedIn: Bool
+    @State var username: String = ""
+    @State var password: String = ""
+    
+    @State var authenticationDidFail: Bool = false
+    @State var authenticationDidSucceed: Bool = false
     
     private func showAppleLoginView() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -24,14 +32,19 @@ struct LoginView: View {
         VStack() {
             TitleText()
             LoginIcon()
-            
             VStack(alignment: .leading, spacing: 15) {
-                UsernameField()
-                PasswordField()
+                UsernameField(username: $username)
+                PasswordField(password: $password)
             }.padding([.leading, .trailing],27.5)
+        
+            if authenticationDidFail {
+                Text("Information not correct. Try again.")
+                    .foregroundColor(.black)
+                    .onAppear(perform: setDismissTimer)
+            }
             
             Button(action: {
-                isLoggedIn = true
+                validateLogin()
             }) {
                 SignInButtonText()
             }.padding(.top, 50)
@@ -50,7 +63,29 @@ struct LoginView: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
     }
+    
+    private func validateLogin() {
+        if self.username == storedUsername && self.password == storedPassword {
+            isLoggedIn = true
+            self.authenticationDidSucceed = true
+            return
+        }
+        isLoggedIn = false
+        self.authenticationDidFail = true
+    }
+    
+    func setDismissTimer() {
+      let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+        withAnimation(.easeInOut(duration: 1)) {
+          self.authenticationDidFail = false
+        }
+        timer.invalidate()
+      }
+      RunLoop.current.add(timer, forMode:RunLoop.Mode.default)
+    }
 }
+
+
 
 
 struct TitleText : View {
@@ -76,9 +111,9 @@ struct LoginIcon : View {
 }
 
 struct UsernameField : View {
-    @State private var email = ""
+    @Binding var username: String
     var body: some View {
-        return TextField("Email", text: self.$email)
+        return TextField("Email", text: $username)
             .padding()
             .frame(width: 340, height: 55)
             .cornerRadius(20.0)
@@ -87,9 +122,9 @@ struct UsernameField : View {
 }
 
 struct PasswordField : View {
-    @State private var password = ""
+    @Binding var password: String
     var body: some View {
-        return SecureField("Password", text: self.$password)
+        return SecureField("Password", text: $password)
             .padding()
             .frame(width: 340, height: 55)
             .cornerRadius(20.0)
@@ -151,15 +186,3 @@ extension Color {
         return Color(red: 220.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, opacity: 1.0)
     }
 }
-
-
-// WAY TO CALL APIS VIA A BUTTON
-/* Button {
-     Task {
-         let (data, _) = try await URLSession.shared.data(from: URL(string:"https://api.chucknorris.io/jokes/random")!)
-                         let decodedResponse = try? JSONDecoder().decode(Joke.self, from: data)
-         joke = decodedResponse?.value ?? ""
-     }
- } label: {
-     Text("Fetch Joke")
- } */
