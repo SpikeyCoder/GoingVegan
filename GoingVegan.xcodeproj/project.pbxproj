@@ -61,6 +61,9 @@
 		C1448ACD29889CBE006A9BEB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C1448ACC29889CBE006A9BEB /* FirebaseStorage */; };
 		C1448ACF29889CBE006A9BEB /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C1448ACE29889CBE006A9BEB /* FirebaseStorageCombine-Community */; };
 		C1448AD229889D64006A9BEB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C1448AD129889D64006A9BEB /* GoogleSignIn */; };
+		C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
+		C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
+		C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,7 @@
 		C14489C129773C54006A9BEB /* MapViewAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewAdvance.swift; sourceTree = "<group>"; };
 		C14489C32977436E006A9BEB /* fremont_seattle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fremont_seattle.gpx; path = GoingVegan/fremont_seattle.gpx; sourceTree = "<group>"; };
 		C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				C14489A8297242A5006A9BEB /* MDP Components */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
+				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
 				C1448999297218E6006A9BEB /* ContentView.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
 				C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */,
@@ -443,6 +448,7 @@
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
 				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
+				C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
 				C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */,
 				C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */,
@@ -453,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C1448945296CD7D5006A9BEB /* GoingVeganTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */,
 				C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */,
 			);

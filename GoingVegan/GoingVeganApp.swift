@@ -15,11 +15,15 @@ import Foundation
 
 @main
 struct GoingVeganApp: App {
-    @State var isLoggedIn: Bool = false
+    
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    static let persistenceController = PersistenceController.shared
+    @StateObject var viewModel = AuthenticationViewModel()
+    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    let persistenceController = PersistenceController.shared
     
     init() {
         setupAuthentication()
@@ -27,12 +31,15 @@ struct GoingVeganApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isLoggedIn {
+            if viewModel.state == .signedIn {
                 AppTabView()
+                    .environmentObject(viewModel)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
             else {
-                LoginView(isLoggedIn: $isLoggedIn)
-                    //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+                LoginView()
+                    .environmentObject(viewModel)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
             
                 

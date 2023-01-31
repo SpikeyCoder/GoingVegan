@@ -9,9 +9,21 @@ import SwiftUI
 
 struct HomeScreenView: View {
     @State private var anyDays = [Date]()
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack() {
+            Button(action: {
+                viewModel.signOut()
+            })  {
+              Text("Sign Out")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemIndigo))
+                .cornerRadius(12)
+                .padding(.top, 50)
+            }
             HomeTitleText()
             HomeSubTitleText()
             MultiDatePicker(anyDays: self.$anyDays, includeDays: .allDays)
@@ -63,6 +75,7 @@ struct HomeScreenView: View {
               .stroke(.gray, lineWidth: 4)
               .padding(6))
     }
+    
     
     struct HomeTitleText : View {
         var body: some View {

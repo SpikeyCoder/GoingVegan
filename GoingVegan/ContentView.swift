@@ -13,7 +13,10 @@ let storedUsername = "Myusername"
 let storedPassword = "Mypassword"
 
 struct LoginView: View {
-    @Binding var isLoggedIn: Bool
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    
     @State var username: String = ""
     @State var password: String = ""
     
@@ -28,7 +31,9 @@ struct LoginView: View {
         //controller.delegate = SignInWithAppleViewModel
         controller.performRequests()
       }
+    
     var body: some View {
+    
         VStack() {
             TitleText()
             LoginIcon()
@@ -37,26 +42,41 @@ struct LoginView: View {
                 PasswordField(password: $password)
             }.padding([.leading, .trailing],27.5)
         
-            if authenticationDidFail {
-                Text("Information not correct. Try again.")
-                    .foregroundColor(.black)
-                    .onAppear(perform: setDismissTimer)
-            }
             
+            if authenticationDidFail {
+                let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
+                Text(viewModel.signInErrorMessage != nil ? String(viewModel.signInErrorMessage!) : "").foregroundColor(darkRed).onAppear(perform: setDismissTimer).padding([.top, .bottom], 40)
+                    .frame(
+                        minWidth: 0,
+                        maxWidth: 500,
+                        minHeight: 0,
+                        maxHeight: .infinity,
+                        alignment: .center
+                    ).multilineTextAlignment(.center)
+            }
             Button(action: {
-                validateLogin()
+                viewModel.signInWithEmail(username: username, password: password)
+                viewModel.group.notify(queue: .main){
+                    authenticationDidFail = true
+                }
+                
             }) {
                 SignInButtonText()
             }.padding(.top, 50)
-            
+         
             Spacer()
             HStack(spacing: 0) {
                 Text("Don't have an account? ")
                     .padding()
             }
-           QuickSignInWithApple()
-                    .frame(width: 280, height: 60, alignment: .center)
-                    .onTapGesture(perform: showAppleLoginView)
+            Button(action: {
+                viewModel.createUser(username: username, password: password)
+            }) {
+                CreateUserButtonText()
+            }.padding(.top, 50)
+//           QuickSignInWithApple()
+//                    .frame(width: 280, height: 60, alignment: .center)
+//                    .onTapGesture(perform: showAppleLoginView)
           
         }
         .background(
@@ -64,29 +84,20 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all))
     }
     
-    private func validateLogin() {
-        if self.username == storedUsername && self.password == storedPassword {
-            isLoggedIn = true
-            self.authenticationDidSucceed = true
-            return
-        }
-        isLoggedIn = false
-        self.authenticationDidFail = true
-    }
     
     func setDismissTimer() {
       let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
         withAnimation(.easeInOut(duration: 1)) {
-          self.authenticationDidFail = false
+            authenticationDidFail = false;
         }
         timer.invalidate()
       }
       RunLoop.current.add(timer, forMode:RunLoop.Mode.default)
     }
+    
+    
+    
 }
-
-
-
 
 struct TitleText : View {
     var body: some View {
@@ -132,6 +143,8 @@ struct PasswordField : View {
     }
 }
 
+
+
 struct SignInButtonText : View {
     var body: some View {
         return Text("Sign In")
@@ -145,9 +158,22 @@ struct SignInButtonText : View {
     }
 }
 
+struct CreateUserButtonText : View {
+    var body: some View {
+        return Text("Create User")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 300, height: 50)
+            .background(Color.blue)
+            .cornerRadius(15.0)
+            .shadow(radius: 10.0, x: 20, y: 10)
+    }
+}
+
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(isLoggedIn: .constant(true))
+        LoginView()
     }
 }
 
