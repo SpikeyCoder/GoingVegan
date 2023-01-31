@@ -193,15 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */,
-				C14489A9297242A5006A9BEB /* MDPMonthYearPickerButton.swift */,
-				C14489AA297242A5006A9BEB /* MDPDayView.swift */,
-				C14489AB297242A5006A9BEB /* MDPMonthView.swift */,
-				C14489AC297242A5006A9BEB /* MDPContentView.swift */,
-				C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */,
-				C14489AE297242A5006A9BEB /* MDPModel.swift */,
-				C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */,
-				C14489A8297242A5006A9BEB /* Components */,
-				C14489A629724293006A9BEB /* MultiDatePicker.swift */,
+				C14489A8297242A5006A9BEB /* MDP Components */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
 				C1448999297218E6006A9BEB /* ContentView.swift */,
@@ -254,11 +246,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C14489A8297242A5006A9BEB /* Components */ = {
+		C14489A8297242A5006A9BEB /* MDP Components */ = {
 			isa = PBXGroup;
 			children = (
+				C14489A629724293006A9BEB /* MultiDatePicker.swift */,
+				C14489A9297242A5006A9BEB /* MDPMonthYearPickerButton.swift */,
+				C14489AA297242A5006A9BEB /* MDPDayView.swift */,
+				C14489AB297242A5006A9BEB /* MDPMonthView.swift */,
+				C14489AC297242A5006A9BEB /* MDPContentView.swift */,
+				C14489AD297242A5006A9BEB /* MDPMonthYearPicker.swift */,
+				C14489AE297242A5006A9BEB /* MDPModel.swift */,
+				C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */,
 			);
-			path = Components;
+			path = "MDP Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,6 +611,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoingVegan/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 11+ and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This string is required to gain permission to access location services on iOS 8+ when the app in the background and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationUsageDescription = "This string is optional but recommended on iOS 6 & 7 and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 8+ and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -643,6 +647,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoingVegan/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 11+ and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This string is required to gain permission to access location services on iOS 8+ when the app in the background and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationUsageDescription = "This string is optional but recommended on iOS 6 & 7 and should describe how your app uses location services. Set this string in the Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 8+ and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.744583633793-f3b3j69lh8b89ripopslig9326hj0k98</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -13,13 +24,5 @@
 	<array>
 		<dict/>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This string is required to gain permission to access location services on iOS 8+ when the app in the background and should describe how your app uses location services. Set this string in the Info.plist</string>
-	<key>NSLocationUsageDescription</key>
-	<string>This string is optional but recommended on iOS 6 &amp; 7 and should describe how your app uses location services. Set this string in the Info.plist</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This string is required to gain permission to access location services on iOS 8+ and should describe how your app uses location services. Set this string in the Info.plist</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This string is required to gain permission to access location services on iOS 11+ and should describe how your app uses location services. Set this string in the Info.plist</string>
 </dict>
 </plist>
