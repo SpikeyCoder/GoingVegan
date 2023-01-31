@@ -107,7 +107,7 @@ class AuthenticationViewModel: ObservableObject {
                     return
                 }
                 guard let sess = strongSelf.session else {return}
-                self?.ref.child("users/\(sess.uid)/veganDays").getData(completion:  { error, snapshot in
+                self?.ref.child("users/\(sess.uid)/veganDays*").getData(completion:  { error, snapshot in
                     guard error == nil else {
                         print(error!.localizedDescription)
                         guard let group = self?.group else {return}
@@ -129,8 +129,12 @@ class AuthenticationViewModel: ObservableObject {
         if let sess = self.session, let days = sess.veganDays
         {
             let savedDates = NSMutableArray(array: days)
-            let fixedSavedDates:Dictionary<String, Any> = ["veganDays": savedDates]
-            self.ref.child("users").child(sess.uid).setValue(fixedSavedDates)
+            var i = 0
+            for date in savedDates {
+                let dateString = "\(date)"
+                self.ref.child("users").child(sess.uid).setValue(["veganDays\(i)":String(dateString)])
+            }
+            
         }else {}
         
       GIDSignIn.sharedInstance.signOut()
@@ -144,6 +148,7 @@ class AuthenticationViewModel: ObservableObject {
         print(error.localizedDescription)
       }
     }
+   
     
     func listen () {
         // monitor authentication changes using firebase
@@ -166,13 +171,17 @@ class AuthenticationViewModel: ObservableObject {
             self.state = .signedOut
             return self.session ?? User(uid: "", displayName: "false", email:"", days:[])}
         DispatchQueue.main.async {
-            self.ref.child("users/\(user.uid)/veganDays").getData(completion:  { error, snapshot in
+            self.ref.child("users/\(user.uid)").getData(completion:  { error, snapshot in
               guard error == nil else {
                 print(error!.localizedDescription)
                 return;
               }
-                let veganDays = snapshot?.value as? [Date] ?? nil;
-                self.session?.veganDays = veganDays;
+                if let days = snapshot?.value as? [Any] {
+                    for i in 0..<days.count {
+                        self.session?.veganDays?.append(days[i] as! Date)
+                    }
+                }
+            
                 self.state = .signedIn
                 
             });

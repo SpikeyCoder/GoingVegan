@@ -142,8 +142,8 @@
             filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "saveDays(days:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,9 +174,312 @@
             filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "signOut()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7037BBEF-E800-4E8E-AD31-5681CAAE8207 - f8ccb3b7576f1c72"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.AuthenticationViewModel.signOut() -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "2064">
+               </Location>
+               <Location
+                  uuid = "7037BBEF-E800-4E8E-AD31-5681CAAE8207 - f8ccb3b7576f1c72"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.AuthenticationViewModel.signOut() -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "2112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5FDEB03D-FFA4-474C-81EB-8FB230F797D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "populateSavedData(userOptional:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "214B5458-8D10-4B3B-AA31-4CCCFA8319A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "signOut()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "214B5458-8D10-4B3B-AA31-4CCCFA8319A1 - f8ccb3b7576f0325"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.AuthenticationViewModel.signOut() -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "214B5458-8D10-4B3B-AA31-4CCCFA8319A1 - f8ccb3b7576f0325"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.AuthenticationViewModel.signOut() -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "214B5458-8D10-4B3B-AA31-4CCCFA8319A1 - f8ccb3b7576f0325"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.AuthenticationViewModel.signOut() -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "384">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "54CA0E80-24AE-44E9-A40E-663FC4DA37B6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "signOut()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55BB6561-7167-4A84-9649-30BA220EE9D9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "listen()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9605E99F-DC05-4C7D-BAAB-9C0881603E98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "populateSavedData(userOptional:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D35D599F-2F69-48B6-8FA1-A3127A384A93"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "populateSavedData(userOptional:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D35D599F-2F69-48B6-8FA1-A3127A384A93 - d909730571248a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;__C.FIRDataSnapshot&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.populateSavedData(userOptional: Swift.Optional&lt;GoingVegan.User&gt;) -&gt; GoingVegan.User"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "D35D599F-2F69-48B6-8FA1-A3127A384A93 - d909730571248a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;__C.FIRDataSnapshot&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.populateSavedData(userOptional: Swift.Optional&lt;GoingVegan.User&gt;) -&gt; GoingVegan.User"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2EAF395-C4CC-472B-867C-551BF3C684B0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "signInWithEmail(username:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B2EAF395-C4CC-472B-867C-551BF3C684B0 - fd85d544b65a28e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.signInWithEmail(username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1212">
+               </Location>
+               <Location
+                  uuid = "B2EAF395-C4CC-472B-867C-551BF3C684B0 - d9709eb4e6229d38"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;__C.FIRDataSnapshot&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.signInWithEmail(username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68900967-1215-4727-B4EF-848DD614CB06"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "signInWithEmail(username:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "242726C2-9E6B-4F8A-8F77-2F96E651E601"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "signInWithEmail(username:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D1FF863-965F-4263-94C0-BDD3608AE8A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "populateSavedData(userOptional:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
