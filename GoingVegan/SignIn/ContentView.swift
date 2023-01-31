@@ -45,14 +45,18 @@ struct LoginView: View {
             
             if authenticationDidFail {
                 let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
-                Text(viewModel.signInErrorMessage != nil ? String(viewModel.signInErrorMessage!) : "").foregroundColor(darkRed).onAppear(perform: setDismissTimer).padding([.top, .bottom], 40)
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: 500,
-                        minHeight: 0,
-                        maxHeight: .infinity,
-                        alignment: .center
-                    ).multilineTextAlignment(.center)
+                if let errorMessage = viewModel.signInErrorMessage {
+                    Spacer()
+                    Text(errorMessage.count < 50 ? String(viewModel.signInErrorMessage!) : "Username and/or password is incorrect.").foregroundColor(darkRed).onAppear(perform: setDismissTimer).padding([.top, .bottom], 40)
+                        .frame(
+                            minWidth: 0,
+                            maxWidth: 500,
+                            minHeight: 0,
+                            maxHeight: .infinity,
+                            alignment: .center
+                        ).multilineTextAlignment(.center)
+                }
+                
             }
             Button(action: {
                 viewModel.signInWithEmail(username: username, password: password)
@@ -63,17 +67,20 @@ struct LoginView: View {
             }) {
                 SignInButtonText()
             }.padding(.top, 50)
-         
+            GoogleSignInButton()
+                .padding(.bottom, 20)
+              .frame(width: 200, height: 50, alignment: .topLeading)
+              .background(Color.blue)
+              .shadow(radius: 10.0, x: 20, y: 10)
+              .onTapGesture {
+                viewModel.signIn()
+              }
             Spacer()
-            HStack(spacing: 0) {
-                Text("Don't have an account? ")
-                    .padding()
-            }
             Button(action: {
                 viewModel.createUser(username: username, password: password)
             }) {
                 CreateUserButtonText()
-            }.padding(.top, 50)
+            }.padding([.top,.bottom], 50)
 //           QuickSignInWithApple()
 //                    .frame(width: 280, height: 60, alignment: .center)
 //                    .onTapGesture(perform: showAppleLoginView)
@@ -160,13 +167,13 @@ struct SignInButtonText : View {
 
 struct CreateUserButtonText : View {
     var body: some View {
-        return Text("Create User")
-            .font(.headline)
+        return Text("Create Account")
+            .font(.title3)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 300, height: 50)
+            .frame(width: 200, height: 50)
             .background(Color.blue)
-            .cornerRadius(15.0)
+            .fontWeight(.semibold)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }

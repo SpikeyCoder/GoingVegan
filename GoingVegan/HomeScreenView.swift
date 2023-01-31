@@ -13,18 +13,20 @@ struct HomeScreenView: View {
     
     var body: some View {
         VStack() {
-            Button(action: {
-                viewModel.signOut()
-            })  {
-              Text("Sign Out")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemIndigo))
-                .cornerRadius(12)
-                .padding(.top, 50)
-            }
+            NavigationView{
             HomeTitleText()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action:{
+                            viewModel.signOut()
+                        }) {
+                            Text("Sign Out")
+                        }
+                    }
+                }
+            Spacer()
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/7.0, alignment: .center)
+                .navigationViewStyle(StackNavigationViewStyle())
             HomeSubTitleText()
             MultiDatePicker(anyDays: self.$anyDays, includeDays: .allDays)
             SavingsTitleText()
@@ -54,6 +56,7 @@ struct HomeScreenView: View {
         }.background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
+        Spacer()
     }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
@@ -80,7 +83,7 @@ struct HomeScreenView: View {
     struct HomeTitleText : View {
         var body: some View {
             return Text("How Are You Helping The World Today?")
-                .font(.headline).foregroundColor(Color.white)
+                .font(.headline).foregroundColor(Color.black)
                 .fontWeight(.semibold)
                 .padding([.top, .bottom], 40)
                 .shadow(radius: 10.0, x: 20, y: 10)
@@ -102,7 +105,7 @@ struct HomeScreenView: View {
             return Text("Savings:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
-                .padding([.top, .bottom], 40)
+                .padding(.bottom, 40)
                 .shadow(radius: 10.0, x: 20, y: 10)
         }
     }

@@ -64,6 +64,11 @@
 		C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
 		C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
 		C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */; };
+		C1448AD829897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
+		C1448AD929897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
+		C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
+		C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
+		C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +122,7 @@
 		C14489C32977436E006A9BEB /* fremont_seattle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fremont_seattle.gpx; path = GoingVegan/fremont_seattle.gpx; sourceTree = "<group>"; };
 		C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,18 +206,14 @@
 				C14489A8297242A5006A9BEB /* MDP Components */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
-				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
-				C1448999297218E6006A9BEB /* ContentView.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
-				C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */,
-				C14489C129773C54006A9BEB /* MapViewAdvance.swift */,
+				C1448ADA29897CB4006A9BEB /* Restaurants */,
 				C1448931296CD7D5006A9BEB /* Assets.xcassets */,
 				C1448936296CD7D5006A9BEB /* Persistence.swift */,
 				C144893B296CD7D5006A9BEB /* Info.plist */,
 				C1448938296CD7D5006A9BEB /* GoingVegan.xcdatamodeld */,
 				C1448933296CD7D5006A9BEB /* Preview Content */,
-				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
-				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
+				C1448AD729897C59006A9BEB /* SignIn */,
 				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C14489BD297737F0006A9BEB /* NavBarView.swift */,
 			);
@@ -264,6 +266,27 @@
 				C14489AF297242A5006A9BEB /* MDPDayOfMonth.swift */,
 			);
 			path = "MDP Components";
+			sourceTree = "<group>";
+		};
+		C1448AD729897C59006A9BEB /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */,
+				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
+				C1448999297218E6006A9BEB /* ContentView.swift */,
+				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
+				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		C1448ADA29897CB4006A9BEB /* Restaurants */ = {
+			isa = PBXGroup;
+			children = (
+				C14489C129773C54006A9BEB /* MapViewAdvance.swift */,
+				C14489BF29773AA7006A9BEB /* RestaurantMapView.swift */,
+			);
+			path = Restaurants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +468,7 @@
 				C14489C029773AA7006A9BEB /* RestaurantMapView.swift in Sources */,
 				C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */,
 				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
+				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
 				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
@@ -459,7 +483,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
+				C1448AD929897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C1448945296CD7D5006A9BEB /* GoingVeganTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +496,9 @@
 			files = (
 				C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */,
+				C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */,
+				C1448AD829897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
