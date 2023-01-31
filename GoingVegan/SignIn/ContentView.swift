@@ -19,9 +19,12 @@ struct LoginView: View {
     
     @State var username: String = ""
     @State var password: String = ""
+    let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
     
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
+    @State var createUserCompleted: Bool = false
+    @State private var isPresented: Bool = Bool()
     
     private func showAppleLoginView() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -33,7 +36,7 @@ struct LoginView: View {
       }
     
     var body: some View {
-    
+        NavigationView {
         VStack() {
             TitleText()
             LoginIcon()
@@ -66,7 +69,7 @@ struct LoginView: View {
                 
             }) {
                 SignInButtonText()
-            }.padding(.top, 50)
+            }.padding(.top, 30)
             GoogleSignInButton()
                 .padding(.bottom, 20)
               .frame(width: 200, height: 50, alignment: .topLeading)
@@ -76,19 +79,18 @@ struct LoginView: View {
                 viewModel.signIn()
               }
             Spacer()
-            Button(action: {
-                viewModel.createUser(username: username, password: password)
-            }) {
-                CreateUserButtonText()
-            }.padding([.top,.bottom], 50)
+            Button("Create Account", action: { isPresented.toggle() })
+            }
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all))
+            
 //           QuickSignInWithApple()
 //                    .frame(width: 280, height: 60, alignment: .center)
 //                    .onTapGesture(perform: showAppleLoginView)
           
-        }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all))
+        }.customPopupView(isPresented: $isPresented, popupView: {popupView})
+        
     }
     
     
@@ -102,8 +104,89 @@ struct LoginView: View {
       RunLoop.current.add(timer, forMode:RunLoop.Mode.default)
     }
     
+    var popupView: some View {
+        
+        RoundedRectangle(cornerRadius: 20.0)
+            .fill(Color.white)
+            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/2.0)
+            .overlay(
+                
+                Image(systemName: "xmark").resizable().frame(width: 10.0, height: 10.0)
+                    .foregroundColor(Color.black)
+                    .padding(5.0)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .padding()
+                    .onTapGesture {
+                        isPresented.toggle()
+                        self.username = ""
+                        self.password = ""
+                    }
+                
+                , alignment: .topLeading)
+        
+            .overlay(
+                VStack{
+                    Text("Create a Username and Password")
+                    UsernameField(username: $username)
+                    PasswordField(password: $password)
+                    if createUserCompleted {
+                        if let errorMessage = viewModel.createUserErrorMessage {
+                             Text(errorMessage.count < 60 ? String(viewModel.createUserErrorMessage!) : "Username and/or password is incomplete.")
+//                                .foregroundColor(darkRed).onAppear(perform: setDismissTimer)
+                
+                        }else{
+                            Text("Successfully created account")
+                        }
+                        
+//                            .foregroundColor(darkRed).onAppear(perform: setDismissTimer) as! Text
+                    }
+                    Button(action: {
+                        viewModel.createUser(username: username, password: password)
+                        viewModel.group.notify(queue: .main){
+                            createUserCompleted = true
+                            
+                        }
+                    }) {
+                        CreateUserButtonText()
+                    }.padding([.top,.bottom], 50)
+                }
+                , alignment: .center)
+            .transition(AnyTransition.scale)
+            .shadow(radius: 10.0)
+    }
     
+}
+
+
+
+
+
+
+
+struct CustomPopupView<Content, PopupView>: View where Content: View, PopupView: View {
     
+    @Binding var isPresented: Bool
+    @ViewBuilder let content: () -> Content
+    @ViewBuilder let popupView: () -> PopupView
+    let backgroundColor: Color
+    let animation: Animation?
+    
+    var body: some View {
+        
+        content()
+            .animation(nil, value: isPresented)
+            .overlay(isPresented ? backgroundColor.ignoresSafeArea() : nil)
+            .overlay(isPresented ? popupView() : nil)
+            .animation(animation, value: isPresented)
+        
+    }
+}
+
+extension View {
+    func customPopupView<PopupView>(isPresented: Binding<Bool>, popupView: @escaping () -> PopupView, backgroundColor: Color = .black.opacity(0.7), animation: Animation? = .default) -> some View where PopupView: View {
+        return CustomPopupView(isPresented: isPresented, content: { self }, popupView: popupView, backgroundColor: backgroundColor, animation: animation)
+    }
 }
 
 struct TitleText : View {

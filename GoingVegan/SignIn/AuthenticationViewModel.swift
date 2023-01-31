@@ -25,6 +25,7 @@ class AuthenticationViewModel: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     var ref: DatabaseReference!
     var signInErrorMessage: String?
+    var createUserErrorMessage: String?
     var group : DispatchGroup!
     
     init(){
@@ -75,12 +76,19 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func createUser(username: String, password: String) {
-        Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
-            if let error = error {
-                print(error.localizedDescription)
+        self.group = DispatchGroup()
+        self.group.enter()
+        DispatchQueue.main.async {
+            Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.createUserErrorMessage = error.localizedDescription
+                }
+
+                self.state = .signedOut
+                self.group.leave()
+                return
             }
-            
-            self.state = .signedOut
         }
     }
     
