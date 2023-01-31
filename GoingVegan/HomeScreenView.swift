@@ -29,6 +29,9 @@ struct HomeScreenView: View {
                 .navigationViewStyle(StackNavigationViewStyle())
             HomeSubTitleText()
             MultiDatePicker(anyDays: self.$anyDays, includeDays: .allDays)
+                .onChange(of: self.$anyDays.wrappedValue) { newValue in
+                    self.viewModel.session?.saveDays(days:newValue)
+                }
             SavingsTitleText()
             ZStack {
                 calculatedAnimalSavingsText(anyDays.count)
@@ -56,8 +59,15 @@ struct HomeScreenView: View {
         }.background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
+        .onAppear(perform: load)
         Spacer()
     }
+    func load() {
+        guard let sess = self.viewModel.session else {return}
+        guard let days = sess.veganDays else {return}
+        self.anyDays = days
+
+      }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
        if(anyDays.count == Int(1)){
@@ -119,6 +129,7 @@ struct HomeScreenView: View {
                 displayedComponents: [.date]
             )
             .datePickerStyle(.graphical)
+            
         }
     }
     

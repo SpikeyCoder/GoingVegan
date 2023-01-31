@@ -107,15 +107,15 @@ class AuthenticationViewModel: ObservableObject {
                     return
                 }
                 guard let sess = strongSelf.session else {return}
-                self?.ref.child("users/\(sess.uid)/displayName").getData(completion:  { error, snapshot in
+                self?.ref.child("users/\(sess.uid)/veganDays").getData(completion:  { error, snapshot in
                     guard error == nil else {
                         print(error!.localizedDescription)
                         guard let group = self?.group else {return}
                         group.leave()
                         return;
                     }
-                    guard let name = snapshot?.value as? String else {return}
-                    sess.displayName = name
+                    guard let days = snapshot?.value as? [Date] else {return}
+                    sess.veganDays = days
                     self?.session = sess
                     self?.state = .signedIn
                     guard let group = self?.group else {return}
@@ -126,9 +126,11 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signOut() {
-        if let sess = self.session
+        if let sess = self.session, let days = sess.veganDays
         {
-            self.ref.child("users").child(sess.uid).setValue(["displayName": sess.displayName])
+            let savedDates = NSMutableArray(array: days)
+            let fixedSavedDates:Dictionary<String, Any> = ["veganDays": savedDates]
+            self.ref.child("users").child(sess.uid).setValue(fixedSavedDates)
         }else {}
         
       GIDSignIn.sharedInstance.signOut()
@@ -151,7 +153,8 @@ class AuthenticationViewModel: ObservableObject {
                         self.session = User(
                             uid: user.uid,
                             displayName: user.displayName,
-                            email: user.email
+                            email: user.email,
+                            days: []
                         )
                     self.session = self.populateSavedData(userOptional: self.session)
                     }
@@ -161,15 +164,15 @@ class AuthenticationViewModel: ObservableObject {
     func populateSavedData(userOptional:User?) -> User {
         guard let user = userOptional else {
             self.state = .signedOut
-            return self.session ?? User(uid: "", displayName: "false", email:"nil")}
+            return self.session ?? User(uid: "", displayName: "false", email:"", days:[])}
         DispatchQueue.main.async {
-            self.ref.child("users/\(user.uid)/displayName").getData(completion:  { error, snapshot in
+            self.ref.child("users/\(user.uid)/veganDays").getData(completion:  { error, snapshot in
               guard error == nil else {
                 print(error!.localizedDescription)
                 return;
               }
-                let displayName = snapshot?.value as? String ?? "Unknown";
-                self.session?.displayName = displayName;
+                let veganDays = snapshot?.value as? [Date] ?? nil;
+                self.session?.veganDays = veganDays;
                 self.state = .signedIn
                 
             });
@@ -182,24 +185,17 @@ class User {
     var uid: String
     var email: String?
     var displayName: String?
+    var veganDays: [Date]?
 
-    init(uid: String, displayName: String?, email: String?) {
+    init(uid: String, displayName: String?, email: String?, days: [Date]?) {
         self.uid = uid
         self.email = email
         self.displayName = displayName
+        self.veganDays = days
     }
     
-    func convertToBool() -> Bool {
-        if (self.displayName == "true"){return true}
-        return false
-    }
-    
-    func saveToggle(state:Bool){
-        if(state){
-            self.displayName = "true"
-            return
-        }
-        self.displayName = "false"
+    func saveDays(days:[Date]){
+        self.veganDays = days
     }
 }
 
