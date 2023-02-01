@@ -132,7 +132,7 @@ class AuthenticationViewModel: ObservableObject {
         if let sess = self.session, let days = sess.veganDays
         {
             ref.child("users").child(sess.uid).removeValue()
-            var savedDatesString = days.map {dateFormatter.string(from: $0)}
+            let savedDatesString = days.map {dateFormatter.string(from: $0)}
             var i = 0
             let savedDatesCount = savedDatesString.count
            
@@ -178,19 +178,23 @@ class AuthenticationViewModel: ObservableObject {
         guard let user = userOptional else {
             self.state = .signedOut
             return self.session ?? User(uid: "", displayName: "false", email:"", days:[])}
+        self.group = DispatchGroup()
+        self.group.enter()
         DispatchQueue.main.async {
             self.ref.child("users/\(user.uid)").getData(completion:  { error, snapshot in
               guard error == nil else {
                 print(error!.localizedDescription)
                 return;
               }
-                if let days = snapshot?.value as? [Any] {
-                    for i in 0..<days.count {
-                        let date = self.dateFormatter.date(from:"\(days[i])") ?? Date()
-                        self.session?.veganDays?.append(date)
+                if let days = snapshot?.value as? Any {
+                    let daysArray = days as! Dictionary<String,AnyObject>
+        
+                    for i in 0..<daysArray.count {
+//                    let date = self.dateFormatter.date(from:"\(daysArray[Int(i)])") ?? Date()
+//                        self.session?.veganDays?.append(date)
                     }
                 }
-            
+                self.group.leave()
                 self.state = .signedIn
                 
             });
