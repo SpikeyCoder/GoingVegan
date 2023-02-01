@@ -27,10 +27,13 @@ class AuthenticationViewModel: ObservableObject {
     var signInErrorMessage: String?
     var createUserErrorMessage: String?
     var group : DispatchGroup!
+    var dateFormatter = DateFormatter()
     
     init(){
         listen()
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
+        self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     }
     
     func signIn() {
@@ -128,15 +131,20 @@ class AuthenticationViewModel: ObservableObject {
     func signOut() {
         if let sess = self.session, let days = sess.veganDays
         {
-            let savedDates = NSMutableArray(array: days)
+            ref.child("users").child(sess.uid).removeValue()
+            var savedDatesString = days.map {dateFormatter.string(from: $0)}
             var i = 0
-            for date in savedDates {
-                let dateString = "\(date)"
-                self.ref.child("users").child(sess.uid).setValue(["veganDays\(i)":String(dateString)])
+            let savedDatesCount = savedDatesString.count
+           
+        while i < savedDatesCount{
+            let dateString = "\(savedDatesString[i])"
+            self.ref.child("users").child(sess.uid).updateChildValues(["veganDays\(i)":String(dateString)])
+            print(dateString)
+                i+=1;
             }
             
         }else {}
-        
+    
       GIDSignIn.sharedInstance.signOut()
       
       do {
@@ -178,7 +186,8 @@ class AuthenticationViewModel: ObservableObject {
               }
                 if let days = snapshot?.value as? [Any] {
                     for i in 0..<days.count {
-                        self.session?.veganDays?.append(days[i] as! Date)
+                        let date = self.dateFormatter.date(from:"\(days[i])") ?? Date()
+                        self.session?.veganDays?.append(date)
                     }
                 }
             
