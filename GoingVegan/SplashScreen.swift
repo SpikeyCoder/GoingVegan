@@ -13,21 +13,10 @@ struct SplashScreen: View {
     
     var body: some View {
         ZStack {
-            
-            GeometryReader{proxy in
-                let size = proxy.size
-                
-                LoginView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .offset(y: animationValues[6] ? 0 : (size.height)+50)
-                
-            }
-            
             if !animationValues[7] {
                 VStack {
                     
                     ZStack{
-                      
                         if animationValues[1] {
                             Circle()
                                 .fill(.black)
@@ -130,6 +119,7 @@ struct SplashScreen: View {
             }
         
         }
+        
         .onAppear {
             
             withAnimation(.easeInOut(duration: 0.3)){
@@ -164,7 +154,7 @@ struct SplashScreen: View {
                     animationValues[6] = true
                 }
             
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                     animationValues[7] = true
                 }
             }
