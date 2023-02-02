@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     @State private var anyDays = [Date]()
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @State var loadDatesIsComplete: Bool = false
     
     var body: some View {
         VStack() {
@@ -28,10 +29,13 @@ struct HomeScreenView: View {
             }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/7.0, alignment: .center)
                 .navigationViewStyle(StackNavigationViewStyle())
             HomeSubTitleText()
-            MultiDatePicker(anyDays: self.$anyDays, includeDays: .allDays)
-                .onChange(of: self.$anyDays.wrappedValue) { newValue in
-                    self.viewModel.session?.saveDays(days:newValue)
-                }
+            if loadDatesIsComplete {
+                MultiDatePicker(anyDays: $anyDays, includeDays: .allDays)
+                    .onChange(of: $anyDays.wrappedValue) { newValue in
+                        self.viewModel.session?.saveDays(days:newValue)
+                    }
+            }
+           
             SavingsTitleText()
             ZStack {
                 calculatedAnimalSavingsText(anyDays.count)
@@ -66,6 +70,7 @@ struct HomeScreenView: View {
         guard let sess = self.viewModel.session else {return}
         guard let days = sess.veganDays else {return}
         self.anyDays = days
+        self.loadDatesIsComplete = true
 
       }
     
@@ -131,6 +136,7 @@ struct HomeScreenView: View {
             .datePickerStyle(.graphical)
             
         }
+        
     }
     
     struct HomeScreenView_Previews: PreviewProvider {
