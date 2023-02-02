@@ -69,6 +69,9 @@
 		C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
 		C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
 		C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
+		C1448AE4298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
+		C1448AE5298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
+		C1448AE6298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +126,7 @@
 		C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,7 @@
 				C1448AD729897C59006A9BEB /* SignIn */,
 				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C14489BD297737F0006A9BEB /* NavBarView.swift */,
+				C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
+				C1448AE4298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
 				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
 				C14489B2297242BC006A9BEB /* MDPMonthYearPickerButton.swift in Sources */,
@@ -483,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AE5298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
 				C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C1448AD929897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
@@ -494,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AE6298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
 				C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */,
 				C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
