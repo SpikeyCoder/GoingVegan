@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct SplashScreen: View {
+
+
+struct LaunchScreen: View {
     
     @State var animationValues: [Bool] = Array(repeating: false, count: 10)
+        
     
     var body: some View {
         ZStack {
@@ -125,7 +128,6 @@ struct SplashScreen: View {
             withAnimation(.easeInOut(duration: 0.3)){
                 animationValues[0] = true
             }
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 
                 animationValues[1] = true
@@ -164,6 +166,6 @@ struct SplashScreen: View {
 
 struct SplashScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SplashScreen()
+        LaunchScreen()
     }
 }

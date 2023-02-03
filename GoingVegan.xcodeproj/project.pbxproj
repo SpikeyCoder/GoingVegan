@@ -69,9 +69,12 @@
 		C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
 		C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
 		C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */; };
-		C1448AE4298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
-		C1448AE5298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
-		C1448AE6298B3DBD006A9BEB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */; };
+		C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */; };
+		C1448AE5298B3DBD006A9BEB /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */; };
+		C1448AE6298B3DBD006A9BEB /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */; };
+		C1448AE8298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
+		C1448AE9298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
+		C1448AEA298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,7 +129,8 @@
 		C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
-		C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +224,8 @@
 				C1448AD729897C59006A9BEB /* SignIn */,
 				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C14489BD297737F0006A9BEB /* NavBarView.swift */,
-				C1448AE3298B3DBD006A9BEB /* SplashScreen.swift */,
+				C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */,
+				C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			files = (
 				C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */,
 				C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */,
+				C1448AE8298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
 				C1448A5B298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AE9298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
 				C1448A5C298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1448AEA298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
 				C1448A5D298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,7 +474,7 @@
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
-				C1448AE4298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
+				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
 				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
 				C14489B2297242BC006A9BEB /* MDPMonthYearPickerButton.swift in Sources */,
@@ -489,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1448AE5298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
+				C1448AE5298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C1448AD929897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
@@ -501,7 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1448AE6298B3DBD006A9BEB /* SplashScreen.swift in Sources */,
+				C1448AE6298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C1448AD62988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */,
 				C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
@@ -660,7 +668,7 @@
 				INFOPLIST_KEY_NSLocationUsageDescription = "This string is optional but recommended on iOS 6 & 7 and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 8+ and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -696,7 +704,7 @@
 				INFOPLIST_KEY_NSLocationUsageDescription = "This string is optional but recommended on iOS 6 & 7 and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This string is required to gain permission to access location services on iOS 8+ and should describe how your app uses location services. Set this string in the Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

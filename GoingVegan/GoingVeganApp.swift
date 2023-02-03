@@ -31,7 +31,8 @@ struct GoingVeganApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+//            SplashScreen()
+            
             if viewModel.state == .signedIn {
                 AppTabView()
                     .environmentObject(viewModel)
