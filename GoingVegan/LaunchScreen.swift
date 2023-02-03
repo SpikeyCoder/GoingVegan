@@ -169,3 +169,15 @@ struct SplashScreen_Previews: PreviewProvider {
         LaunchScreen()
     }
 }
+
+
+class ChildHostingController: UIHostingController<LaunchScreen> {
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder,rootView: LaunchScreen());
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

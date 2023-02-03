@@ -75,6 +75,9 @@
 		C1448AE8298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
 		C1448AE9298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
 		C1448AEA298C7F93006A9BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */; };
+		C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
+		C1448AED298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
+		C1448AEE298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +134,7 @@
 		C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C1448AEB298C8701006A9BEB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 				C14489BD297737F0006A9BEB /* NavBarView.swift */,
 				C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */,
 				C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */,
+				C1448AEB298C8701006A9BEB /* LaunchViewController.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				C1448926296CD7D4006A9BEB /* Sources */,
 				C1448927296CD7D4006A9BEB /* Frameworks */,
 				C1448928296CD7D4006A9BEB /* Resources */,
+				C1448AEF298C9706006A9BEB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -463,6 +469,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C1448AEF298C9706006A9BEB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C1448926296CD7D4006A9BEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -472,6 +500,7 @@
 				C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */,
 				C14489BE297737F0006A9BEB /* NavBarView.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
+				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
 				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
@@ -498,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1448AE5298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
+				C1448AED298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C1448ADD29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448AD52988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C1448AD929897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
@@ -514,6 +544,7 @@
 				C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */,
 				C1448ADE29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */,
+				C1448AEE298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C1448AD829897C7A006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +688,7 @@
 				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
 				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
@@ -693,6 +725,7 @@
 				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
 				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;

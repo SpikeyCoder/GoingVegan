@@ -72,6 +72,12 @@
             ReferencedContainer = "container:GoingVegan.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <LocationScenarioReference
          identifier = "../../GoingVegan/fremont_seattle.gpx"
          referenceType = "0">

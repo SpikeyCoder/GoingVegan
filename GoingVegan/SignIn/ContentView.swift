@@ -38,6 +38,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
         VStack() {
+            
             TitleText()
             LoginIcon()
             VStack(alignment: .leading, spacing: 15) {
