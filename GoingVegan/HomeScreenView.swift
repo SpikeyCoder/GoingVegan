@@ -17,6 +17,13 @@ struct HomeScreenView: View {
             NavigationView{
             HomeTitleText()
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action:{
+                           // viewModel.signOut()
+                        }) {
+                            Text("Delete Account")
+                        }
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action:{
                             viewModel.signOut()
