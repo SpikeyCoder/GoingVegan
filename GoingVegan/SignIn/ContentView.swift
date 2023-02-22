@@ -81,15 +81,14 @@ struct LoginView: View {
                 viewModel.signIn()
               }
             Spacer()
-            Button("Create Account", action: { isPresented.toggle() })
+            Button(action: { isPresented.toggle() }){
+                CreateUserButtonText()
+            }
+            .padding(.bottom, 20)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all))
-            
-//           QuickSignInWithApple()
-//                    .frame(width: 280, height: 60, alignment: .center)
-//                    .onTapGesture(perform: showAppleLoginView)
           
         }.customPopupView(isPresented: $isPresented, popupView: {popupView})
         
@@ -159,10 +158,6 @@ struct LoginView: View {
     }
     
 }
-
-
-
-
 
 
 
@@ -257,8 +252,9 @@ struct CreateUserButtonText : View {
             .foregroundColor(.white)
             .padding()
             .frame(width: 200, height: 50)
-            .background(Color.blue)
+            .background(Color.purple)
             .fontWeight(.semibold)
+            .cornerRadius(15.0)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }
@@ -269,34 +265,6 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 
-struct SignInWithAppleSwiftUIButton: View {
-    @Environment(\.colorScheme) var colorScheme
-
-    var body: some View {
-      if colorScheme.self == .dark {
-          SignInButton(SignInWithAppleButton.Style.whiteOutline)
-      }
-      else {
-          SignInButton(SignInWithAppleButton.Style.black)
-      }
-    }
-
-    func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
-        print("Made it here")
-        return SignInWithAppleButton(.signIn) { request in
-            request.requestedScopes = [.fullName, .email]
-        } onCompletion: { result in
-            switch result {
-            case .success(let authResults):
-                print("Authorisation successful \(authResults)")
-            case .failure(let error):
-                print("Authorisation failed: \(error.localizedDescription)")
-            }
-        }
-        .frame(width: 280, height: 60, alignment: .center)
-        .signInWithAppleButtonStyle(type)
-    }
-}
 
 
 extension Color {
