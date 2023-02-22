@@ -48,14 +48,6 @@
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
-        <!--Child Hosting View Controller-->
-        <scene sceneID="zbj-jx-i98">
-            <objects>
-                <hostingController id="Khk-16-IUF" customClass="ChildHostingViewController" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sym-mo-pOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="886" y="375"/>
-        </scene>
     </scenes>
     <resources>
         <image name="cropped_logo" width="655" height="712"/>

@@ -153,7 +153,7 @@ Groceries:
             if let decodedData = try? JSONDecoder().decode(RecipeListData.self, from: data) {
                 DispatchQueue.main.async {
                     self.recipeDetailsData = decodedData
-                    print(self.recipeDetailsData?.meals[0])
+                   // print(self.recipeDetailsData?.meals[0])
                 }
             }
         }.resume()
@@ -180,7 +180,7 @@ Groceries:
             if let decodedData = try? JSONDecoder().decode(RecipeData.self, from: data) {
                 DispatchQueue.main.async {
                     self.recipeData = decodedData
-                    print(self.recipeData?.meals[0])
+                 //   print(self.recipeData?.meals[0])
                 }
             }
         }.resume()

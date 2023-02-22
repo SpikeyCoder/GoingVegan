@@ -28,6 +28,7 @@ class AuthenticationViewModel: ObservableObject {
     var signInErrorMessage: String?
     var createUserErrorMessage: String?
     var creatingUser = false
+    var deletingUser = false
     var group = DispatchGroup()
     var dateFormatter = DateFormatter()
     
@@ -39,12 +40,8 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signIn() {
-//      if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-//        GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-//            authenticateUser(for: user, with: error)
-//        }
-//      } else {
-        
+        self.creatingUser = false
+        self.deletingUser = false
     guard let clientID = FirebaseApp.app()?.options.clientID else { return }
     
    
@@ -79,12 +76,11 @@ class AuthenticationViewModel: ObservableObject {
                 return
             }
            listen()
-          //  self.state = .signedIn
         }
     }
     
     func createUser(username: String, password: String) {
-       self.group = DispatchGroup()
+       self.creatingUser = true
        self.group.enter()
         DispatchQueue.main.async {
             Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
@@ -94,7 +90,6 @@ class AuthenticationViewModel: ObservableObject {
                 }
 
                 self.state = .signedOut
-                self.creatingUser = true
                 self.group.leave()
                 return
             }
@@ -102,35 +97,42 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func deleteUser() {
-        let user = Auth.auth().currentUser
+        guard let user = Auth.auth().currentUser else {return}
+        self.deletingUser = true
 
-        user?.delete { error in
-          if let error = error {
-              print(error.localizedDescription)
-          } else {
-            // Account deleted.
-          }
+        self.ref.child(user.uid).removeValue {_,_ in
+            user.delete { error in
+              if let error = error {
+                  print(error.localizedDescription)
+                  return
+              }
+             
+             self.state = .signedOut
+        }
+        
+        
         }
     }
     
     func signInWithEmail (username: String, password: String) {
-        Auth.auth().signIn(withEmail: username, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+        self.creatingUser = false
+        self.deletingUser = false
+        Auth.auth().signIn(withEmail: username, password: password) { [weak self] _, error in
+          
             if let error = error {
                 self?.signInErrorMessage = error.localizedDescription
                 print(error.localizedDescription)
-                strongSelf.state = .signedOut
-                guard let group = self?.group else {return}
-                group.leave()
+                self?.state = .signedOut
                 return
             }
+            self?.listen()
         }
     }
     
     func signOut() {
         if let sess = self.session, let days = sess.veganDays
         {
-            ref.child("users").child(sess.uid).removeValue()
+           // ref.child("users").child(sess.uid).removeValue()
             let savedDatesString = days.map {dateFormatter.string(from: $0)}
             var i = 0
             let savedDatesCount = savedDatesString.count
@@ -162,7 +164,7 @@ class AuthenticationViewModel: ObservableObject {
         if !self.creatingUser{
                 self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
                     if let user = user {
-                        if self.listenerCount > 0{
+                        if self.listenerCount > 0 && !self.creatingUser && !self.deletingUser{
                             print("Got user: \(user)")
                             self.session = User(
                                 uid: user.uid,
@@ -172,7 +174,7 @@ class AuthenticationViewModel: ObservableObject {
                             )
                             
                             self.session = self.populateSavedData(userOptional: self.session)
-                            self.ref.child("users/\(self.session?.uid)/veganDays*").getData(completion:  { error, snapshot in
+                            self.ref.child("users/\(String(describing: self.session?.uid))/veganDays*").getData(completion:  { error, snapshot in
                                 guard error == nil else {
                                     print(error!.localizedDescription)
                                     return;
