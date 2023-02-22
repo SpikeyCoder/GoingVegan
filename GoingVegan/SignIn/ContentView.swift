@@ -64,6 +64,7 @@ struct LoginView: View {
             }
             Button(action: {
                 viewModel.signInWithEmail(username: username, password: password)
+              
                 viewModel.group.notify(queue: .main){
                     authenticationDidFail = true
                 }

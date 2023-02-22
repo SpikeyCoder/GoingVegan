@@ -28,7 +28,7 @@ class AuthenticationViewModel: ObservableObject {
     var signInErrorMessage: String?
     var createUserErrorMessage: String?
     var creatingUser = false
-    var group : DispatchGroup!
+    var group = DispatchGroup()
     var dateFormatter = DateFormatter()
     
     init(){
@@ -39,23 +39,22 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signIn() {
-      if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-        GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-            authenticateUser(for: user, with: error)
-        }
-      } else {
+//      if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+//        GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
+//            authenticateUser(for: user, with: error)
+//        }
+//      } else {
         
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
-       
-        let configuration = GIDConfiguration(clientID: clientID)
-        
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
-        
-          GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
-            authenticateUser(for: user, with: error)
-          }
+    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+    
+   
+    let configuration = GIDConfiguration(clientID: clientID)
+    
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+    guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
+    
+      GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
+        authenticateUser(for: user, with: error)
       }
     }
     
@@ -69,15 +68,19 @@ class AuthenticationViewModel: ObservableObject {
       guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
       
       let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-   
-      Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
-        if let error = error {
-            self.signInErrorMessage = error.localizedDescription
-          print(error.localizedDescription)
-        } else {
-          state = .signedIn
+        
+
+        Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
+            
+            if let error = error {
+                self.signInErrorMessage = error.localizedDescription
+                print(error.localizedDescription)
+                self.state = .signedOut
+                return
+            }
+           listen()
+          //  self.state = .signedIn
         }
-      }
     }
     
     func createUser(username: String, password: String) {
@@ -111,34 +114,15 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signInWithEmail (username: String, password: String) {
-        self.group = DispatchGroup()
-        self.group.enter()
-        DispatchQueue.main.async {
-            Auth.auth().signIn(withEmail: username, password: password) { [weak self] authResult, error in
-                guard let strongSelf = self else { return }
-                if let error = error {
-                    self?.signInErrorMessage = error.localizedDescription
-                    print(error.localizedDescription)
-                    strongSelf.state = .signedOut
-                    guard let group = self?.group else {return}
-                    group.leave()
-                    return
-                }
-                guard let sess = strongSelf.session else {return}
-                self?.ref.child("users/\(sess.uid)/veganDays*").getData(completion:  { error, snapshot in
-                    guard error == nil else {
-                        print(error!.localizedDescription)
-                        guard let group = self?.group else {return}
-                        group.leave()
-                        return;
-                    }
-                    guard let days = snapshot?.value as? [Date] else {return}
-                    sess.veganDays = days
-                    self?.session = sess
-                    self?.state = .signedIn
-                    guard let group = self?.group else {return}
-                    group.leave()
-                });
+        Auth.auth().signIn(withEmail: username, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                self?.signInErrorMessage = error.localizedDescription
+                print(error.localizedDescription)
+                strongSelf.state = .signedOut
+                guard let group = self?.group else {return}
+                group.leave()
+                return
             }
         }
     }
@@ -188,11 +172,18 @@ class AuthenticationViewModel: ObservableObject {
                             )
                             
                             self.session = self.populateSavedData(userOptional: self.session)
+                            self.ref.child("users/\(self.session?.uid)/veganDays*").getData(completion:  { error, snapshot in
+                                guard error == nil else {
+                                    print(error!.localizedDescription)
+                                    return;
+                                }
+                                guard let days = snapshot?.value as? [Date] else {return}
+                                self.session?.veganDays = days
+                            });
                         }
                         self.listenerCount += 1
                     }
-                    
-                    }
+                }
             }
     }
      
@@ -201,7 +192,6 @@ class AuthenticationViewModel: ObservableObject {
         guard let user = userOptional else {
             self.state = .signedOut
             return self.session ?? User(uid: "", displayName: "false", email:"", days:[])}
-        self.group = DispatchGroup()
         self.group.enter()
         DispatchQueue.main.async {
             self.ref.child("users/\(user.uid)").getData(completion:  { error, snapshot in
@@ -214,6 +204,12 @@ class AuthenticationViewModel: ObservableObject {
                     for (kind,numbers) in daysArray {
                         print("kind: \(kind)")
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
+                        guard let _ = dateFromString else {
+                            self.group.leave()
+                            self.state = .signedIn
+                            return
+                            
+                        }
                         self.session?.veganDays?.append(dateFromString!)
                     }
                     
