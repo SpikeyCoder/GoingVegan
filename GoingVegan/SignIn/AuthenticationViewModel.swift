@@ -24,8 +24,10 @@ class AuthenticationViewModel: ObservableObject {
     var session: User? { didSet { self.didChange.send(self) }}
     var handle: AuthStateDidChangeListenerHandle?
     var ref: DatabaseReference!
+    var listenerCount = 0
     var signInErrorMessage: String?
     var createUserErrorMessage: String?
+    var creatingUser = false
     var group : DispatchGroup!
     var dateFormatter = DateFormatter()
     
@@ -79,8 +81,8 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func createUser(username: String, password: String) {
-        self.group = DispatchGroup()
-        self.group.enter()
+       self.group = DispatchGroup()
+       self.group.enter()
         DispatchQueue.main.async {
             Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
                 if let error = error {
@@ -89,9 +91,22 @@ class AuthenticationViewModel: ObservableObject {
                 }
 
                 self.state = .signedOut
+                self.creatingUser = true
                 self.group.leave()
                 return
             }
+        }
+    }
+    
+    func deleteUser() {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+          if let error = error {
+              print(error.localizedDescription)
+          } else {
+            // Account deleted.
+          }
         }
     }
     
@@ -160,19 +175,27 @@ class AuthenticationViewModel: ObservableObject {
     
     func listen () {
         // monitor authentication changes using firebase
-            self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-                if let user = user {
-                    print("Got user: \(user)")
-                        self.session = User(
-                            uid: user.uid,
-                            displayName: user.displayName,
-                            email: user.email,
-                            days: []
-                        )
-                    self.session = self.populateSavedData(userOptional: self.session)
+        if !self.creatingUser{
+                self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+                    if let user = user {
+                        if self.listenerCount > 0{
+                            print("Got user: \(user)")
+                            self.session = User(
+                                uid: user.uid,
+                                displayName: user.displayName,
+                                email: user.email,
+                                days: []
+                            )
+                            
+                            self.session = self.populateSavedData(userOptional: self.session)
+                        }
+                        self.listenerCount += 1
+                    }
+                    
                     }
             }
     }
+     
     
     func populateSavedData(userOptional:User?) -> User {
         guard let user = userOptional else {
@@ -187,13 +210,15 @@ class AuthenticationViewModel: ObservableObject {
                 return;
               }
                 if let days = snapshot?.value as? Any {
-                    let daysArray = days as! Dictionary<String,AnyObject>
+                    let daysArray = days as? Dictionary<String,AnyObject> ?? Dictionary<String,AnyObject>()
                     for (kind,numbers) in daysArray {
                         print("kind: \(kind)")
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
                         self.session?.veganDays?.append(dateFromString!)
                     }
+                    
                 }
+               
                 self.group.leave()
                 self.state = .signedIn
                 
