@@ -82,20 +82,20 @@ struct HomeScreenView: View {
       }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
-       if(anyDays.count == Int(1)){
+       if(daysCount == Int(1)){
            return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
             Circle()
               .stroke(.gray, lineWidth: 4)
               .padding(6))
        }
-        return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
+        return Text("\(daysCount)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
               Circle()
                 .stroke(.gray, lineWidth: 4)
                 .padding(6))
    }
    
     func calculatedCO2SavingsText(_ daysCount: Int) -> some View {
-        return Text("\(String(format:"%.1f",Double(anyDays.count) * 6.4))").padding().background(
+        return Text("\(String(format:"%.1f",Double(daysCount) * 6.4))").padding().background(
             Circle()
               .stroke(.gray, lineWidth: 4)
               .padding(6))

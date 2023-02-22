@@ -108,9 +108,7 @@ class AuthenticationViewModel: ObservableObject {
               }
              
              self.state = .signedOut
-        }
-        
-        
+            }
         }
     }
     
@@ -135,16 +133,19 @@ class AuthenticationViewModel: ObservableObject {
            // ref.child("users").child(sess.uid).removeValue()
             let savedDatesString = days.map {dateFormatter.string(from: $0)}
             var i = 0
-            let savedDatesCount = savedDatesString.count
-           
+            let uniqueDatesString = Array(Set(savedDatesString))
+            let savedDatesCount = uniqueDatesString.count
+            if savedDatesCount == 0 {
+                self.ref.child("users").child(sess.uid).updateChildValues(["veganDays*":nil])
+            }
         while i < savedDatesCount{
-            let dateString = "\(savedDatesString[i])"
+            let dateString = "\(uniqueDatesString[i])"
             self.ref.child("users").child(sess.uid).updateChildValues(["veganDays\(i)":String(dateString)])
             print(dateString)
                 i+=1;
             }
             
-        }else {}
+        }
     
       GIDSignIn.sharedInstance.signOut()
       
@@ -240,7 +241,8 @@ class User {
     }
     
     func saveDays(days:[Date]){
-        self.veganDays = days
+        let uniqueDays = Array(Set(days))
+        self.veganDays = uniqueDays
     }
 }
 
