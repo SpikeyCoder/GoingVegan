@@ -237,9 +237,9 @@ struct SignInButtonText : View {
             .font(.headline)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 300, height: 50)
+            .frame(width: 200, height: 50)
             .background(Color.blue)
-            .cornerRadius(15.0)
+            .cornerRadius(10.0)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }
@@ -247,13 +247,13 @@ struct SignInButtonText : View {
 struct CreateUserButtonText : View {
     var body: some View {
         return Text("Create Account")
-            .font(.title3)
+            .font(.headline)
             .foregroundColor(.white)
             .padding()
             .frame(width: 200, height: 50)
             .background(Color.purple)
             .fontWeight(.semibold)
-            .cornerRadius(15.0)
+            .cornerRadius(10.0)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }

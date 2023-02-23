@@ -9,16 +9,15 @@ import SwiftUI
 import CoreData
 import MapKit
 import Foundation
-import UniformTypeIdentifiers
+
 
 struct RecipeListView: View {
     @State private var recipeData: RecipeData?
     @State private var recipeInstructions: String?
     @State private var recipeItems: String?
-    @State private var ingredientArray = ["","","","","","","","","","","","","","","","","","","","","","","",""]
+    @State private var ingredientListString = ""
     
-    @State private var groceryList = TextFile(initialText: "")
-    
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -33,15 +32,39 @@ struct RecipeListView: View {
                    ForEach(recipes.meals, id:\.self) { meal in
                        NavigationLink("\(meal.recipe_name)") {
                            nextScreen(meal: meal)
+                               .environmentObject(viewModel)
+                               .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                        }
                      }
+                     Spacer()
+                        NavigationLink("Grocery List"){
+                            groceryListScreen()
+                                .environmentObject(viewModel)
+                                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                        }
                     }
                 }
         }.onAppear(perform: getRecipeList)
     }
+    struct groceryListScreen: View {
+        
+        @EnvironmentObject var viewModel: AuthenticationViewModel
+        @Environment(\.managedObjectContext) private var viewContext
+        
+        
+        var body: some View {
+            Spacer()
+            Text("\(viewModel.groceryListString)")
+            Spacer()
+        }
+    }
     
     struct nextScreen: View {
         var meal:Recipe
+        
+        @EnvironmentObject var viewModel: AuthenticationViewModel
+        @Environment(\.managedObjectContext) private var viewContext
+       
         init(meal: Recipe) {
             self.meal = meal
         }
@@ -49,30 +72,14 @@ struct RecipeListView: View {
             Spacer()
             Text("\(meal.recipe_instructions)")
             Spacer()
-            Button("Create a Grocery List", action: {
-                print("")
-                downloadIngredients(meal: self.meal)
+            Button("Add To Grocery List", action: {
+                var oneList = meal.shopping_list.joined(separator: ",")
+                oneList.append(contentsOf: viewModel.groceryListString)
+                
+                viewModel.groceryListString = oneList.replacingOccurrences(of: ",", with: " \n")
+                
             })
             Spacer()
-        }
-        func downloadIngredients(meal:Recipe) {
-            var listString = """
-    Groceries:\(meal.shopping_list)
-    """
-           
-            let filename = getDocumentsDirectory().appendingPathComponent("groceries.txt")
-
-            do {
-                try listString.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
-                print("downloaded successfully")
-            } catch {
-                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-            }
-        }
-        
-        func getDocumentsDirectory() -> URL {
-            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            return paths[0]
         }
     }
 
@@ -126,28 +133,3 @@ struct RecipeListView_Previews: PreviewProvider {
     }
 }
 
-struct TextFile: FileDocument {
-    // tell the system we support only plain text
-    static var readableContentTypes = [UTType.plainText]
-
-    // by default our document is empty
-    var text = ""
-
-    // a simple initializer that creates new, empty documents
-    init(initialText: String = "") {
-        text = initialText
-    }
-
-    // this initializer loads data that has been saved previously
-    init(configuration: ReadConfiguration) throws {
-        if let data = configuration.file.regularFileContents {
-            text = String(decoding: data, as: UTF8.self)
-        }
-    }
-
-    // this will be called when the system wants to write our data to disk
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = Data(text.utf8)
-        return FileWrapper(regularFileWithContents: data)
-    }
-}

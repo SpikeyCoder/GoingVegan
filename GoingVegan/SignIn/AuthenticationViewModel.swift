@@ -32,6 +32,7 @@ class AuthenticationViewModel: ObservableObject {
     var alreadyCalledSignedIn = false
     var group = DispatchGroup()
     var dateFormatter = DateFormatter()
+    var groceryListString = ""
     
     init(){
         listen()
