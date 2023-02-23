@@ -79,11 +79,12 @@ struct LoginView: View {
               .onTapGesture {
                 viewModel.signIn()
               }
-            Spacer()
+            
             Button(action: { isPresented.toggle() }){
                 CreateUserButtonText()
             }
             .padding(.bottom, 20)
+            Spacer()
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
@@ -150,6 +151,7 @@ struct LoginView: View {
                     }) {
                         CreateUserButtonText()
                     }.padding([.top,.bottom], 50)
+                    
                 }
                 , alignment: .center)
             .transition(AnyTransition.scale)
@@ -237,9 +239,9 @@ struct SignInButtonText : View {
             .font(.headline)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 200, height: 50)
+            .frame(width: 195, height: 40)
             .background(Color.blue)
-            .cornerRadius(10.0)
+            .cornerRadius(5.0)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }
@@ -250,10 +252,10 @@ struct CreateUserButtonText : View {
             .font(.headline)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 200, height: 50)
+            .frame(width: 195, height: 40)
             .background(Color.purple)
             .fontWeight(.semibold)
-            .cornerRadius(10.0)
+            .cornerRadius(5.0)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }

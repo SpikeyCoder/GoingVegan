@@ -53,6 +53,7 @@ struct RecipeListView: View {
         
         
         var body: some View {
+            ShareLink(item: viewModel.groceryListString)
             Spacer()
             Text("\(viewModel.groceryListString)")
             Spacer()
