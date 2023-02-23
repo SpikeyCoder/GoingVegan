@@ -16,6 +16,7 @@ struct RecipeListView: View {
     @State private var recipeInstructions: String?
     @State private var recipeItems: String?
     @State private var ingredientListString = ""
+    @State private var showingTransition = true
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
@@ -44,7 +45,16 @@ struct RecipeListView: View {
                         }
                     }
                 }
-        }.onAppear(perform: getRecipeList)
+        }.onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.showingTransition = false
+                // TransitionView()
+            }
+            getRecipeList()
+        }
+        .sheet(isPresented: $showingTransition) {
+                   TransitionView()
+               }
     }
     struct groceryListScreen: View {
         
@@ -70,17 +80,19 @@ struct RecipeListView: View {
             self.meal = meal
         }
         var body: some View {
-            Spacer()
-            Text("\(meal.recipe_instructions)")
-            Spacer()
-            Button("Add To Grocery List", action: {
-                var oneList = meal.shopping_list.joined(separator: ",")
-                oneList.append(contentsOf: viewModel.groceryListString)
-                
-                viewModel.groceryListString = oneList.replacingOccurrences(of: ",", with: " \n")
-                
-            })
-            Spacer()
+            VStack{
+                Spacer()
+                Text("\(meal.recipe_instructions)")
+                Spacer()
+                Button("Add To Grocery List", action: {
+                    var oneList = meal.shopping_list.joined(separator: ",")
+                    oneList.append(contentsOf: viewModel.groceryListString)
+                    
+                    viewModel.groceryListString = oneList.replacingOccurrences(of: ",", with: " \n")
+                    
+                })
+                Spacer()
+            }
         }
     }
 
@@ -96,7 +108,7 @@ struct RecipeListView: View {
      
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
- 
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
                 guard let data = data else {return}
