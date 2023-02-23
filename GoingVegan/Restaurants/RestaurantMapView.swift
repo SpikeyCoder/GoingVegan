@@ -22,7 +22,6 @@ struct RestaurantMapView: View {
                 .padding(.top, 20)
     
             MapView()
-                .animation(.easeInOut(duration: 5).delay(3))
             
         }
         //.onAppear(perform: loadData)
@@ -59,7 +58,7 @@ struct RestaurantMapView: View {
         func createMapLocations() -> [MKPointAnnotation] {
             if let businesses = self.restaurantData?.businesses as? [Restaurant] {
                 var i = 0
-                var totalRestaurants = businesses.count
+                let totalRestaurants = businesses.count
                 var pins = [MKPointAnnotation]()
                 while (i < totalRestaurants){
                     pins.append(makeAnnotation(business: businesses[i]))
@@ -72,7 +71,7 @@ struct RestaurantMapView: View {
         
         private func makeAnnotation(business:Restaurant) -> MKPointAnnotation {
                         
-            var annotation = MKPointAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: Double(business.coordinates["latitude"] ?? 0.0), longitude: Double(business.coordinates["longitude"] ?? 0.0))
             annotation.title = business.name
             return annotation

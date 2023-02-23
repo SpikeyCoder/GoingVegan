@@ -75,7 +75,6 @@ struct LoginView: View {
             GoogleSignInButton()
                 .padding(.bottom, 20)
               .frame(width: 200, height: 50, alignment: .topLeading)
-              .background(Color.blue)
               .shadow(radius: 10.0, x: 20, y: 10)
               .onTapGesture {
                 viewModel.signIn()
