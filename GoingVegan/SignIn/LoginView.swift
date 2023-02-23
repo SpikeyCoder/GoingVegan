@@ -72,6 +72,13 @@ struct LoginView: View {
             }) {
                 SignInButtonText()
             }.padding(.top, 30)
+            
+            Button(action: { isPresented.toggle() }){
+                CreateUserButtonText()
+            }
+            .padding(.bottom, 20)
+            
+            Text("--OR--")
             GoogleSignInButton()
                 .padding(.bottom, 20)
               .frame(width: 200, height: 50, alignment: .topLeading)
@@ -79,11 +86,6 @@ struct LoginView: View {
               .onTapGesture {
                 viewModel.signIn()
               }
-            
-            Button(action: { isPresented.toggle() }){
-                CreateUserButtonText()
-            }
-            .padding(.bottom, 20)
             Spacer()
             }
             .background(
@@ -91,6 +93,7 @@ struct LoginView: View {
                     .edgesIgnoringSafeArea(.all))
           
         }.customPopupView(isPresented: $isPresented, popupView: {popupView})
+        
         
     }
     
