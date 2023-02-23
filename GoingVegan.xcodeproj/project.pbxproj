@@ -79,6 +79,7 @@
 		C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C1448AED298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C1448AEE298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
+		C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C1448AEB298C8701006A9BEB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
+				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C1448ADA29897CB4006A9BEB /* Restaurants */,
 				C1448931296CD7D5006A9BEB /* Assets.xcassets */,
 				C1448936296CD7D5006A9BEB /* Persistence.swift */,
@@ -228,11 +231,11 @@
 				C1448938296CD7D5006A9BEB /* GoingVegan.xcdatamodeld */,
 				C1448933296CD7D5006A9BEB /* Preview Content */,
 				C1448AD729897C59006A9BEB /* SignIn */,
-				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C14489BD297737F0006A9BEB /* NavBarView.swift */,
 				C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */,
 				C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */,
 				C1448AEB298C8701006A9BEB /* LaunchViewController.swift */,
+				C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
+				C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */,
 				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
 				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
