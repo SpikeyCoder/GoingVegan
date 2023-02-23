@@ -119,70 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E4741A3-74AE-4D2E-AE05-8CC973039B12"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoingVegan/MDP Components/MDPModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "selectDay(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0826458E-6689-466F-BBF9-473E5746B040"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoingVegan/MDP Components/MDPModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "selectDay(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0826458E-6689-466F-BBF9-473E5746B040 - 6852e9314448b1e2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoingVegan.MDPModel.selectDay(GoingVegan.MDPDayOfMonth) -&gt; ()"
-                  moduleName = "GoingVegan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/MDP%20Components/MDPModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "1152">
-               </Location>
-               <Location
-                  uuid = "0826458E-6689-466F-BBF9-473E5746B040 - 6852e9314448b1e2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoingVegan.MDPModel.selectDay(GoingVegan.MDPDayOfMonth) -&gt; ()"
-                  moduleName = "GoingVegan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/MDP%20Components/MDPModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "1372">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F0B33E50-9DA2-4535-90D6-056D7DEECB4A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -191,9 +127,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "popupView"
-            landmarkType = "24">
+            endingLineNumber = "148">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,54 +144,6 @@
             endingLineNumber = "48"
             landmarkName = "makeUIView(context:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "886F3F94-0FAA-409F-AA98-6723BD43B369"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoingVegan/Restaurants/RestaurantMapView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "loadData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "886F3F94-0FAA-409F-AA98-6723BD43B369 - e093aba3451e45c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoingVegan.RestaurantMapView.MapView.loadData() -&gt; ()"
-                  moduleName = "GoingVegan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Restaurants/RestaurantMapView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "376">
-               </Location>
-               <Location
-                  uuid = "886F3F94-0FAA-409F-AA98-6723BD43B369 - e093aba3451e45c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoingVegan.RestaurantMapView.MapView.loadData() -&gt; ()"
-                  moduleName = "GoingVegan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Restaurants/RestaurantMapView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "468">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -320,7 +206,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
                   endingLineNumber = "104"
-                  offsetFromSymbolStart = "712">
+                  offsetFromSymbolStart = "760">
                </Location>
                <Location
                   uuid = "FB70ED55-10FD-49D8-9A3F-E04295995DDC - 37aff6b59700cecc"
@@ -335,7 +221,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
                   endingLineNumber = "104"
-                  offsetFromSymbolStart = "872">
+                  offsetFromSymbolStart = "920">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -350,8 +236,8 @@
             filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "saveDays(days:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,49 +245,129 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AA56160-7519-4525-B097-6EFBDF89C5FA"
+            uuid = "A3E607A2-09F0-4AD1-8B6B-D306E0EAA97A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoingVegan/HomeScreenView.swift"
+            filePath = "GoingVegan/NavBarView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "calculatedAnimalSavingsText(_:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C6B9E53-BDBF-4D50-A3D6-A3EABAB973C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/Restaurants/RestaurantMapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "74EB967F-C0E6-4DA3-9ECF-FEC8CEC3D8E5"
+            uuid = "C32F0D10-F828-444D-AA74-E89BFFF85C94"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C32F0D10-F828-444D-AA74-E89BFFF85C94 - b386e252d256afd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.navigationViewStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.NavigationViewStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, GoingVegan.HomeScreenView.HomeSubTitleText, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt;, GoingVegan.HomeScreenView.SavingsTitleText, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in GoingVegan.HomeScreenView.body.getter : some"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/HomeScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "8552">
+               </Location>
+               <Location
+                  uuid = "C32F0D10-F828-444D-AA74-E89BFFF85C94 - 5979ce07fe0990c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.navigationViewStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.NavigationViewStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, GoingVegan.HomeScreenView.HomeSubTitleText, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt;, GoingVegan.HomeScreenView.SavingsTitleText, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in GoingVegan.HomeScreenView.body.getter : some"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/HomeScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6DE3CBA3-3A34-4E71-A162-AAA4AD8BD564"
+            uuid = "03FABBBB-D0C1-4511-B3B8-3DB1874310A3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "03FABBBB-D0C1-4511-B3B8-3DB1874310A3 - b386e252d256ae3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.navigationViewStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.NavigationViewStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, GoingVegan.HomeScreenView.HomeSubTitleText, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt;, GoingVegan.HomeScreenView.SavingsTitleText, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in GoingVegan.HomeScreenView.body.getter : some"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/HomeScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2576">
+               </Location>
+               <Location
+                  uuid = "03FABBBB-D0C1-4511-B3B8-3DB1874310A3 - 45b2ae43250521ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of GoingVegan.HomeScreenView.calculatedAnimalSavingsText(Swift.Int) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.offset(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.navigationViewStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.NavigationViewStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, GoingVegan.HomeScreenView.HomeSubTitleText, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt;, GoingVegan.HomeScreenView.SavingsTitleText, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in GoingVegan.HomeScreenView.body.getter : some"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/HomeScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

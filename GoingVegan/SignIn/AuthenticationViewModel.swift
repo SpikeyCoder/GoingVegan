@@ -29,6 +29,7 @@ class AuthenticationViewModel: ObservableObject {
     var createUserErrorMessage: String?
     var creatingUser = false
     var deletingUser = false
+    var alreadyCalledSignedIn = false
     var group = DispatchGroup()
     var dateFormatter = DateFormatter()
     
@@ -157,6 +158,7 @@ class AuthenticationViewModel: ObservableObject {
       } catch {
         print(error.localizedDescription)
       }
+        alreadyCalledSignedIn = false
     }
    
     
@@ -207,20 +209,21 @@ class AuthenticationViewModel: ObservableObject {
                     for (kind,numbers) in daysArray {
                         print("kind: \(kind)")
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
-                        guard let _ = dateFromString else {
-                            self.group.leave()
-                            self.state = .signedIn
-                            return
-                            
-                        }
+//                        guard let _ = dateFromString else {
+//                            self.group.leave()
+//                            return
+//                        }
                         self.session?.veganDays?.append(dateFromString!)
                     }
                     
                 }
                
                 self.group.leave()
-                self.state = .signedIn
-                
+                if !self.alreadyCalledSignedIn {
+                    self.alreadyCalledSignedIn = true
+                    self.state = .signedIn
+                   
+                }
             });
         }
         return user;

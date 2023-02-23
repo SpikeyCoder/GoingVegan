@@ -71,7 +71,6 @@ struct HomeScreenView: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         .onAppear(perform: load)
-        Spacer()
     }
     func load() {
         guard let sess = self.viewModel.session else {return}

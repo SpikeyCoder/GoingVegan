@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
 		C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448931296CD7D5006A9BEB /* Assets.xcassets */; };
 		C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448934296CD7D5006A9BEB /* Preview Assets.xcassets */; };
@@ -15,7 +16,7 @@
 		C1448945296CD7D5006A9BEB /* GoingVeganTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448944296CD7D5006A9BEB /* GoingVeganTests.swift */; };
 		C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144894E296CD7D5006A9BEB /* GoingVeganUITests.swift */; };
 		C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */; };
-		C144899A297218E6006A9BEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448999297218E6006A9BEB /* ContentView.swift */; };
+		C144899A297218E6006A9BEB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448999297218E6006A9BEB /* LoginView.swift */; };
 		C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */; };
 		C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
 		C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A0297231F9006A9BEB /* HomeScreenView.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganApp.swift; sourceTree = "<group>"; };
 		C1448931296CD7D5006A9BEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		C144894A296CD7D5006A9BEB /* GoingVeganUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoingVeganUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144894E296CD7D5006A9BEB /* GoingVeganUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganUITests.swift; sourceTree = "<group>"; };
 		C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C1448999297218E6006A9BEB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C1448999297218E6006A9BEB /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C144899B29722AFD006A9BEB /* GoingVegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoingVegan.entitlements; sourceTree = "<group>"; };
 		C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSignInWithApple.swift; sourceTree = "<group>"; };
 		C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleViewModel.swift; sourceTree = "<group>"; };
@@ -288,7 +290,8 @@
 			children = (
 				C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */,
 				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
-				C1448999297218E6006A9BEB /* ContentView.swift */,
+				C1448999297218E6006A9BEB /* LoginView.swift */,
+				C13DF78E29A6F06B00014BC4 /* ContentView.swift */,
 				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
 				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
 			);
@@ -498,6 +501,7 @@
 			files = (
 				C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */,
 				C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */,
+				C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */,
 				C14489BE297737F0006A9BEB /* NavBarView.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
@@ -513,7 +517,7 @@
 				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
 				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
-				C144899A297218E6006A9BEB /* ContentView.swift in Sources */,
+				C144899A297218E6006A9BEB /* LoginView.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
@@ -686,11 +690,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKDK2C25K;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoingVegan/Info.plist;
@@ -710,6 +716,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.armstrong.GoingVegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TestProfileKevinPhone;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -723,11 +731,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKDK2C25K;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoingVegan/Info.plist;
@@ -747,6 +757,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.armstrong.GoingVegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TestProfileKevinPhone;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

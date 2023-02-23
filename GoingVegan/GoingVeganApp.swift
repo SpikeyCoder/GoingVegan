@@ -19,7 +19,7 @@ struct GoingVeganApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @StateObject var viewModel = AuthenticationViewModel()
+    
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
@@ -31,20 +31,8 @@ struct GoingVeganApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            SplashScreen()
-            
-            if viewModel.state == .signedIn {
-                AppTabView()
-                    .environmentObject(viewModel)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
-            else {
-                LoginView()
-                    .environmentObject(viewModel)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
-            
-                
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
