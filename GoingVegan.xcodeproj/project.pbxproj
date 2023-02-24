@@ -222,6 +222,7 @@
 				C14489A8297242A5006A9BEB /* MDP Components */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
+				C13DF78E29A6F06B00014BC4 /* ContentView.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
 				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C1448ADA29897CB4006A9BEB /* Restaurants */,
@@ -294,7 +295,6 @@
 				C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */,
 				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
 				C1448999297218E6006A9BEB /* LoginView.swift */,
-				C13DF78E29A6F06B00014BC4 /* ContentView.swift */,
 				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
 				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
 			);
