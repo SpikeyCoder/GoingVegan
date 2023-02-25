@@ -15,7 +15,7 @@ struct HomeScreenView: View {
     var body: some View {
         VStack() {
             NavigationView{
-            HomeTitleText()
+            Text("")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action:{
@@ -32,8 +32,7 @@ struct HomeScreenView: View {
                         }
                     }
                 }
-            Spacer()
-            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/7.0, alignment: .center)
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/20.0, alignment: .center)
                 .navigationViewStyle(StackNavigationViewStyle())
             HomeSubTitleText()
             if loadDatesIsComplete {

@@ -17,6 +17,7 @@ struct RecipeListView: View {
     @State private var recipeItems: String?
     @State private var ingredientListString = ""
     @State private var showingTransition = true
+   
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
@@ -71,6 +72,7 @@ struct RecipeListView: View {
     
     struct nextScreen: View {
         var meal:Recipe
+        @State var shouldHide = false
         
         @EnvironmentObject var viewModel: AuthenticationViewModel
         @Environment(\.managedObjectContext) private var viewContext
@@ -88,8 +90,9 @@ struct RecipeListView: View {
                     oneList.append(contentsOf: viewModel.groceryListString)
                     
                     viewModel.groceryListString = oneList.replacingOccurrences(of: ",", with: " \n")
+                    shouldHide = true
                     
-                })
+                }).opacity(shouldHide ? 0 : 1)
                 Spacer()
             }
         }
