@@ -13,6 +13,7 @@ struct RestaurantMapView: View {
     @State private var restaurantData: RestaurantData?
     @State var mapLocations: [MapLocation]!
     @State var mapPins: [MKPlacemark]!
+    @State private var showingTransition = true
     
     var body: some View {
         VStack {
@@ -24,7 +25,14 @@ struct RestaurantMapView: View {
             MapView()
             
         }
-        //.onAppear(perform: loadData)
+        .onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.showingTransition = false
+            }
+        }
+        .sheet(isPresented: $showingTransition) {
+                   TransitionView()
+               }
         
     }
     
