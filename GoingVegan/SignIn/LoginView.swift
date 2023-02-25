@@ -39,7 +39,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
         VStack() {
-            
             TitleText()
             LoginIcon()
             VStack(alignment: .leading, spacing: 15) {
@@ -72,14 +71,14 @@ struct LoginView: View {
                 
             }) {
                 SignInButtonText()
-            }.padding(.top, 30)
+            }.padding(.top, 20)
             
             Button(action: { isPresented.toggle() }){
                 CreateUserButtonText()
             }
-            .padding(.bottom, 20)
-            
+            .padding(.bottom, 0)
             Text("--OR--")
+                .padding(.bottom, -5)
             GoogleSignInButton()
                 .padding(.bottom, 20)
               .frame(width: 200, height: 50, alignment: .topLeading)
@@ -202,7 +201,7 @@ struct TitleText : View {
         return Text("Going Vegan")
             .font(.largeTitle).foregroundColor(Color.white)
             .fontWeight(.semibold)
-            .padding([.top, .bottom], 40)
+            .padding([.top, .bottom], 30)
             .shadow(radius: 10.0, x: 20, y: 10)
     }
 }
@@ -215,7 +214,7 @@ struct LoginIcon : View {
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
             .shadow(radius: 10, x: 20, y:10)
-            .padding(.bottom, 50)
+            .padding(.bottom, 30)
     }
 }
 

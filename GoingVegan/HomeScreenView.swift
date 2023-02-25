@@ -117,7 +117,7 @@ struct HomeScreenView: View {
             return Text("Check-In and Track Your Vegan Days:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
-                .padding([.top, .bottom], 40)
+                .padding(.top, 70)
                 .shadow(radius: 10.0, x: 20, y: 10)
         }
     }
