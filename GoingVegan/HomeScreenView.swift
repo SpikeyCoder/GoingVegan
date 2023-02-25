@@ -72,12 +72,13 @@ struct HomeScreenView: View {
                 .edgesIgnoringSafeArea(.all))
         .onAppear(perform: load)
     }
+    
+    
     func load() {
         guard let sess = self.viewModel.session else {return}
         guard let days = sess.veganDays else {return}
         self.anyDays = days
         self.loadDatesIsComplete = true
-
       }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
@@ -114,7 +115,7 @@ struct HomeScreenView: View {
     
     struct HomeSubTitleText : View {
         var body: some View {
-            return Text("Track Your Vegan Days Below:")
+            return Text("Check-In and Track Your Vegan Days:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
                 .padding([.top, .bottom], 40)
@@ -123,7 +124,7 @@ struct HomeScreenView: View {
     }
     struct SavingsTitleText : View {
         var body: some View {
-            return Text("Savings:")
+            return Text("Impact on World:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
                 .padding(.bottom, 40)

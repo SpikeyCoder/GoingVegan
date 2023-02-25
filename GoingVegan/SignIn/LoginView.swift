@@ -25,6 +25,7 @@ struct LoginView: View {
     @State var authenticationDidSucceed: Bool = false
     @State var createUserCompleted: Bool = false
     @State private var isPresented: Bool = Bool()
+    @State private var showingTransition = true
     
     private func showAppleLoginView() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -92,8 +93,14 @@ struct LoginView: View {
                 LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all))
           
-        }.customPopupView(isPresented: $isPresented, popupView: {popupView})
-        
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showingTransition = false
+            }
+        }.sheet(isPresented: $showingTransition) {
+            TransitionView()
+               }
+        .customPopupView(isPresented: $isPresented, popupView: {popupView})
         
     }
     

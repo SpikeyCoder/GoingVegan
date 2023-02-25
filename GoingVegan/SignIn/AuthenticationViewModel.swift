@@ -132,7 +132,6 @@ class AuthenticationViewModel: ObservableObject {
     func signOut() {
         if let sess = self.session, let days = sess.veganDays
         {
-           // ref.child("users").child(sess.uid).removeValue()
             let savedDatesString = days.map {dateFormatter.string(from: $0)}
             var i = 0
             let uniqueDatesString = Array(Set(savedDatesString))
