@@ -9,13 +9,57 @@ import XCTest
 @testable import GoingVegan
 
 final class GoingVeganTests: XCTestCase {
-
+    @State private var anyDays = [Date]()
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testAllDatesLoaded() {
+        self.viewModel = AuthenticationViewModel()
+        let dateArray = makeDateArray()
+        let totalDays = dateArray.count
+        
+        self.viewModel.session = User(uid: "adsfasdaewfwefndf", displayName: "Test", email: "TestAutomation@gmail.com", days: dateArray)
+        XCTAssertEqual(self.viewModel.session?.veganDays.count, totalDays, "Session vegan days must equal days set from cloud db")
+    }
+    
+    func makeDateArray() -> [Date] {
+        let dates = [Date]()
+        let totalDays:Int = arc4random()
+        let count = 0
+        
+        while (count<totalDays){
+            dates.append(makeRandomDate())
+            count += 1
+        }
+    }
+    
+    func makeRandomDate() -> Date {
+        let today = Date()
+        let calendar = Calendar()
+        let days = calendar.range(of: dayCalendarUnit, in: monthCalendarUnit, for: today)
+        let dateComponents = DateComponents()
+        
+        var randomDateNumber = arc4random() % days.length
+        dateComponents.day = randomDateNumber
+       
+        let randomDate = calendar.current.date(from: dateComponents)
+
+        return randomDate
     }
 
     func testExample() throws {

@@ -17,7 +17,6 @@
 		C144894F296CD7D5006A9BEB /* GoingVeganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144894E296CD7D5006A9BEB /* GoingVeganUITests.swift */; };
 		C1448951296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */; };
 		C144899A297218E6006A9BEB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448999297218E6006A9BEB /* LoginView.swift */; };
-		C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */; };
 		C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */; };
 		C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A0297231F9006A9BEB /* HomeScreenView.swift */; };
 		C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14489A629724293006A9BEB /* MultiDatePicker.swift */; };
@@ -80,6 +79,8 @@
 		C1448AED298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C1448AEE298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */; };
+		C1D29BAE29AE47E30072DF2B /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D29BAD29AE47E30072DF2B /* SignInWithAppleButton.swift */; };
+		C1D29BB029AE4A690072DF2B /* SignInWithAppleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D29BAF29AE4A690072DF2B /* SignInWithAppleCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +116,6 @@
 		C1448950296CD7D5006A9BEB /* GoingVeganUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C1448999297218E6006A9BEB /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C144899B29722AFD006A9BEB /* GoingVegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoingVegan.entitlements; sourceTree = "<group>"; };
-		C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSignInWithApple.swift; sourceTree = "<group>"; };
 		C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleViewModel.swift; sourceTree = "<group>"; };
 		C14489A0297231F9006A9BEB /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		C14489A52972422C006A9BEB /* MultiDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiDatePicker.swift; path = "GoingVegan/MultiDatePicker Source/MultiDatePicker.swift"; sourceTree = "<group>"; };
@@ -139,6 +139,9 @@
 		C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C1448AEB298C8701006A9BEB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
+		C1D29BAC29AE47630072DF2B /* GoingVeganRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoingVeganRelease.entitlements; sourceTree = "<group>"; };
+		C1D29BAD29AE47E30072DF2B /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
+		C1D29BAF29AE4A690072DF2B /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,7 @@
 		C144892C296CD7D4006A9BEB /* GoingVegan */ = {
 			isa = PBXGroup;
 			children = (
+				C1D29BAC29AE47630072DF2B /* GoingVeganRelease.entitlements */,
 				C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */,
 				C14489A8297242A5006A9BEB /* MDP Components */,
 				C144899B29722AFD006A9BEB /* GoingVegan.entitlements */,
@@ -293,10 +297,11 @@
 			isa = PBXGroup;
 			children = (
 				C1448ADB29897D61006A9BEB /* GoogleSignInButton.swift */,
-				C144899C29722B49006A9BEB /* QuickSignInWithApple.swift */,
 				C1448999297218E6006A9BEB /* LoginView.swift */,
 				C144899E29723001006A9BEB /* LoginWithAppleViewModel.swift */,
 				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
+				C1D29BAD29AE47E30072DF2B /* SignInWithAppleButton.swift */,
+				C1D29BAF29AE4A690072DF2B /* SignInWithAppleCoordinator.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -503,13 +508,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */,
-				C144899D29722B49006A9BEB /* QuickSignInWithApple.swift in Sources */,
 				C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */,
 				C14489BE297737F0006A9BEB /* NavBarView.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
+				C1D29BAE29AE47E30072DF2B /* SignInWithAppleButton.swift in Sources */,
 				C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */,
 				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
@@ -522,6 +527,7 @@
 				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
 				C144899A297218E6006A9BEB /* LoginView.swift in Sources */,
+				C1D29BB029AE4A690072DF2B /* SignInWithAppleCoordinator.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
@@ -732,7 +738,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVegan.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GoingVegan/GoingVeganRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

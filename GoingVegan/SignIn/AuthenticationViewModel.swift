@@ -209,10 +209,6 @@ class AuthenticationViewModel: ObservableObject {
                     for (kind,numbers) in daysArray {
                         print("kind: \(kind)")
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
-//                        guard let _ = dateFromString else {
-//                            self.group.leave()
-//                            return
-//                        }
                         self.session?.veganDays?.append(dateFromString!)
                     }
                     

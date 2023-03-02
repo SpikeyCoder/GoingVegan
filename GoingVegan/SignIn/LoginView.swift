@@ -8,6 +8,7 @@ import Foundation
 import SwiftUI
 import CoreData
 import AuthenticationServices
+import CryptoKit
 
 let storedUsername = "Myusername"
 let storedPassword = "Mypassword"
@@ -16,10 +17,13 @@ struct LoginView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+      
     
     @State var username: String = ""
     @State var password: String = ""
     let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
+    @State var signInHandler: SignInWithAppleCoordinator?
     
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
@@ -80,12 +84,18 @@ struct LoginView: View {
             Text("--OR--")
                 .padding(.bottom, -5)
             GoogleSignInButton()
-                .padding(.bottom, 20)
               .frame(width: 200, height: 50, alignment: .topLeading)
               .shadow(radius: 10.0, x: 20, y: 10)
               .onTapGesture {
                 viewModel.signIn()
               }
+            SignInWithAppleButton()
+            .padding(.bottom, 20)
+            .frame(width: 200, height: 50)
+            .shadow(radius: 10.0, x: 20, y: 10)
+            .onTapGesture { 
+              self.signInWithAppleButtonTapped()
+          }
             Spacer()
             }
             .background(
@@ -103,6 +113,13 @@ struct LoginView: View {
         
     }
     
+    func signInWithAppleButtonTapped() {
+        signInHandler = SignInWithAppleCoordinator(window: self.window)
+        signInHandler?.link { (user) in
+          print("User signed in \(user.uid)")
+          self.presentationMode.wrappedValue.dismiss() // (3)
+        }
+      }
     
     func setDismissTimer() {
       let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
@@ -282,3 +299,5 @@ extension Color {
         return Color(red: 220.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, opacity: 1.0)
     }
 }
+
+
