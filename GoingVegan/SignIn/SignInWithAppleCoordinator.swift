@@ -13,9 +13,7 @@ import CryptoKit
 
 class SignInWithAppleCoordinator: NSObject {
   @EnvironmentObject var viewModel: AuthenticationViewModel
-  @State private var taskRepository: TaskRepository?
-  @State private var authenticationService: AuthenticationService
-  
+ 
   private weak var window: UIWindow!
   private var onSignedIn: ((User) -> Void)? // (2)
 
@@ -25,18 +23,18 @@ class SignInWithAppleCoordinator: NSObject {
     self.window = window
   }
 
-    private func appleIDRequest(withState: SignInState) -> ASAuthorizationAppleIDRequest {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest() // (1)
-        request.requestedScopes = [.fullName, .email] // (2)
-        request.state = withState.rawValue //(3)
-
-        let nonce = randomNonceString() // (4)
-        currentNonce = nonce
-        request.nonce = sha256(nonce)
-
-        return request
-      }
+//    private func appleIDRequest(withState: SignInState) -> ASAuthorizationAppleIDRequest {
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//        let request = appleIDProvider.createRequest() // (1)
+//        request.requestedScopes = [.fullName, .email] // (2)
+//        request.state = withState.rawValue //(3)
+//
+//        let nonce = randomNonceString() // (4)
+//        currentNonce = nonce
+//        request.nonce = sha256(nonce)
+//
+//        return request
+//      }
     
     private func randomNonceString(length: Int = 32) -> String {
       precondition(length > 0)

@@ -94,7 +94,7 @@ struct LoginView: View {
             .frame(width: 200, height: 50)
             .shadow(radius: 10.0, x: 20, y: 10)
             .onTapGesture { 
-              self.signInWithAppleButtonTapped()
+              //self.signInWithAppleButtonTapped()
           }
             Spacer()
             }
@@ -113,13 +113,7 @@ struct LoginView: View {
         
     }
     
-    func signInWithAppleButtonTapped() {
-        signInHandler = SignInWithAppleCoordinator(window: self.window)
-        signInHandler?.link { (user) in
-          print("User signed in \(user.uid)")
-          self.presentationMode.wrappedValue.dismiss() // (3)
-        }
-      }
+   
     
     func setDismissTimer() {
       let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
