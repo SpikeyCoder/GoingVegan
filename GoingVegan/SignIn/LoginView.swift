@@ -84,14 +84,14 @@ struct LoginView: View {
             Text("--OR--")
                 .padding(.bottom, -5)
             GoogleSignInButton()
-              .frame(width: 200, height: 50, alignment: .topLeading)
+              .frame(width: 200, height: 40, alignment: .topLeading)
               .shadow(radius: 10.0, x: 20, y: 10)
               .onTapGesture {
                 viewModel.signIn()
               }
             SignInWithAppleButton()
             .padding(.bottom, 20)
-            .frame(width: 200, height: 50)
+            .frame(width: 195, height: 60)
             .shadow(radius: 10.0, x: 20, y: 10)
             .onTapGesture { 
               //self.signInWithAppleButtonTapped()
