@@ -47,17 +47,10 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signInWithApple() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
-        let configuration = GIDConfiguration(clientID: clientID)
-        
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
-        
         let request = self.appleCoordinator.appleIDRequest()
         self.appleSignInDelegates = SignInWithAppleDelegates(viewModel: self, window: nil, currentNonce: self.appleCoordinator.currentNonce ?? "", onLoginEvent: self.onLoginEvent)
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self.appleSignInDelegates as? any ASAuthorizationControllerDelegate
+        controller.delegate = self.appleSignInDelegates
         controller.performRequests()
         
     }

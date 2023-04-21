@@ -42,13 +42,18 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
+            
         VStack() {
             TitleText()
+                .padding([.top,.bottom], UIScreen.main.bounds.size.height/20.0)
             LoginIcon()
-            VStack(alignment: .leading, spacing: 15) {
+            .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
+            VStack() {
                 UsernameField(username: $username)
                 PasswordField(password: $password)
-            }.padding([.leading, .trailing],27.5)
+            }
+            .padding([.leading, .trailing],UIScreen.main.bounds.size.width/2.5)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         
             
             if authenticationDidFail {
@@ -58,7 +63,7 @@ struct LoginView: View {
                     Text(errorMessage.count < 50 ? String(viewModel.signInErrorMessage!) : "Username and/or password is incorrect.").foregroundColor(darkRed).onAppear(perform: setDismissTimer).padding([.top, .bottom], 40)
                         .frame(
                             minWidth: 0,
-                            maxWidth: 500,
+                            maxWidth: UIScreen.main.bounds.size.width/2.34,
                             minHeight: 0,
                             maxHeight: .infinity,
                             alignment: .center
@@ -68,14 +73,13 @@ struct LoginView: View {
             }
             Button(action: {
                 viewModel.signInWithEmail(username: username, password: password)
-              
                 viewModel.group.notify(queue: .main){
                     authenticationDidFail = true
                 }
                 
             }) {
                 SignInButtonText()
-            }.padding(.top, 20)
+            }
             
             Button(action: { isPresented.toggle() }){
                 CreateUserButtonText()
@@ -84,23 +88,24 @@ struct LoginView: View {
             Text("--OR--")
                 .padding(.bottom, -5)
             GoogleSignInButton()
-              .frame(width: 200, height: 40, alignment: .topLeading)
+              .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/10.0)
               .shadow(radius: 10.0, x: 20, y: 10)
               .onTapGesture {
                 viewModel.signIn()
               }
             SignInWithAppleButton()
-            .padding(.bottom, 20)
-            .frame(width: 195, height: 60)
+            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/25.0)
             .shadow(radius: 10.0, x: 20, y: 10)
             .onTapGesture { 
                 viewModel.signInWithApple()
           }
-            Spacer()
+            .padding(.bottom, UIScreen.main.bounds.size.height/5.0)
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .edgesIgnoringSafeArea(.all)
           
         }.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -110,7 +115,9 @@ struct LoginView: View {
             TransitionView()
                }
         .customPopupView(isPresented: $isPresented, popupView: {popupView})
-        
+        .navigationViewStyle(StackNavigationViewStyle())
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        .edgesIgnoringSafeArea(.all)
     }
     
    
@@ -221,7 +228,7 @@ struct LoginIcon : View {
     var body: some View {
         return Image("goingveganicon")
             .resizable()
-            .frame(width: 200, height: 200)
+            .frame(width: UIScreen.main.bounds.size.width/3.0, height: UIScreen.main.bounds.size.height/6.5)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
             .shadow(radius: 10, x: 20, y:10)
@@ -234,7 +241,7 @@ struct UsernameField : View {
     var body: some View {
         return TextField("Email", text: $username)
             .padding()
-            .frame(width: 340, height: 55)
+            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/20.0)
             .cornerRadius(20.0)
             .background(Color.themeTextField)
     }
@@ -245,7 +252,7 @@ struct PasswordField : View {
     var body: some View {
         return SecureField("Password", text: $password)
             .padding()
-            .frame(width: 340, height: 55)
+            .frame(width: UIScreen.main.bounds.size.width/2.0, height:UIScreen.main.bounds.size.height/20.0)
             .cornerRadius(20.0)
             .background(Color.themeTextField)
     }
@@ -259,7 +266,7 @@ struct SignInButtonText : View {
             .font(.headline)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 195, height: 40)
+            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/30.0)
             .background(Color.blue)
             .cornerRadius(5.0)
             .shadow(radius: 10.0, x: 20, y: 10)
@@ -272,7 +279,7 @@ struct CreateUserButtonText : View {
             .font(.headline)
             .foregroundColor(.white)
             .padding()
-            .frame(width: 195, height: 40)
+            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/30.0)
             .background(Color.purple)
             .fontWeight(.semibold)
             .cornerRadius(5.0)
