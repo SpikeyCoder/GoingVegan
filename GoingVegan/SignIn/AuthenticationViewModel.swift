@@ -11,6 +11,7 @@ import FirebaseAuth
 import GoogleSignIn
 import SwiftUI
 import Combine
+import AuthenticationServices
 
 class AuthenticationViewModel: ObservableObject {
     
@@ -33,31 +34,79 @@ class AuthenticationViewModel: ObservableObject {
     var group = DispatchGroup()
     var dateFormatter = DateFormatter()
     var groceryListString = ""
+    var appleCoordinator = SignInWithAppleCoordinator()
+    var appleSignInDelegates: SignInWithAppleDelegates! = nil
+    let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
     
-    init(){
-        listen()
+    init(_ onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
         self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        self.onLoginEvent = onLoginEvent
+        listen()
     }
+    
+    func signInWithApple() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        let configuration = GIDConfiguration(clientID: clientID)
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
+        
+        let request = self.appleCoordinator.appleIDRequest()
+        self.appleSignInDelegates = SignInWithAppleDelegates(viewModel: self, window: nil, currentNonce: self.appleCoordinator.currentNonce ?? "", onLoginEvent: self.onLoginEvent)
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self.appleSignInDelegates as? any ASAuthorizationControllerDelegate
+        controller.performRequests()
+        
+    }
+    //REVIEW AGAINST GOOGLE
+    func linkingWithApple (credential: AuthCredential) {
+        guard let user = Auth.auth().currentUser, let sess = self.session else {
+            print("failed to retrieve user\n")
+            return
+        }
+        user.link(with: credential) { (result, error) in
+            if let error = error, (error as NSError).code == AuthErrorCode.credentialAlreadyInUse.rawValue
+            {
+                
+                print("The user you're signing in with has already been linked, signing in to the new user and migrating the anonymous users [\(sess.uid)] tasks.")
+
+            if let updatedCredential = (error as NSError).userInfo[AuthErrorUserInfoUpdatedCredentialKey] as? OAuthCredential {
+                print("Signing in using the updated credentials")
+                Auth.auth().signIn(with: updatedCredential) { (result, error) in
+
+                    if let error = error {
+                        self.signInErrorMessage = error.localizedDescription
+                        print(error.localizedDescription)
+                        self.state = .signedOut
+                        return
+                    }
+                    self.listen()
+                  }
+                }
+            }
+        }
+    }
+    
     
     func signIn() {
         self.creatingUser = false
         self.deletingUser = false
     guard let clientID = FirebaseApp.app()?.options.clientID else { return }
     
-   
     let configuration = GIDConfiguration(clientID: clientID)
     
     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
     guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
     
       GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
-        authenticateUser(for: user, with: error)
+        authenticateUserFromGoogle(for: user, with: error)
       }
     }
     
-    private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
+    func authenticateUserFromGoogle(for user: GIDGoogleUser?, with error: Error?) {
       if let error = error {
           self.signInErrorMessage = error.localizedDescription
         print(error.localizedDescription)
@@ -117,17 +166,23 @@ class AuthenticationViewModel: ObservableObject {
     func signInWithEmail (username: String, password: String) {
         self.creatingUser = false
         self.deletingUser = false
-        Auth.auth().signIn(withEmail: username, password: password) { [weak self] _, error in
-          
-            if let error = error {
-                self?.signInErrorMessage = error.localizedDescription
-                print(error.localizedDescription)
-                self?.state = .signedOut
+        self.group.enter()
+        DispatchQueue.main.async {
+            Auth.auth().signIn(withEmail: username, password: password) { [weak self] _, error in
+                
+                if let error = error {
+                    self?.signInErrorMessage = error.localizedDescription
+                    print(error.localizedDescription)
+                    self?.state = .signedOut
+                    return
+                }
+                self?.listen()
+                self?.group.leave()
                 return
             }
-            self?.listen()
         }
     }
+    
     
     func signOut() {
         if let sess = self.session, let days = sess.veganDays
@@ -242,6 +297,25 @@ class User {
     func saveDays(days:[Date]){
         let uniqueDays = Array(Set(days))
         self.veganDays = uniqueDays
+    }
+}
+
+enum SignInWithAppleToFirebaseResponse {
+        case success
+        case error
+}
+
+class SignInWithAppleDelegates: NSObject {
+    let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
+    weak var window: UIWindow!
+    var currentNonce: String?
+    var authViewModel: AuthenticationViewModel!
+    
+    init(viewModel:AuthenticationViewModel, window: UIWindow?, currentNonce: String, onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
+        self.window = window
+        self.currentNonce = currentNonce
+        self.onLoginEvent = onLoginEvent
+        self.authViewModel = viewModel
     }
 }
 

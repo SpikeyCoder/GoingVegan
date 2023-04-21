@@ -94,7 +94,7 @@ struct LoginView: View {
             .frame(width: 195, height: 60)
             .shadow(radius: 10.0, x: 20, y: 10)
             .onTapGesture { 
-              //self.signInWithAppleButtonTapped()
+                viewModel.signInWithApple()
           }
             Spacer()
             }
