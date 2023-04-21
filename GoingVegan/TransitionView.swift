@@ -15,18 +15,18 @@ struct TransitionView: View {
 
                 Circle()
                     .stroke(Color(.systemGray5), lineWidth: 14)
-                    .frame(width: 100, height: 100)
+                    .frame(width: UIScreen.main.bounds.size.width/5.0, height: UIScreen.main.bounds.size.width/5.0)
 
                 Circle()
                     .trim(from: 0, to: 0.2)
                     .stroke(Color.green, lineWidth: 7)
-                    .frame(width: 100, height: 100)
+                    .frame(width: UIScreen.main.bounds.size.width/5.0, height: UIScreen.main.bounds.size.width/5.0)
                     .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
                     .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false))
                     .onAppear() {
                         self.isLoading = true
                 }
-            }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }
 }
 

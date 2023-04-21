@@ -36,7 +36,6 @@ struct LoginView: View {
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        //controller.delegate = SignInWithAppleViewModel
         controller.performRequests()
       }
     
@@ -113,7 +112,9 @@ struct LoginView: View {
             }
         }.sheet(isPresented: $showingTransition) {
             TransitionView()
-               }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .edgesIgnoringSafeArea(.all)
+        }
         .customPopupView(isPresented: $isPresented, popupView: {popupView})
         .navigationViewStyle(StackNavigationViewStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
@@ -228,7 +229,7 @@ struct LoginIcon : View {
     var body: some View {
         return Image("goingveganicon")
             .resizable()
-            .frame(width: UIScreen.main.bounds.size.width/3.0, height: UIScreen.main.bounds.size.height/6.5)
+            .frame(width: UIScreen.main.bounds.size.width/4.0, height: UIScreen.main.bounds.size.height/8.0)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
             .shadow(radius: 10, x: 20, y:10)

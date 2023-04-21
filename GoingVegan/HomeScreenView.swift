@@ -32,9 +32,15 @@ struct HomeScreenView: View {
                         }
                     }
                 }
-            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/20.0, alignment: .center)
-                .navigationViewStyle(StackNavigationViewStyle())
+            }
+            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/8.0, alignment: .center)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding(.bottom,-UIScreen.main.bounds.size.height/5.0)
+            .edgesIgnoringSafeArea(.all)
+            Spacer()
             HomeSubTitleText()
+                .padding(.top,UIScreen.main.bounds.size.height/20.0)
             if loadDatesIsComplete {
                 MultiDatePicker(anyDays: $anyDays, includeDays: .allDays)
                     .onChange(of: $anyDays.wrappedValue) { newValue in
@@ -43,19 +49,21 @@ struct HomeScreenView: View {
             }
            
             SavingsTitleText()
+                .padding([.top,.bottom], UIScreen.main.bounds.size.height/10.0)
             ZStack {
                 calculatedAnimalSavingsText(anyDays.count)
                 calculatedCO2SavingsText(anyDays.count)
-                    .offset(x: 210)
-            }.frame(width: 300, height: 60, alignment: .leading)
+                    .offset(x: UIScreen.main.bounds.size.width/2.0)
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/40)
                 .padding(.bottom, -30)
                 .padding(.top, -50)
-                .padding(.leading, 130)
-                .padding(.trailing, 120)
+                .padding(.trailing, UIScreen.main.bounds.size.width/10.0)
+                .padding(.leading, -UIScreen.main.bounds.size.width/2.0)
             ZStack {
                 Text("Animals Saved")
                     .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.white)
+                    .padding(.leading,UIScreen.main.bounds.size.width/100.0)
                 Text("lbs of CO2 Emissions Saved")
                     .offset(x: 200)
                     .shadow(radius: 10.0, x: 20, y: 10)
@@ -70,6 +78,7 @@ struct HomeScreenView: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         .onAppear(perform: load)
+        .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
     }
     
     
@@ -81,24 +90,25 @@ struct HomeScreenView: View {
       }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
+        
        if(daysCount == Int(1)){
            return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
             Circle()
               .stroke(.gray, lineWidth: 4)
-              .padding(6))
-       }
+              .frame(width: 50, height: 50)
+       )}
         return Text("\(daysCount)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
               Circle()
                 .stroke(.gray, lineWidth: 4)
-                .padding(6))
-   }
+                .frame(width: 50, height: 50)
+   )}
    
     func calculatedCO2SavingsText(_ daysCount: Int) -> some View {
         return Text("\(String(format:"%.1f",Double(daysCount) * 6.4))").padding().background(
             Circle()
               .stroke(.gray, lineWidth: 4)
-              .padding(6))
-    }
+              .frame(width: 50, height: 50)
+    )}
     
     
     struct HomeTitleText : View {
@@ -106,7 +116,6 @@ struct HomeScreenView: View {
             return Text("How Are You Helping The World Today?")
                 .font(.headline).foregroundColor(Color.black)
                 .fontWeight(.semibold)
-                .padding([.top, .bottom], 40)
                 .shadow(radius: 10.0, x: 20, y: 10)
                 .multilineTextAlignment(.center)
         }
@@ -117,7 +126,6 @@ struct HomeScreenView: View {
             return Text("Check-In and Track Your Vegan Days:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
-                .padding(.top, 70)
                 .shadow(radius: 10.0, x: 20, y: 10)
         }
     }
@@ -126,7 +134,6 @@ struct HomeScreenView: View {
             return Text("Impact on World:")
                 .font(.title3).foregroundColor(Color.white)
                 .fontWeight(.semibold)
-                .padding(.bottom, 40)
                 .shadow(radius: 10.0, x: 20, y: 10)
         }
     }
