@@ -63,16 +63,16 @@ struct HomeScreenView: View {
                 Text("Animals Saved")
                     .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.white)
-                    .padding(.leading,UIScreen.main.bounds.size.width/100.0)
+                    
                 Text("lbs of CO2 Emissions Saved")
-                    .offset(x: 200)
+                    .offset(x: UIScreen.main.bounds.size.width/2.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.white)
-            }.frame(width: 300, height: 60, alignment: .leading)
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/40)
                 .padding(.bottom, 0)
                 .padding(.top, -10)
-                .padding(.leading, 0)
-                .padding(.trailing, 150)
+                .padding(.leading,-UIScreen.main.bounds.size.width/1.7)
+                .padding(.trailing, 0)
             
         }.background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
