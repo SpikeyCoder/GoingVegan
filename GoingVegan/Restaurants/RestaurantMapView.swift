@@ -7,13 +7,13 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 
 struct RestaurantMapView: View {
     @State private var restaurantData: RestaurantData?
     @State var mapLocations: [MapLocation]!
     @State var mapPins: [MKPlacemark]!
-    @State private var showingTransition = true
     
     var body: some View {
         VStack {
@@ -25,41 +25,47 @@ struct RestaurantMapView: View {
             MapView()
             
         }
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.showingTransition = false
-            }
-        }
-        .sheet(isPresented: $showingTransition) {
-                   TransitionView()
-               }
-        
+        .onAppear{}
     }
     
     struct MapView: UIViewRepresentable {
         @State var restaurantData: RestaurantData?
         @State private var group = DispatchGroup()
+        @StateObject var locationManager = LocationManager()
         
-        var locationManager = CLLocationManager()
-        func setupManager() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.requestAlwaysAuthorization()
+        var region: MKCoordinateRegion {
+            guard let location = locationManager.location else {
+                return MKCoordinateRegion.goldenGateRegion()
+            }
+            
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+            return region
         }
         
         func makeUIView(context: Context) -> MKMapView {
-            setupManager()
             let mapView = MKMapView(frame: UIScreen.main.bounds)
             mapView.showsUserLocation = true
             mapView.userTrackingMode = .follow
+            mapView.region = region
             loadData()
             return mapView
         }
+        
         
         func updateUIView(_ uiView: MKMapView, context: Context) {
             group.notify(queue: .main) {
                 uiView.addAnnotations(createMapLocations())
                 
+                let coords = CLLocationCoordinate2D(latitude: self.locationManager.location?.coordinate.latitude ?? 0.0, longitude: self.locationManager.location?.coordinate.longitude ?? 0.0)
+
+                // set span (radius of points)
+                let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+
+                // set region
+                let region = MKCoordinateRegion(center: coords, span: span)
+
+                // set the view
+                uiView.setRegion(region, animated: true)
             }
         }
         
@@ -143,5 +149,40 @@ struct RestaurantMapView: View {
         var coordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
+    }
+}
+
+final class LocationManager: NSObject, ObservableObject {
+    @Published var location: CLLocation?
+    
+    private let locationManager = CLLocationManager()
+    
+    override init() {
+        super.init()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+    }
+}
+
+extension LocationManager: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        DispatchQueue.main.async {
+            self.location = location
+        }
+    }
+}
+
+extension MKCoordinateRegion {
+    
+    static func goldenGateRegion() -> MKCoordinateRegion {
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.819527098978355, longitude: -122.4784602016669), latitudinalMeters: 5000, longitudinalMeters: 5000)
+    }
+    
+    func getBinding() -> Binding<MKCoordinateRegion>? {
+        return Binding<MKCoordinateRegion>(.constant(self))
     }
 }
