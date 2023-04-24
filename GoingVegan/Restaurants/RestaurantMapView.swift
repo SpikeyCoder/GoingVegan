@@ -35,10 +35,10 @@ struct RestaurantMapView: View {
         
         var region: MKCoordinateRegion {
             guard let location = locationManager.location else {
-                return MKCoordinateRegion.goldenGateRegion()
+                return MKCoordinateRegion.spaceNeedleRegion()
             }
             
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 50, longitudinalMeters: 50)
             return region
         }
         
@@ -59,7 +59,7 @@ struct RestaurantMapView: View {
                 let coords = CLLocationCoordinate2D(latitude: self.locationManager.location?.coordinate.latitude ?? 0.0, longitude: self.locationManager.location?.coordinate.longitude ?? 0.0)
 
                 // set span (radius of points)
-                let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+                let span = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
 
                 // set region
                 let region = MKCoordinateRegion(center: coords, span: span)
@@ -178,8 +178,8 @@ extension LocationManager: CLLocationManagerDelegate {
 
 extension MKCoordinateRegion {
     
-    static func goldenGateRegion() -> MKCoordinateRegion {
-        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.819527098978355, longitude: -122.4784602016669), latitudinalMeters: 5000, longitudinalMeters: 5000)
+    static func spaceNeedleRegion() -> MKCoordinateRegion {
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 47.6205, longitude: -122.3493), latitudinalMeters: 5000, longitudinalMeters: 5000)
     }
     
     func getBinding() -> Binding<MKCoordinateRegion>? {
