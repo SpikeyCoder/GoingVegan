@@ -32,6 +32,7 @@ struct RestaurantMapView: View {
         @State var restaurantData: RestaurantData?
         @State private var group = DispatchGroup()
         @StateObject var locationManager = LocationManager()
+        @State var ifFirst = true
         
         var region: MKCoordinateRegion {
             guard let location = locationManager.location else {
@@ -53,19 +54,23 @@ struct RestaurantMapView: View {
         
         
         func updateUIView(_ uiView: MKMapView, context: Context) {
+            
             group.notify(queue: .main) {
                 uiView.addAnnotations(createMapLocations())
+                if ifFirst {
+                    let coords = CLLocationCoordinate2D(latitude: self.locationManager.location?.coordinate.latitude ?? 0.0, longitude: self.locationManager.location?.coordinate.longitude ?? 0.0)
+
+                    // set span (radius of points)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
+
+                    // set region
+                    let region = MKCoordinateRegion(center: coords, span: span)
+
+                    // set the view
+                    uiView.setRegion(region, animated: true)
+                }
+                ifFirst = false
                 
-                let coords = CLLocationCoordinate2D(latitude: self.locationManager.location?.coordinate.latitude ?? 0.0, longitude: self.locationManager.location?.coordinate.longitude ?? 0.0)
-
-                // set span (radius of points)
-                let span = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
-
-                // set region
-                let region = MKCoordinateRegion(center: coords, span: span)
-
-                // set the view
-                uiView.setRegion(region, animated: true)
             }
         }
         
@@ -100,7 +105,7 @@ struct RestaurantMapView: View {
                 "Authorization": "Bearer K8sE8-KQi-rfbrHzdSwfp7a4jfTk-znfH9r_45Q4fX4xNNBEmP8PkVayZp8y2XhTH5F-p64z3iEalzIPdVPVD0cspnL9cQtXfsP-zo8eYFPk86q1HBsZHPbG1RDHY3Yx"
             ]
             
-            let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?term=vegan&open_now=true&location=Seattle&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=20")! as URL,
+            let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?term=vegan&open_now=false&location=Seattle&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=50")! as URL,
                                               cachePolicy: .useProtocolCachePolicy,
                                               timeoutInterval: 10.0)
             request.httpMethod = "GET"
