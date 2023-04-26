@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         if viewModel.state == .signedIn {
             TabView {
-              HomeScreenView()
+                HomeScreenView(viewModel: self.viewModel)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

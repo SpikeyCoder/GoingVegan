@@ -37,6 +37,7 @@ class AuthenticationViewModel: ObservableObject {
     var appleCoordinator = SignInWithAppleCoordinator()
     var appleSignInDelegates: SignInWithAppleDelegates! = nil
     let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
+    var isPopulated = false
     
     init(_ onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
@@ -52,35 +53,6 @@ class AuthenticationViewModel: ObservableObject {
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self.appleSignInDelegates
         controller.performRequests()
-        
-    }
-    //REVIEW AGAINST GOOGLE
-    func linkingWithApple (credential: AuthCredential) {
-        guard let user = Auth.auth().currentUser, let sess = self.session else {
-            print("failed to retrieve user\n")
-            return
-        }
-        user.link(with: credential) { (result, error) in
-            if let error = error, (error as NSError).code == AuthErrorCode.credentialAlreadyInUse.rawValue
-            {
-                
-                print("The user you're signing in with has already been linked, signing in to the new user and migrating the anonymous users [\(sess.uid)] tasks.")
-
-            if let updatedCredential = (error as NSError).userInfo[AuthErrorUserInfoUpdatedCredentialKey] as? OAuthCredential {
-                print("Signing in using the updated credentials")
-                Auth.auth().signIn(with: updatedCredential) { (result, error) in
-
-                    if let error = error {
-                        self.signInErrorMessage = error.localizedDescription
-                        print(error.localizedDescription)
-                        self.state = .signedOut
-                        return
-                    }
-                    self.listen()
-                  }
-                }
-            }
-        }
     }
     
     
@@ -193,7 +165,6 @@ class AuthenticationViewModel: ObservableObject {
             print(dateString)
                 i+=1;
             }
-            
         }
     
       GIDSignIn.sharedInstance.signOut()
@@ -239,7 +210,6 @@ class AuthenticationViewModel: ObservableObject {
                 }
             }
     }
-     
     
     func populateSavedData(userOptional:User?) -> User {
         guard let user = userOptional else {
@@ -261,7 +231,7 @@ class AuthenticationViewModel: ObservableObject {
                     }
                     
                 }
-               
+                self.isPopulated = true
                 self.group.leave()
                 if !self.alreadyCalledSignedIn {
                     self.alreadyCalledSignedIn = true

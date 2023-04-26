@@ -23,7 +23,7 @@ struct AppTabView : View {
     @Environment(\.managedObjectContext) private var viewContext
     var body: some View {
         return TabView {
-             HomeScreenView()
+            HomeScreenView(viewModel: AuthenticationViewModel())
                  .tabItem {
                      Label("Home", systemImage: "house")
                  }

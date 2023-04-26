@@ -127,7 +127,6 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
-           // registerNewAccount(credential: appleIdCredential)
             if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
                 registerNewAccount(credential: appleIdCredential)
             } else {

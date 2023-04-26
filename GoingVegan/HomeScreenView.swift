@@ -9,8 +9,13 @@ import SwiftUI
 
 struct HomeScreenView: View {
     @State private var anyDays = [Date]()
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    var viewModel: AuthenticationViewModel
     @State var loadDatesIsComplete: Bool = false
+    @State private var showingTransition = true
+    
+    init(viewModel:AuthenticationViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack() {
@@ -77,16 +82,29 @@ struct HomeScreenView: View {
         }.background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
-        .onAppear(perform: load)
+        .onAppear{
+            self.load()
+        }
+        .sheet(isPresented: $showingTransition) {
+                TransitionView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .edgesIgnoringSafeArea(.all)
+            
+        }
         .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
     }
     
     
     func load() {
-        guard let sess = self.viewModel.session else {return}
-        guard let days = sess.veganDays else {return}
-        self.anyDays = days
-        self.loadDatesIsComplete = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+               if self.viewModel.isPopulated {
+                    guard let sess = self.viewModel.session else {return}
+                    guard let days = sess.veganDays else {return}
+                    self.anyDays = days
+                    loadDatesIsComplete = true
+                    showingTransition = false
+                }
+            }
       }
     
     func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
@@ -154,7 +172,7 @@ struct HomeScreenView: View {
     
     struct HomeScreenView_Previews: PreviewProvider {
         static var previews: some View {
-            HomeScreenView()
+            HomeScreenView(viewModel: AuthenticationViewModel())
         }
     }
 }
