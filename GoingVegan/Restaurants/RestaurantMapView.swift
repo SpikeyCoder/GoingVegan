@@ -17,7 +17,7 @@ struct RestaurantMapView: View {
     
     var body: some View {
         VStack {
-            Text("Vegan Restaurants Nearby:")
+            Text("Restaurants with Vegan Options:")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .padding(.top, 20)
@@ -62,8 +62,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> MapCoordinator {
-        var mapCoord = MapCoordinator(self)
-        return mapCoord
+        return MapCoordinator(self)
     }
     
     func makeUIView(context: Context) -> MKMapView {
@@ -216,7 +215,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
       //  guard let capital = view.annotation as? Checkpoint, let placeName = capital.title else { return }
        // parent.annotationOnTap(placeName)
     }
-    // completion: @escaping ((RestaurantData) -> Void)
+    
     private func loadData(completion: @escaping ((RestaurantData) -> Void)) {
         let latitude = CLLocationManager().location?.coordinate.latitude
         let longitude = CLLocationManager().location?.coordinate.longitude

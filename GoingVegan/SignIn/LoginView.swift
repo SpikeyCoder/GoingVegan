@@ -228,7 +228,7 @@ struct TitleText : View {
 
 struct LoginIcon : View {
     var body: some View {
-        return Image("goingveganicon")
+        return Image("GlobalFruit")
             .resizable()
             .frame(width: UIScreen.main.bounds.size.width/4.0, height: UIScreen.main.bounds.size.height/8.0)
             .clipShape(Circle())
