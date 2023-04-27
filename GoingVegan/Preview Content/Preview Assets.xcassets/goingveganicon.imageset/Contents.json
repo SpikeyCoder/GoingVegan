@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "goingveganicon2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "goingveganicon3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

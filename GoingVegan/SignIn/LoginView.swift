@@ -44,9 +44,10 @@ struct LoginView: View {
             
         VStack() {
             TitleText()
-                .padding([.top,.bottom], UIScreen.main.bounds.size.height/20.0)
+            .padding([.top,.bottom], UIScreen.main.bounds.size.height/20.0)
             LoginIcon()
             .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
+    
             VStack() {
                 UsernameField(username: $username)
                 PasswordField(password: $password)
