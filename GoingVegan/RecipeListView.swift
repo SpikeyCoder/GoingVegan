@@ -85,6 +85,8 @@ struct RecipeListView: View {
                 Spacer()
                 Text("\(meal.recipe_instructions)")
                 Spacer()
+                Text("Written by: \(meal.recipe_author)")
+                Spacer()
                 Button("Add To Grocery List", action: {
                     var oneList = meal.shopping_list.joined(separator: ",")
                     oneList.append(contentsOf: viewModel.groceryListString)
