@@ -56,8 +56,8 @@ struct RecipeListView: View {
                    TransitionView()
                }
     }
+    
     struct groceryListScreen: View {
-        
         @EnvironmentObject var viewModel: AuthenticationViewModel
         @Environment(\.managedObjectContext) private var viewContext
         
@@ -72,13 +72,17 @@ struct RecipeListView: View {
     
     struct nextScreen: View {
         var meal:Recipe
+        var recipeImage:RecipeImage
         @State var shouldHide = false
-        
+        @State private var showingImage: Bool
         @EnvironmentObject var viewModel: AuthenticationViewModel
         @Environment(\.managedObjectContext) private var viewContext
+        
        
         init(meal: Recipe) {
             self.meal = meal
+            self.showingImage = false
+            self.recipeImage = RecipeImage(imageName: "Dan_Dan_Mian_Noodles")
         }
         var body: some View {
             VStack{
@@ -86,6 +90,12 @@ struct RecipeListView: View {
                 Text("\(meal.recipe_instructions)")
                 Spacer()
                 Text("Written by: \(meal.recipe_author)")
+                Spacer()
+                if self.showingImage {
+                    if let image = self.recipeImage.image {
+                        Image(uiImage: image)
+                    }
+                }
                 Spacer()
                 Button("Add To Grocery List", action: {
                     var oneList = meal.shopping_list.joined(separator: ",")
@@ -96,6 +106,10 @@ struct RecipeListView: View {
                     
                 }).opacity(shouldHide ? 0 : 1)
                 Spacer()
+            }.onAppear {
+                self.recipeImage.group.notify(queue: .main) {
+                    self.showingImage = true
+                }
             }
         }
     }
@@ -150,3 +164,12 @@ struct RecipeListView_Previews: PreviewProvider {
     }
 }
 
+extension Binding where Value == Bool {
+    
+    static prefix func ! (value: Binding<Bool>) -> Binding<Bool> {
+        Binding<Bool>(
+            get: { !value.wrappedValue },
+            set: { value.wrappedValue = !$0 }
+        )
+    }
+}

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
+		C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EA4612A030E8E00D50263 /* RecipeImage.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
 		C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448931296CD7D5006A9BEB /* Assets.xcassets */; };
 		C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1448934296CD7D5006A9BEB /* Preview Assets.xcassets */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C13EA4612A030E8E00D50263 /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoingVeganApp.swift; sourceTree = "<group>"; };
 		C1448931296CD7D5006A9BEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,6 +198,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C13EA4632A030ED000D50263 /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				C14489B72976143D006A9BEB /* RecipeListView.swift */,
+				C13EA4612A030E8E00D50263 /* RecipeImage.swift */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
 		C1448921296CD7D3006A9BEB = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +232,7 @@
 		C144892C296CD7D4006A9BEB /* GoingVegan */ = {
 			isa = PBXGroup;
 			children = (
+				C13EA4632A030ED000D50263 /* Recipes */,
 				C1D29BAC29AE47630072DF2B /* GoingVeganRelease.entitlements */,
 				C1448A5A298888FA006A9BEB /* GoogleService-Info.plist */,
 				C14489A8297242A5006A9BEB /* MDP Components */,
@@ -228,7 +240,6 @@
 				C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */,
 				C13DF78E29A6F06B00014BC4 /* ContentView.swift */,
 				C14489A0297231F9006A9BEB /* HomeScreenView.swift */,
-				C14489B72976143D006A9BEB /* RecipeListView.swift */,
 				C1448ADA29897CB4006A9BEB /* Restaurants */,
 				C1448931296CD7D5006A9BEB /* Assets.xcassets */,
 				C1448936296CD7D5006A9BEB /* Persistence.swift */,
@@ -526,6 +537,7 @@
 				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
 				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
+				C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */,
 				C144899A297218E6006A9BEB /* LoginView.swift in Sources */,
 				C1D29BB029AE4A690072DF2B /* SignInWithAppleCoordinator.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
