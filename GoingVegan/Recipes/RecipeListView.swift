@@ -82,7 +82,7 @@ struct RecipeListView: View {
         init(meal: Recipe) {
             self.meal = meal
             self.showingImage = false
-            self.recipeImage = RecipeImage(imageName: "Dan_Dan_Mian_Noodles")
+            self.recipeImage = RecipeImage(imageName: meal.recipe_image)
         }
         var body: some View {
             VStack{
@@ -154,6 +154,7 @@ struct RecipeListView: View {
         var recipe_author: String
         var shopping_list: [String]
         var recipe_instructions: String
+        var recipe_image: String
     }
     
 }
