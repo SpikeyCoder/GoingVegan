@@ -92,9 +92,9 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
           return
         }
         // Initialize a Firebase credential.
-        let oAuthCredential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
+//       let oAuthCredential = OAuthProvider.credential(withProviderID: "apple.com",
+//                                                  idToken: idTokenString,
+//                                                  rawNonce: nonce)
         // Sign in with Firebase.
         let username = credential.user + "@icloud.com"
         let password = String(credential.user)
@@ -108,9 +108,6 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
     }
     
     func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
-        if credential.email != nil {
-            let username = credential.email
-        }
         let username = credential.user + "@icloud.com"
         let password = String(credential.user)
         authViewModel.createUser(username: username, password: password)
