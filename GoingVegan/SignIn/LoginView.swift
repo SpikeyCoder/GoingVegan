@@ -29,7 +29,6 @@ struct LoginView: View {
     @State var authenticationDidSucceed: Bool = false
     @State var createUserCompleted: Bool = false
     @State private var isPresented: Bool = Bool()
-    @State private var showingTransition = true
     
     private func showAppleLoginView() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -107,22 +106,12 @@ struct LoginView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .edgesIgnoringSafeArea(.all)
           
-        }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showingTransition = false
-            }
-        }.sheet(isPresented: $showingTransition) {
-            TransitionView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                .edgesIgnoringSafeArea(.all)
         }
         .customPopupView(isPresented: $isPresented, popupView: {popupView})
         .navigationViewStyle(StackNavigationViewStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         .edgesIgnoringSafeArea(.all)
     }
-    
-   
     
     func setDismissTimer() {
       let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
