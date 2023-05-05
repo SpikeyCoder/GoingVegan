@@ -11,12 +11,20 @@ import MapKit
 import Foundation
 
 
+class MealsAddedModel {
+    var mealsAddedArray = [String]()
+    var timesCounted = 0
+}
+
 struct RecipeListView: View {
     @State private var recipeData: RecipeData?
     @State private var recipeInstructions: String?
     @State private var recipeItems: String?
     @State private var ingredientListString = ""
     @State private var showingTransition = true
+    var mealsAddedModel = MealsAddedModel()
+  
+  
    
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
@@ -33,9 +41,11 @@ struct RecipeListView: View {
                 List {
                    ForEach(recipes.meals, id:\.self) { meal in
                        NavigationLink("\(meal.recipe_name)") {
-                           nextScreen(meal: meal)
-                               .environmentObject(viewModel)
-                               .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                           if !mealsAddedModel.mealsAddedArray.contains(meal.recipe_name){
+                               makeNextScreen(meal: meal)
+                                   .environmentObject(viewModel)
+                                   .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                           }
                        }
                      }
                      Spacer()
@@ -56,6 +66,15 @@ struct RecipeListView: View {
                    TransitionView()
                }
     }
+func makeNextScreen(meal:Recipe) -> nextScreen? {
+    if mealsAddedModel.timesCounted == 1{
+        mealsAddedModel.mealsAddedArray.append(meal.recipe_name)
+        mealsAddedModel.timesCounted = 0
+         return nextScreen(meal: meal)
+    }
+    mealsAddedModel.timesCounted+=1
+    return nil
+}
     
     struct groceryListScreen: View {
         @EnvironmentObject var viewModel: AuthenticationViewModel

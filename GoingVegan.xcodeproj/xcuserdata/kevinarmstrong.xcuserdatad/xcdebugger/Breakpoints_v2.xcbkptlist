@@ -249,8 +249,8 @@
             filePath = "GoingVegan/SignIn/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "createUser(username:password:)"
             landmarkType = "7">
             <Locations>
@@ -299,68 +299,163 @@
                   endingLineNumber = "103"
                   offsetFromSymbolStart = "112">
                </Location>
+               <Location
+                  uuid = "A4A54650-13C4-4948-9998-23F2974E5B6F - 152dbe1038330502"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.createUser(username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "A4A54650-13C4-4948-9998-23F2974E5B6F - 152dbe1038330502"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in GoingVegan.AuthenticationViewModel.createUser(username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/SignIn/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "112">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "42F756CD-7A90-418C-8C23-002D9CA6EA43"
+            uuid = "BFCA9DE2-F535-45FA-AA96-7AF2906FA06F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/Recipes/RecipeImage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "init(imageName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F06762C8-6A10-4283-BF84-66D8AD6567EF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoingVegan/Recipes/RecipeListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "42F756CD-7A90-418C-8C23-002D9CA6EA43 - 17d8f59da82bc1ee"
+                  uuid = "F06762C8-6A10-4283-BF84-66D8AD6567EF - 7171027b257b5d9a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in GoingVegan.RecipeListView.nextScreen.body.getter : some"
+                  symbolName = "closure #1 () -&gt; Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 (GoingVegan.RecipeListView.Recipe) -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;GoingVegan.RecipeListView.Recipe&gt;, GoingVegan.RecipeListView.Recipe, SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;&gt;, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; Swift.Optional&lt;SwiftUI.List&lt;Swift.Never, SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;GoingVegan.RecipeListView.Recipe&gt;, GoingVegan.RecipeListView.Recipe, SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;&gt;, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;&gt; in GoingVegan.RecipeListView.body.getter : some"
                   moduleName = "GoingVegan"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Recipes/RecipeListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "152">
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "664">
                </Location>
                <Location
-                  uuid = "42F756CD-7A90-418C-8C23-002D9CA6EA43 - 310763bf8ad833ea"
+                  uuid = "F06762C8-6A10-4283-BF84-66D8AD6567EF - 7171027b257b5d9a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; () in GoingVegan.RecipeListView.nextScreen.body.getter : some"
+                  symbolName = "closure #1 () -&gt; Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 (GoingVegan.RecipeListView.Recipe) -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;GoingVegan.RecipeListView.Recipe&gt;, GoingVegan.RecipeListView.Recipe, SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;&gt;, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; Swift.Optional&lt;SwiftUI.List&lt;Swift.Never, SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;GoingVegan.RecipeListView.Recipe&gt;, GoingVegan.RecipeListView.Recipe, SwiftUI.NavigationLink&lt;SwiftUI.Text, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;&gt;, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.environment&lt;&#x3c4;_0_0&gt;(Swift.WritableKeyPath&lt;SwiftUI.EnvironmentValues, &#x3c4;_1_0&gt;, &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;&gt; in GoingVegan.RecipeListView.body.getter : some"
                   moduleName = "GoingVegan"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Recipes/RecipeListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "316">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86CE20BD-D5B0-462B-AA2E-2369D3C56DFC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/Recipes/RecipeListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "makeNextScreen(meal:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96BCD4FC-B857-4CFA-B690-71BB69449FAD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoingVegan/Recipes/RecipeListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "makeNextScreen(meal:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "96BCD4FC-B857-4CFA-B690-71BB69449FAD - bd84df83bb8ad356"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoingVegan.RecipeListView.makeNextScreen(meal: GoingVegan.RecipeListView.Recipe) -&gt; Swift.Optional&lt;GoingVegan.RecipeListView.nextScreen&gt;"
+                  moduleName = "GoingVegan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Recipes/RecipeListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "440">
                </Location>
                <Location
-                  uuid = "42F756CD-7A90-418C-8C23-002D9CA6EA43 - 17d8f59da82bc1ee"
+                  uuid = "96BCD4FC-B857-4CFA-B690-71BB69449FAD - bd84df83bb8ad371"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in GoingVegan.RecipeListView.nextScreen.body.getter : some"
+                  symbolName = "GoingVegan.RecipeListView.makeNextScreen(meal: GoingVegan.RecipeListView.Recipe) -&gt; Swift.Optional&lt;GoingVegan.RecipeListView.nextScreen&gt;"
                   moduleName = "GoingVegan"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kevinarmstrong/Documents/Software-Projects/GoingVegan/GoingVegan/Recipes/RecipeListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "192">
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "484">
                </Location>
             </Locations>
          </BreakpointContent>

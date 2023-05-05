@@ -38,6 +38,7 @@ class AuthenticationViewModel: ObservableObject {
     var appleSignInDelegates: SignInWithAppleDelegates! = nil
     let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
     var isPopulated = false
+    var mealsAddedArray = [String]()
     
     init(_ onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
