@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+class CounterModel: NSObject {
+    var count = 0
+}
+
 struct HomeScreenView: View {
     @State private var anyDays = [Date]()
+    var counterModel = CounterModel()
+    var dateFormatter = DateFormatter()
     var viewModel: AuthenticationViewModel
     @State var loadDatesIsComplete: Bool = false
     @State private var showingTransition = true
@@ -47,17 +53,17 @@ struct HomeScreenView: View {
             HomeSubTitleText()
                 .padding(.top,UIScreen.main.bounds.size.height/20.0)
             if loadDatesIsComplete {
-                MultiDatePicker(anyDays: $anyDays, includeDays: .allDays)
-                    .onChange(of: $anyDays.wrappedValue) { newValue in
-                        self.viewModel.session?.saveDays(days:newValue)
+             MultiDatePicker(anyDays: $anyDays, includeDays: .allDays)
+               .onChange(of: $anyDays.wrappedValue) { newValue in
+                        self.viewModel.saveDays(days:newValue)
                     }
             }
            
             SavingsTitleText()
                 .padding([.top,.bottom], UIScreen.main.bounds.size.height/10.0)
             ZStack {
-                calculatedAnimalSavingsText(anyDays.count)
-                calculatedCO2SavingsText(anyDays.count)
+                calculatedAnimalSavingsText(anyDays)
+                calculatedCO2SavingsText(anyDays)
                     .offset(x: UIScreen.main.bounds.size.width/2.0)
             }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/40)
                 .padding(.bottom, -30)
@@ -94,12 +100,12 @@ struct HomeScreenView: View {
         .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
     }
     
-    
     func load() {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                if self.viewModel.isPopulated {
                     guard let sess = self.viewModel.session else {return}
                     guard let days = sess.veganDays else {return}
+                    print("HERE LIES THE TOTAL COUNT TO CHECK AGAINST: \(days.count-1)")
                     self.anyDays = days
                     loadDatesIsComplete = true
                     showingTransition = false
@@ -107,26 +113,36 @@ struct HomeScreenView: View {
             }
       }
     
-    func calculatedAnimalSavingsText(_ daysCount: Int) -> some View {
-        
-       if(daysCount == Int(1)){
-           return Text("\(anyDays.count)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
+    func calculatedAnimalSavingsText(_ days: [Date]) -> some View {
+        calculateUniqueDateCount(days: days)
+       if(self.viewModel.dateCount == Int(1)){
+           return Text("\(self.viewModel.dateCount)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
             Circle()
               .stroke(.gray, lineWidth: 4)
               .frame(width: 50, height: 50)
        )}
-        return Text("\(daysCount)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
+        return Text("\(self.viewModel.dateCount)").padding().shadow(radius: 10.0, x: 20, y: 10).background(
               Circle()
                 .stroke(.gray, lineWidth: 4)
                 .frame(width: 50, height: 50)
    )}
    
-    func calculatedCO2SavingsText(_ daysCount: Int) -> some View {
-        return Text("\(String(format:"%.1f",Double(daysCount) * 6.4))").padding().background(
+    func calculatedCO2SavingsText(_ days: [Date]) -> some View {
+        calculateUniqueDateCount(days: days)
+        return Text("\(String(format:"%.1f",Double(self.viewModel.dateCount) * 6.4))").padding().background(
             Circle()
               .stroke(.gray, lineWidth: 4)
               .frame(width: 50, height: 50)
     )}
+    
+    func calculateUniqueDateCount(days:[Date]) {
+        self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let savedDatesString = days.map {dateFormatter.string(from: $0)}
+        let uniqueDatesString = Array(Set(savedDatesString))
+        let savedDatesCount = uniqueDatesString.count
+        self.viewModel.dateCount = savedDatesCount
+    }
     
     
     struct HomeTitleText : View {

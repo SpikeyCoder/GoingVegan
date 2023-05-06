@@ -68,6 +68,7 @@ struct MultiDatePicker: View {
          minDate: Date? = nil,
          maxDate: Date? = nil
     ) {
+        print("Days: \(anyDays.wrappedValue.count)")
         _monthModel = StateObject(wrappedValue: MDPModel(anyDays: anyDays, includeDays: includeDays, minDate: minDate, maxDate: maxDate))
     }
     

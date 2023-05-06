@@ -127,7 +127,7 @@ struct MapView: UIViewRepresentable {
             "Authorization": "Bearer K8sE8-KQi-rfbrHzdSwfp7a4jfTk-znfH9r_45Q4fX4xNNBEmP8PkVayZp8y2XhTH5F-p64z3iEalzIPdVPVD0cspnL9cQtXfsP-zo8eYFPk86q1HBsZHPbG1RDHY3Yx"
         ]
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?term=vegan&open_now=false&&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=50")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?categories=vegan&open_now=false&&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=50")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -225,7 +225,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
             "Authorization": "Bearer K8sE8-KQi-rfbrHzdSwfp7a4jfTk-znfH9r_45Q4fX4xNNBEmP8PkVayZp8y2XhTH5F-p64z3iEalzIPdVPVD0cspnL9cQtXfsP-zo8eYFPk86q1HBsZHPbG1RDHY3Yx"
         ]
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?term=vegan&open_now=false&&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=50")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.yelp.com/v3/businesses/search?categories=vegan&open_now=false&&latitude=\(latitude ?? 0.0)&longitude=\(longitude ?? 0.0)&sort_by=distance&limit=50")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"

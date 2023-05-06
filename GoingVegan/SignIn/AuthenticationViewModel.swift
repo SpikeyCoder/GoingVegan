@@ -39,6 +39,7 @@ class AuthenticationViewModel: ObservableObject {
     let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
     var isPopulated = false
     var mealsAddedArray = [String]()
+    var dateCount = 0
     
     init(_ onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
@@ -149,25 +150,7 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    
     func signOut() {
-        if let sess = self.session, let days = sess.veganDays
-        {
-            let savedDatesString = days.map {dateFormatter.string(from: $0)}
-            var i = 0
-            let uniqueDatesString = Array(Set(savedDatesString))
-            let savedDatesCount = uniqueDatesString.count
-            if savedDatesCount == 0 {
-                self.ref.child("users").child(sess.uid).updateChildValues(["veganDays*":nil])
-            }
-        while i < savedDatesCount{
-            let dateString = "\(uniqueDatesString[i])"
-            self.ref.child("users").child(sess.uid).updateChildValues(["veganDays\(i)":String(dateString)])
-            print(dateString)
-                i+=1;
-            }
-        }
-    
       GIDSignIn.sharedInstance.signOut()
       
       do {
@@ -180,7 +163,6 @@ class AuthenticationViewModel: ObservableObject {
       }
         alreadyCalledSignedIn = false
     }
-   
     
     func listen () {
         // monitor authentication changes using firebase
@@ -225,8 +207,8 @@ class AuthenticationViewModel: ObservableObject {
               }
                 if let days = snapshot?.value as? Any {
                     let daysArray = days as? Dictionary<String,AnyObject> ?? Dictionary<String,AnyObject>()
+                    self.session?.veganDays? = []
                     for (kind,numbers) in daysArray {
-                        print("kind: \(kind)")
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
                         self.session?.veganDays?.append(dateFromString!)
                     }
@@ -243,6 +225,32 @@ class AuthenticationViewModel: ObservableObject {
         }
         return user;
     }
+    
+    func saveDays(days:[Date]){
+        let uniqueDays = Array(Set(days))
+        self.session?.veganDays = uniqueDays
+        saveArray()
+    }
+    
+    func saveArray() {
+        if let sess = self.session, let days = sess.veganDays
+        {
+            let savedDatesString = days.map {dateFormatter.string(from: $0)}
+            var i = 0
+            let uniqueDatesString = Array(Set(savedDatesString))
+            let savedDatesCount = uniqueDatesString.count
+            self.dateCount = savedDatesCount
+            if savedDatesCount == 0 {
+                self.ref.child("users").child(sess.uid).updateChildValues(["veganDays*":nil])
+            }
+           while i < savedDatesCount{
+            let dateString = "\(uniqueDatesString[i])"
+            self.ref.child("users").child(sess.uid).updateChildValues(["veganDays\(i)":String(dateString)])
+            print(dateString)
+                i+=1;
+            }
+        }
+    }
 }
 
 class User {
@@ -258,10 +266,6 @@ class User {
         self.veganDays = days
     }
     
-    func saveDays(days:[Date]){
-        let uniqueDays = Array(Set(days))
-        self.veganDays = uniqueDays
-    }
 }
 
 enum SignInWithAppleToFirebaseResponse {
@@ -280,14 +284,5 @@ class SignInWithAppleDelegates: NSObject {
         self.currentNonce = currentNonce
         self.onLoginEvent = onLoginEvent
         self.authViewModel = viewModel
-    }
-}
-
-extension AuthenticationViewModel {
-    func convertSignInStateToBool() -> Bool {
-        if self.state == .signedIn{
-            return true
-        }
-        return false
     }
 }
