@@ -208,7 +208,7 @@ class AuthenticationViewModel: ObservableObject {
                 if let days = snapshot?.value as? Any {
                     let daysArray = days as? Dictionary<String,AnyObject> ?? Dictionary<String,AnyObject>()
                     self.session?.veganDays? = []
-                    for (kind,numbers) in daysArray {
+                    for (_,numbers) in daysArray {
                         let dateFromString = self.dateFormatter.date(from: numbers as! String)
                         self.session?.veganDays?.append(dateFromString!)
                     }

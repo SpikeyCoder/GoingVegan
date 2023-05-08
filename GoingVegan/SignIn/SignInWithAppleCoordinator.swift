@@ -80,17 +80,17 @@ class SignInWithAppleCoordinator: NSObject {
 extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
     func firebaseLogin(credential: ASAuthorizationAppleIDCredential) {
         // 3
-        guard let nonce = currentNonce else {
-          fatalError("Invalid state: A login callback was received, but no login request was sent.")
-        }
-        guard let appleIDToken = credential.identityToken else {
-          print("Unable to fetch identity token")
-          return
-        }
-        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-          print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-          return
-        }
+//        guard let nonce = currentNonce else {
+//          fatalError("Invalid state: A login callback was received, but no login request was sent.")
+//        }
+//        guard let appleIDToken = credential.identityToken else {
+//          print("Unable to fetch identity token")
+//          return
+//        }
+//        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+//          print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+//          return
+//        }
         // Initialize a Firebase credential.
 //       let oAuthCredential = OAuthProvider.credential(withProviderID: "apple.com",
 //                                                  idToken: idTokenString,

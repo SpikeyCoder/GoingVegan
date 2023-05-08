@@ -21,6 +21,7 @@ struct HomeScreenView: View {
     
     init(viewModel:AuthenticationViewModel) {
         self.viewModel = viewModel
+        self.load()
     }
     
     var body: some View {
@@ -89,7 +90,7 @@ struct HomeScreenView: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         .onAppear{
-            self.load()
+           self.load()
         }
         .sheet(isPresented: $showingTransition) {
                 TransitionView()
