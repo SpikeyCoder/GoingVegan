@@ -12,7 +12,7 @@ import CoreData
 final class RecipeImage: NSObject {
     var image:UIImage?
     var imageName:String
-    @State var group = DispatchGroup()
+    var group = DispatchGroup()
     
     init(imageName:String){
         self.imageName = imageName

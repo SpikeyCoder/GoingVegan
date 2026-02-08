@@ -89,16 +89,12 @@ struct MultiDatePicker: View {
 }
 
 struct MultiDatePicker_Previews: PreviewProvider {
-    @State static var oneDay = Date()
-    @State static var manyDates = [Date]()
-    @State static var dateRange: ClosedRange<Date>? = nil
-    
     static var previews: some View {
         ScrollView {
             VStack {
-                MultiDatePicker(singleDay: $oneDay, includeDays: .weekdaysOnly)
-                MultiDatePicker(anyDays: $manyDates, includeDays: .weekendsOnly)
-                MultiDatePicker(dateRange: $dateRange)
+                MultiDatePicker(singleDay: .constant(Date()), includeDays: .weekdaysOnly)
+                MultiDatePicker(anyDays: .constant([Date]()), includeDays: .weekendsOnly)
+                MultiDatePicker(dateRange: .constant(nil))
             }
         }
     }

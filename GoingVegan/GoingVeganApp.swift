@@ -40,7 +40,15 @@ struct GoingVeganApp: App {
 extension GoingVeganApp {
     private func setupAuthentication() {
         FirebaseApp.configure()
-      }
+        
+        // Enable database persistence ONCE at app launch to reduce network warnings
+        // This must be set before any database references are created
+        Database.database().isPersistenceEnabled = true
+        
+        // Configure connection settings to reduce spurious warnings
+        let ref = Database.database().reference()
+        ref.keepSynced(false) // Only sync data we explicitly request
+    }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {

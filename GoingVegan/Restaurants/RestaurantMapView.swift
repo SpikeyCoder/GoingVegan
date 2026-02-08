@@ -181,8 +181,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     // 1.
     var parent: MapView
     var restaurantData: RestaurantData?
-    @State var group = DispatchGroup()
-    @Environment(\.openURL) var openURL
+    var group = DispatchGroup()
 
     init(_ parent: MapView) {
         self.parent = parent
@@ -207,7 +206,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         if businesses.count != 0 {
             annotationBusiness = businesses.filter{ $0.coordinates == locationDict}.first!
             guard let url = URL(string: annotationBusiness.url) else {return}
-            openURL(url)
+            UIApplication.shared.open(url)
         }
     }
     

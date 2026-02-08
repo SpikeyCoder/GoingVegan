@@ -42,18 +42,31 @@ class AuthenticationViewModel: ObservableObject {
     var dateCount = 0
     
     init(_ onLoginEvent: ((SignInWithAppleToFirebaseResponse)-> ())? = nil){
+        // Initialize database reference
         ref = Database.database(url: "https://goingvegan-a8777-default-rtdb.firebaseio.com/").reference()
+        
         self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         self.onLoginEvent = onLoginEvent
+        
+        // Start listening for auth state changes
         listen()
     }
     
     func signInWithApple() {
         let request = self.appleCoordinator.appleIDRequest()
-        self.appleSignInDelegates = SignInWithAppleDelegates(viewModel: self, window: nil, currentNonce: self.appleCoordinator.currentNonce ?? "", onLoginEvent: self.onLoginEvent)
+        
+        // Get the current window properly
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else {
+            print("❌ Unable to get window for Sign in with Apple")
+            return
+        }
+        
+        self.appleSignInDelegates = SignInWithAppleDelegates(viewModel: self, window: window, currentNonce: self.appleCoordinator.currentNonce ?? "", onLoginEvent: self.onLoginEvent)
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self.appleSignInDelegates
+        controller.presentationContextProvider = self.appleSignInDelegates
         controller.performRequests()
     }
     
@@ -64,12 +77,13 @@ class AuthenticationViewModel: ObservableObject {
     guard let clientID = FirebaseApp.app()?.options.clientID else { return }
     
     let configuration = GIDConfiguration(clientID: clientID)
+    GIDSignIn.sharedInstance.configuration = configuration
     
     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
     guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
     
-      GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
-        authenticateUserFromGoogle(for: user, with: error)
+      GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [unowned self] result, error in
+        authenticateUserFromGoogle(for: result?.user, with: error)
       }
     }
     
@@ -80,9 +94,10 @@ class AuthenticationViewModel: ObservableObject {
         return
       }
       
-      guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
+      guard let idToken = user?.idToken?.tokenString else { return }
+      guard let accessToken = user?.accessToken.tokenString else { return }
       
-      let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+      let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
         
 
         Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
@@ -98,19 +113,19 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func createUser(username: String, password: String) {
-       self.creatingUser = true
-       self.group.enter()
-        DispatchQueue.main.async {
-            Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    self.createUserErrorMessage = error.localizedDescription
-                }
-
-                self.state = .signedOut
-                self.group.leave()
-                return
+        self.creatingUser = true
+        self.group.enter()
+        
+        Auth.auth().createUser(withEmail: username, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            defer { self.group.leave() }
+            
+            if let error = error {
+                print("❌ Create user error: \(error.localizedDescription)")
+                self.createUserErrorMessage = error.localizedDescription
             }
+            
+            self.state = .signedOut
         }
     }
     
@@ -134,19 +149,19 @@ class AuthenticationViewModel: ObservableObject {
         self.creatingUser = false
         self.deletingUser = false
         self.group.enter()
-        DispatchQueue.main.async {
-            Auth.auth().signIn(withEmail: username, password: password) { [weak self] _, error in
-                
-                if let error = error {
-                    self?.signInErrorMessage = error.localizedDescription
-                    print(error.localizedDescription)
-                    self?.state = .signedOut
-                    return
-                }
-                self?.listen()
-                self?.group.leave()
+        
+        Auth.auth().signIn(withEmail: username, password: password) { [weak self] _, error in
+            guard let self = self else { return }
+            defer { self.group.leave() }
+            
+            if let error = error {
+                self.signInErrorMessage = error.localizedDescription
+                print("❌ Sign in error: \(error.localizedDescription)")
+                self.state = .signedOut
                 return
             }
+            
+            self.listen()
         }
     }
     
@@ -179,14 +194,8 @@ class AuthenticationViewModel: ObservableObject {
                             )
                             
                             self.session = self.populateSavedData(userOptional: self.session)
-                            self.ref.child("users/\(String(describing: self.session?.uid))/veganDays*").getData(completion:  { error, snapshot in
-                                guard error == nil else {
-                                    print(error!.localizedDescription)
-                                    return;
-                                }
-                                guard let days = snapshot?.value as? [Date] else {return}
-                                self.session?.veganDays = days
-                            });
+                            // Note: populateSavedData already fetches the vegan days data
+                            // No need for duplicate fetching here
                         }
                         self.listenerCount += 1
                     }
@@ -197,33 +206,43 @@ class AuthenticationViewModel: ObservableObject {
     func populateSavedData(userOptional:User?) -> User {
         guard let user = userOptional else {
             self.state = .signedOut
-            return self.session ?? User(uid: "", displayName: "false", email:"", days:[])}
-        self.group.enter()
-        DispatchQueue.main.async {
-            self.ref.child("users/\(user.uid)").getData(completion:  { error, snapshot in
-              guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-              }
-                if let days = snapshot?.value as? Any {
-                    let daysArray = days as? Dictionary<String,AnyObject> ?? Dictionary<String,AnyObject>()
-                    self.session?.veganDays? = []
-                    for (_,numbers) in daysArray {
-                        let dateFromString = self.dateFormatter.date(from: numbers as! String)
-                        self.session?.veganDays?.append(dateFromString!)
-                    }
-                    
-                }
-                self.isPopulated = true
-                self.group.leave()
-                if !self.alreadyCalledSignedIn {
-                    self.alreadyCalledSignedIn = true
-                    self.state = .signedIn
-                   
-                }
-            });
+            return self.session ?? User(uid: "", displayName: "false", email:"", days:[])
         }
-        return user;
+        
+        self.group.enter()
+        
+        // Firebase callbacks are already on appropriate threads, no need for DispatchQueue.main.async
+        self.ref.child("users/\(user.uid)").getData(completion:  { error, snapshot in
+            defer { self.group.leave() }
+            
+            guard error == nil else {
+                print("❌ Error loading user data: \(error!.localizedDescription)")
+                return
+            }
+            
+            if let days = snapshot?.value as? Any {
+                let daysArray = days as? Dictionary<String,AnyObject> ?? Dictionary<String,AnyObject>()
+                self.session?.veganDays = []
+                
+                for (_, numbers) in daysArray {
+                    if let dateString = numbers as? String,
+                       let dateFromString = self.dateFormatter.date(from: dateString) {
+                        self.session?.veganDays?.append(dateFromString)
+                    }
+                }
+            }
+            
+            self.isPopulated = true
+            
+            if !self.alreadyCalledSignedIn {
+                self.alreadyCalledSignedIn = true
+                DispatchQueue.main.async {
+                    self.state = .signedIn
+                }
+            }
+        })
+        
+        return user
     }
     
     func saveDays(days:[Date]){
@@ -275,7 +294,7 @@ enum SignInWithAppleToFirebaseResponse {
 
 class SignInWithAppleDelegates: NSObject {
     let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
-    weak var window: UIWindow!
+    weak var window: UIWindow?
     var currentNonce: String?
     var authViewModel: AuthenticationViewModel!
     

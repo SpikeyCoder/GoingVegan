@@ -13,8 +13,6 @@ import CryptoKit
 
 class SignInWithAppleCoordinator: NSObject {
     
-  @EnvironmentObject var viewModel: AuthenticationViewModel
-
   var currentNonce: String?
   var appleCredential: ASAuthorizationAppleIDCredential?
   var token: String?
@@ -136,12 +134,31 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        let nsError = error as NSError
+        print("❌ Sign in with Apple failed with error:")
+        print("   Domain: \(nsError.domain)")
+        print("   Code: \(nsError.code)")
+        print("   Description: \(error.localizedDescription)")
+        
+        // Error code 1000 = Unknown error, often means missing presentation context or cancelled
+        // Error code 1001 = User cancelled
+        // Error code 1002 = Invalid response
+        if nsError.code == 1001 {
+            print("   User cancelled the authorization")
+        } else if nsError.code == 1000 {
+            print("   This may be due to missing presentation context or configuration issue")
+        }
+        
         self.onLoginEvent?(.error)
     }
 }
 
 extension SignInWithAppleDelegates: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.window
+        guard let window = self.window else {
+            print("❌ Warning: Presentation window is nil!")
+            return UIWindow()
+        }
+        return window
     }
 }

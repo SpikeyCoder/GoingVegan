@@ -10,170 +10,197 @@ import CoreData
 import AuthenticationServices
 import CryptoKit
 
-let storedUsername = "Myusername"
-let storedPassword = "Mypassword"
-
 struct LoginView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-      
     
     @State var username: String = ""
     @State var password: String = ""
-    let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
-    @State var signInHandler: SignInWithAppleCoordinator?
-    
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     @State var createUserCompleted: Bool = false
-    @State private var isPresented: Bool = Bool()
-    
-    private func showAppleLoginView() {
-        let provider = ASAuthorizationAppleIDProvider()
-        let request = provider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.performRequests()
-      }
+    @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
-            
-        VStack() {
-            TitleText()
-            .padding([.top,.bottom], UIScreen.main.bounds.size.height/20.0)
-            LoginIcon()
-            .padding(.bottom, UIScreen.main.bounds.size.height/20.0)
-    
-            VStack() {
-                UsernameField(username: $username)
-                PasswordField(password: $password)
-            }
-            .padding([.leading, .trailing],UIScreen.main.bounds.size.width/2.5)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-        
-            
-            if authenticationDidFail {
-                let darkRed = Color(red: 0.7326, green: 0.1925, blue: 0.0749)
-                if let errorMessage = viewModel.signInErrorMessage {
-                    Spacer()
-                    Text(errorMessage.count < 50 ? String(viewModel.signInErrorMessage!) : "Username and/or password is incorrect.").foregroundColor(darkRed).onAppear(perform: setDismissTimer).padding([.top, .bottom], 40)
-                        .frame(
-                            minWidth: 0,
-                            maxWidth: UIScreen.main.bounds.size.width/2.34,
-                            minHeight: 0,
-                            maxHeight: .infinity,
-                            alignment: .center
-                        ).multilineTextAlignment(.center)
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Header Section
+                    VStack(spacing: 16) {
+                        TitleText()
+                        LoginIcon()
+                    }
+                    .padding(.top, 40)
+                    
+                    // Email/Password Login Section
+                    VStack(spacing: 16) {
+                        UsernameField(username: $username)
+                        PasswordField(password: $password)
+                        
+                        // Error Message
+                        if authenticationDidFail {
+                            if let errorMessage = viewModel.signInErrorMessage {
+                                Text(errorMessage.count < 50 ? errorMessage : "Username and/or password is incorrect.")
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+                                    .onAppear(perform: setDismissTimer)
+                                    .transition(.opacity)
+                            }
+                        }
+                        
+                        // Sign In Button
+                        Button(action: {
+                            viewModel.signInWithEmail(username: username, password: password)
+                            viewModel.group.notify(queue: .main) {
+                                authenticationDidFail = true
+                            }
+                        }) {
+                            SignInButtonText()
+                        }
+                        .disabled(username.isEmpty || password.isEmpty)
+                        
+                        // Create Account Button
+                        Button(action: { isPresented.toggle() }) {
+                            Text("Don't have an account? Sign up")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .padding(.horizontal, 32)
+                    
+                    // Divider
+                    HStack {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 1)
+                        Text("or")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 8)
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 1)
+                    }
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 8)
+                    
+                    // Social Login Section
+                    VStack(spacing: 12) {
+                        // Sign in with Apple (prioritize this per Apple guidelines)
+                        SignInWithAppleButton()
+                            .frame(height: 50)
+                            .onTapGesture {
+                                viewModel.signInWithApple()
+                            }
+                        
+                        // Google Sign In
+                        GoogleSignInButton()
+                            .frame(height: 50)
+                            .onTapGesture {
+                                viewModel.signIn()
+                            }
+                    }
+                    .padding(.horizontal, 32)
+                    
+                    Spacer(minLength: 40)
                 }
-                
             }
-            Button(action: {
-                viewModel.signInWithEmail(username: username, password: password)
-                viewModel.group.notify(queue: .main){
-                    authenticationDidFail = true
-                }
-                
-            }) {
-                SignInButtonText()
-            }
-            
-            Button(action: { isPresented.toggle() }){
-                CreateUserButtonText()
-            }
-            .padding(.bottom, 0)
-            Text("--OR--")
-                .padding(.bottom, -5)
-            GoogleSignInButton()
-              .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/10.0)
-              .shadow(radius: 10.0, x: 20, y: 10)
-              .onTapGesture {
-                viewModel.signIn()
-              }
-            SignInWithAppleButton()
-            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/25.0)
-            .shadow(radius: 10.0, x: 20, y: 10)
-            .onTapGesture { 
-                viewModel.signInWithApple()
-          }
-            .padding(.bottom, UIScreen.main.bounds.size.height/5.0)
-            }
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .edgesIgnoringSafeArea(.all)
-          
+            .background(Color(.systemGroupedBackground))
+            .navigationBarHidden(true)
         }
-        .customPopupView(isPresented: $isPresented, popupView: {popupView})
+        .customPopupView(isPresented: $isPresented, popupView: { popupView })
         .navigationViewStyle(StackNavigationViewStyle())
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-        .edgesIgnoringSafeArea(.all)
     }
     
     func setDismissTimer() {
-      let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
-        withAnimation(.easeInOut(duration: 1)) {
-            authenticationDidFail = false;
+        Task {
+            try? await Task.sleep(for: .seconds(3))
+            withAnimation(.easeInOut(duration: 0.3)) {
+                authenticationDidFail = false
+            }
         }
-        timer.invalidate()
-      }
-      RunLoop.current.add(timer, forMode:RunLoop.Mode.default)
     }
     
     var popupView: some View {
-        
-        RoundedRectangle(cornerRadius: 20.0)
-            .fill(Color.white)
-            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height/2.0)
-            .overlay(
-                
-                Image(systemName: "xmark").resizable().frame(width: 10.0, height: 10.0)
-                    .foregroundColor(Color.black)
-                    .padding(5.0)
-                    .background(Color.white)
-                    .clipShape(Circle())
-                    .padding()
-                    .onTapGesture {
-                        isPresented.toggle()
-                        self.username = ""
-                        self.password = ""
-                    }
-                
-                , alignment: .topLeading)
-        
-            .overlay(
-                VStack{
-                    Text("Create a Username and Password")
+        VStack(spacing: 0) {
+            // Header with close button
+            HStack {
+                Text("Create Account")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+                Button(action: {
+                    isPresented.toggle()
+                    username = ""
+                    password = ""
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding()
+            .background(Color(.systemBackground))
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Sign up to save your recipes")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.top)
+                    
                     UsernameField(username: $username)
                     PasswordField(password: $password)
+                    
+                    // Status Message
                     if createUserCompleted {
                         if let errorMessage = viewModel.createUserErrorMessage {
-                             Text(errorMessage.count < 60 ? String(viewModel.createUserErrorMessage!) : "Username and/or password is incomplete.")
-//                                .foregroundColor(darkRed).onAppear(perform: setDismissTimer)
-                
-                        }else{
-                            Text("Successfully created account")
+                            Label(
+                                errorMessage.count < 60 ? errorMessage : "Username and/or password is incomplete.",
+                                systemImage: "exclamationmark.triangle.fill"
+                            )
+                            .font(.caption)
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                        } else {
+                            Label("Successfully created account!", systemImage: "checkmark.circle.fill")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
                         }
-                        
-//                            .foregroundColor(darkRed).onAppear(perform: setDismissTimer) as! Text
                     }
+                    
                     Button(action: {
                         viewModel.createUser(username: username, password: password)
-                        viewModel.group.notify(queue: .main){
+                        viewModel.group.notify(queue: .main) {
                             createUserCompleted = true
-                            
                         }
                     }) {
-                        CreateUserButtonText()
-                    }.padding([.top,.bottom], 50)
-                    
+                        Text("Create Account")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(
+                                username.isEmpty || password.isEmpty ? Color.gray : Color.blue
+                            )
+                            .cornerRadius(12)
+                    }
+                    .disabled(username.isEmpty || password.isEmpty)
+                    .padding(.horizontal)
                 }
-                , alignment: .center)
-            .transition(AnyTransition.scale)
-            .shadow(radius: 10.0)
+                .padding()
+            }
+        }
+        .frame(maxWidth: 500)
+        .background(Color(.systemBackground))
+        .cornerRadius(20)
+        .shadow(radius: 20)
+        .padding(40)
     }
     
 }
@@ -205,76 +232,77 @@ extension View {
     }
 }
 
-struct TitleText : View {
+struct TitleText: View {
     var body: some View {
-        return Text("Going Vegan")
-            .font(.largeTitle).foregroundColor(Color.white)
-            .fontWeight(.semibold)
-            .padding([.top, .bottom], 30)
-            .shadow(radius: 10.0, x: 20, y: 10)
+        Text("Going Vegan")
+            .font(.system(size: 40, weight: .bold, design: .rounded))
+            .foregroundColor(.primary)
     }
 }
 
-struct LoginIcon : View {
+struct LoginIcon: View {
     var body: some View {
-        return Image("GlobalFruit")
+        Image("GlobalFruit")
             .resizable()
-            .frame(width: UIScreen.main.bounds.size.width/4.0, height: UIScreen.main.bounds.size.height/8.0)
+            .scaledToFill()
+            .frame(width: 120, height: 120)
             .clipShape(Circle())
-            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-            .shadow(radius: 10, x: 20, y:10)
-            .padding(.bottom, 30)
+            .overlay(Circle().stroke(Color.green, lineWidth: 4))
+            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 }
 
-struct UsernameField : View {
+struct UsernameField: View {
     @Binding var username: String
+    
     var body: some View {
-        return TextField("Email", text: $username)
-            .padding()
-            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/20.0)
-            .cornerRadius(20.0)
-            .background(Color.themeTextField)
+        HStack {
+            Image(systemName: "envelope.fill")
+                .foregroundColor(.gray)
+            TextField("Email", text: $username)
+                .textContentType(.emailAddress)
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
+        }
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
     }
 }
 
-struct PasswordField : View {
+struct PasswordField: View {
     @Binding var password: String
+    
     var body: some View {
-        return SecureField("Password", text: $password)
-            .padding()
-            .frame(width: UIScreen.main.bounds.size.width/2.0, height:UIScreen.main.bounds.size.height/20.0)
-            .cornerRadius(20.0)
-            .background(Color.themeTextField)
+        HStack {
+            Image(systemName: "lock.fill")
+                .foregroundColor(.gray)
+            SecureField("Password", text: $password)
+                .textContentType(.password)
+        }
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
     }
 }
 
-
-
-struct SignInButtonText : View {
+struct SignInButtonText: View {
     var body: some View {
-        return Text("Sign In")
+        Text("Sign In")
             .font(.headline)
             .foregroundColor(.white)
-            .padding()
-            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/30.0)
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
             .background(Color.blue)
-            .cornerRadius(5.0)
-            .shadow(radius: 10.0, x: 20, y: 10)
-    }
-}
-
-struct CreateUserButtonText : View {
-    var body: some View {
-        return Text("Create Account")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: UIScreen.main.bounds.size.width/2.0, height: UIScreen.main.bounds.size.height/30.0)
-            .background(Color.purple)
-            .fontWeight(.semibold)
-            .cornerRadius(5.0)
-            .shadow(radius: 10.0, x: 20, y: 10)
+            .cornerRadius(12)
     }
 }
 
