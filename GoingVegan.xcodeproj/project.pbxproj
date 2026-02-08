@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12E9B7B2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B7A2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md */; };
+		C12E9B7C2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B7A2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md */; };
+		C12E9B7D2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B7A2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md */; };
 		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
 		C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EA4612A030E8E00D50263 /* RecipeImage.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
@@ -101,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C12E9B792F387530000A4EF6 /* ACCESSIBILITY_COMPLIANCE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACCESSIBILITY_COMPLIANCE.md; sourceTree = "<group>"; };
+		C12E9B7A2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACCESSIBILITY_TESTING_GUIDE.md; sourceTree = "<group>"; };
 		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C13EA4612A030E8E00D50263 /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +219,7 @@
 				C144894D296CD7D5006A9BEB /* GoingVeganUITests */,
 				C144892B296CD7D4006A9BEB /* Products */,
 				C14489A42972422C006A9BEB /* Frameworks */,
+				C12E9B792F387530000A4EF6 /* ACCESSIBILITY_COMPLIANCE.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -311,6 +317,7 @@
 				C1448AD32988B320006A9BEB /* AuthenticationViewModel.swift */,
 				C1D29BAD29AE47E30072DF2B /* SignInWithAppleButton.swift */,
 				C1D29BAF29AE4A690072DF2B /* SignInWithAppleCoordinator.swift */,
+				C12E9B7A2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -464,6 +471,7 @@
 				C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */,
 				C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */,
 				C1448AE8298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
+				C12E9B7B2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */,
 				C1448A5B298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +482,7 @@
 			files = (
 				C1448AE9298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
 				C1448A5C298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
+				C12E9B7D2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +492,7 @@
 			files = (
 				C1448AEA298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
 				C1448A5D298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
+				C12E9B7C2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
