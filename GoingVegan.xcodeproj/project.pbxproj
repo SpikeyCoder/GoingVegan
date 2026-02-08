@@ -19,6 +19,23 @@
 		C12E9B872F38F2A3000A4EF6 /* QUICK_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B862F38F2A3000A4EF6 /* QUICK_REFERENCE.md */; };
 		C12E9B882F38F2A3000A4EF6 /* QUICK_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B862F38F2A3000A4EF6 /* QUICK_REFERENCE.md */; };
 		C12E9B892F38F2A3000A4EF6 /* QUICK_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9B862F38F2A3000A4EF6 /* QUICK_REFERENCE.md */; };
+		C12E9B952F38FCED000A4EF6 /* ViewsCelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B942F38FCED000A4EF6 /* ViewsCelebrationView.swift */; };
+		C12E9B972F38FD01000A4EF6 /* ViewsAchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B962F38FD01000A4EF6 /* ViewsAchievementsView.swift */; };
+		C12E9B992F38FD10000A4EF6 /* ViewsShareableImpactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B982F38FD10000A4EF6 /* ViewsShareableImpactCard.swift */; };
+		C12E9B9B2F393E41000A4EF6 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B9A2F393E41000A4EF6 /* StreakManager.swift */; };
+		C12E9B9D2F393E59000A4EF6 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B9C2F393E59000A4EF6 /* AchievementManager.swift */; };
+		C12E9B9F2F393E6E000A4EF6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9B9E2F393E6E000A4EF6 /* ChallengeManager.swift */; };
+		C12E9BA32F393E88000A4EF6 /* DailyChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BA22F393E88000A4EF6 /* DailyChallengeCard.swift */; };
+		C12E9BA52F393E9E000A4EF6 /* CelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BA42F393E9E000A4EF6 /* CelebrationView.swift */; };
+		C12E9BA92F393EC3000A4EF6 /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BA82F393EC3000A4EF6 /* ShareManager.swift */; };
+		C12E9BAB2F393ED0000A4EF6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BAA2F393ED0000A4EF6 /* NotificationManager.swift */; };
+		C12E9BAD2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BAC2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md */; };
+		C12E9BAF2F393F6D000A4EF6 /* QUICK_START.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BAE2F393F6D000A4EF6 /* QUICK_START.md */; };
+		C12E9BB12F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BB02F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md */; };
+		C12E9BB32F393FCB000A4EF6 /* StreakCard 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BB22F393FCB000A4EF6 /* StreakCard 2.swift */; };
+		C12E9BB72F393FE7000A4EF6 /* TransitionView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */; };
+		C12E9BB92F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */; };
+		C12E9BBB2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */; };
 		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
 		C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EA4612A030E8E00D50263 /* RecipeImage.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
@@ -64,7 +81,6 @@
 		C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C1448AED298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
 		C1448AEE298C8701006A9BEB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1448AEB298C8701006A9BEB /* LaunchViewController.swift */; };
-		C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */; };
 		C1C685D92F3861C700A4EEE6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C1C685D82F3861C700A4EEE6 /* GoogleSignIn */; };
 		C1C685DB2F3861C700A4EEE6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1C685DA2F3861C700A4EEE6 /* GoogleSignInSwift */; };
 		C1C685DD2F3861C700A4EEE6 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = C1C685DC2F3861C700A4EEE6 /* FirebaseAI */; };
@@ -118,6 +134,23 @@
 		C12E9B7E2F38F242000A4EF6 /* UI_IMPROVEMENTS_IMPLEMENTED.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = UI_IMPROVEMENTS_IMPLEMENTED.md; sourceTree = "<group>"; };
 		C12E9B822F38F284000A4EF6 /* IMPLEMENTATION_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMPLEMENTATION_SUMMARY.md; sourceTree = "<group>"; };
 		C12E9B862F38F2A3000A4EF6 /* QUICK_REFERENCE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_REFERENCE.md; sourceTree = "<group>"; };
+		C12E9B942F38FCED000A4EF6 /* ViewsCelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsCelebrationView.swift; sourceTree = "<group>"; };
+		C12E9B962F38FD01000A4EF6 /* ViewsAchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsAchievementsView.swift; sourceTree = "<group>"; };
+		C12E9B982F38FD10000A4EF6 /* ViewsShareableImpactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsShareableImpactCard.swift; sourceTree = "<group>"; };
+		C12E9B9A2F393E41000A4EF6 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		C12E9B9C2F393E59000A4EF6 /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
+		C12E9B9E2F393E6E000A4EF6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
+		C12E9BA22F393E88000A4EF6 /* DailyChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeCard.swift; sourceTree = "<group>"; };
+		C12E9BA42F393E9E000A4EF6 /* CelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationView.swift; sourceTree = "<group>"; };
+		C12E9BA82F393EC3000A4EF6 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
+		C12E9BAA2F393ED0000A4EF6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		C12E9BAC2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VIRAL_FEATURES_README.md; sourceTree = "<group>"; };
+		C12E9BAE2F393F6D000A4EF6 /* QUICK_START.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_START.md; sourceTree = "<group>"; };
+		C12E9BB02F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMPLEMENTATION_COMPLETE.md; sourceTree = "<group>"; };
+		C12E9BB22F393FCB000A4EF6 /* StreakCard 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StreakCard 2.swift"; sourceTree = "<group>"; };
+		C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionView 2.swift"; sourceTree = "<group>"; };
+		C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LAUNCH_CHECKLIST.md; sourceTree = "<group>"; };
+		C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FIX_INSTRUCTIONS.md; sourceTree = "<group>"; };
 		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C13EA4612A030E8E00D50263 /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +189,6 @@
 		C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C1448AEB298C8701006A9BEB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
 		C1D29BAC29AE47630072DF2B /* GoingVeganRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoingVeganRelease.entitlements; sourceTree = "<group>"; };
 		C1D29BAD29AE47E30072DF2B /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		C1D29BAF29AE4A690072DF2B /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
@@ -267,7 +299,23 @@
 				C1448AE3298B3DBD006A9BEB /* LaunchScreen.swift */,
 				C1448AE7298C7F93006A9BEB /* Launch Screen.storyboard */,
 				C1448AEB298C8701006A9BEB /* LaunchViewController.swift */,
-				C19FDF2829A7E9BC00E94A33 /* TransitionView.swift */,
+				C12E9B942F38FCED000A4EF6 /* ViewsCelebrationView.swift */,
+				C12E9B962F38FD01000A4EF6 /* ViewsAchievementsView.swift */,
+				C12E9B982F38FD10000A4EF6 /* ViewsShareableImpactCard.swift */,
+				C12E9B9A2F393E41000A4EF6 /* StreakManager.swift */,
+				C12E9B9C2F393E59000A4EF6 /* AchievementManager.swift */,
+				C12E9B9E2F393E6E000A4EF6 /* ChallengeManager.swift */,
+				C12E9BA22F393E88000A4EF6 /* DailyChallengeCard.swift */,
+				C12E9BA42F393E9E000A4EF6 /* CelebrationView.swift */,
+				C12E9BA82F393EC3000A4EF6 /* ShareManager.swift */,
+				C12E9BAA2F393ED0000A4EF6 /* NotificationManager.swift */,
+				C12E9BAC2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md */,
+				C12E9BAE2F393F6D000A4EF6 /* QUICK_START.md */,
+				C12E9BB02F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md */,
+				C12E9BB22F393FCB000A4EF6 /* StreakCard 2.swift */,
+				C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */,
+				C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */,
+				C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -483,12 +531,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12E9BAD2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md in Resources */,
+				C12E9BB12F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md in Resources */,
 				C12E9B812F38F242000A4EF6 /* UI_IMPROVEMENTS_IMPLEMENTED.md in Resources */,
 				C12E9B842F38F284000A4EF6 /* IMPLEMENTATION_SUMMARY.md in Resources */,
 				C1448935296CD7D5006A9BEB /* Preview Assets.xcassets in Resources */,
 				C1448932296CD7D5006A9BEB /* Assets.xcassets in Resources */,
+				C12E9BB92F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md in Resources */,
 				C12E9B892F38F2A3000A4EF6 /* QUICK_REFERENCE.md in Resources */,
 				C1448AE8298C7F93006A9BEB /* Launch Screen.storyboard in Resources */,
+				C12E9BAF2F393F6D000A4EF6 /* QUICK_START.md in Resources */,
+				C12E9BBB2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md in Resources */,
 				C12E9B7B2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */,
 				C1448A5B298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
@@ -553,12 +606,13 @@
 				C14489B6297242BC006A9BEB /* MDPMonthView.swift in Sources */,
 				C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */,
 				C14489BE297737F0006A9BEB /* NavBarView.swift in Sources */,
+				C12E9BA32F393E88000A4EF6 /* DailyChallengeCard.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
+				C12E9BA52F393E9E000A4EF6 /* CelebrationView.swift in Sources */,
 				C1D29BAE29AE47E30072DF2B /* SignInWithAppleButton.swift in Sources */,
-				C19FDF2929A7E9BC00E94A33 /* TransitionView.swift in Sources */,
 				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
 				C144893A296CD7D5006A9BEB /* GoingVegan.xcdatamodeld in Sources */,
 				C14489B5297242BC006A9BEB /* MDPDayView.swift in Sources */,
@@ -570,13 +624,23 @@
 				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
 				C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */,
+				C12E9B952F38FCED000A4EF6 /* ViewsCelebrationView.swift in Sources */,
 				C144899A297218E6006A9BEB /* LoginView.swift in Sources */,
+				C12E9BAB2F393ED0000A4EF6 /* NotificationManager.swift in Sources */,
+				C12E9B9F2F393E6E000A4EF6 /* ChallengeManager.swift in Sources */,
+				C12E9B992F38FD10000A4EF6 /* ViewsShareableImpactCard.swift in Sources */,
 				C1D29BB029AE4A690072DF2B /* SignInWithAppleCoordinator.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
 				C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */,
+				C12E9BA92F393EC3000A4EF6 /* ShareManager.swift in Sources */,
+				C12E9B9D2F393E59000A4EF6 /* AchievementManager.swift in Sources */,
 				C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */,
+				C12E9B972F38FD01000A4EF6 /* ViewsAchievementsView.swift in Sources */,
+				C12E9BB72F393FE7000A4EF6 /* TransitionView 2.swift in Sources */,
+				C12E9B9B2F393E41000A4EF6 /* StreakManager.swift in Sources */,
+				C12E9BB32F393FCB000A4EF6 /* StreakCard 2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -220,8 +220,8 @@
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -236,8 +236,8 @@
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "init(viewModel:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -252,8 +252,8 @@
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -268,8 +268,8 @@
             filePath = "GoingVegan/HomeScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

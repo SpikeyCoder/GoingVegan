@@ -20,9 +20,19 @@ struct HomeScreenView: View {
     @State private var showingTransition = true
     @State private var uniqueDateCount: Int = 0
     
+    // New viral features
+    @StateObject private var streakManager = StreakManager()
+    @StateObject private var achievementManager = AchievementManager()
+    @StateObject private var challengeManager = ChallengeManager()
+    
+    @State private var showCelebration = false
+    @State private var celebrationMilestone: Milestone?
+    @State private var showAchievements = false
+    @State private var showShareSheet = false
+    @State private var shareImage: UIImage?
+    
     init(viewModel:AuthenticationViewModel) {
         self.viewModel = viewModel
-        self.load()
     }
     
     var body: some View {
@@ -44,9 +54,133 @@ struct HomeScreenView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 8)
                     
-                    // Impact Metrics Cards - Improved Design
-                    ImpactMetricsSection(dateCount: uniqueDateCount)
+                    // Streak Card
+                    StreakCard(
+                        currentStreak: streakManager.currentStreak,
+                        longestStreak: streakManager.longestStreak,
+                        isAtRisk: streakManager.isStreakAtRisk()
+                    )
+                    .padding(.horizontal, 20)
+                    .animation(.spring(response: 0.6, dampingFraction: 0.7), value: streakManager.currentStreak)
+                    
+                    // Daily Challenge
+                    if let challenge = challengeManager.todaysChallenge {
+                        DailyChallengeCard(challenge: challenge) {
+                            challengeManager.completeChallenge()
+                        }
                         .padding(.horizontal, 20)
+                    }
+                    
+                    // Impact Metrics Cards with Share Button
+                    VStack(spacing: 16) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Your Impact")
+                                    .font(.title3.bold())
+                                    .foregroundStyle(.primary)
+                                
+                                Text("\(uniqueDateCount) day\(uniqueDateCount == 1 ? "" : "s")")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                            }
+                            
+                            Spacer()
+                            
+                            // Share button
+                            Button {
+                                shareImpact()
+                            } label: {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background(
+                                        Capsule()
+                                            .fill(
+                                                LinearGradient(
+                                                    colors: [.green, .blue],
+                                                    startPoint: .leading,
+                                                    endPoint: .trailing
+                                                )
+                                            )
+                                    )
+                            }
+                            .accessibilityLabel("Share your impact")
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        // Impact metrics grid
+                        LazyVGrid(columns: [
+                            GridItem(.flexible()),
+                            GridItem(.flexible())
+                        ], spacing: 16) {
+                            ImpactMetricCard(
+                                icon: "leaf.fill",
+                                title: "Animals Saved",
+                                value: formattedNumber(Double(uniqueDateCount)),
+                                color: .green,
+                                unit: "animal\(uniqueDateCount == 1 ? "" : "s")"
+                            )
+                            
+                            ImpactMetricCard(
+                                icon: "cloud.fill",
+                                title: "CO₂ Saved",
+                                value: formattedNumber(Double(uniqueDateCount) * 6.4, decimals: 1),
+                                color: .blue,
+                                unit: "lbs"
+                            )
+                            
+                            ImpactMetricCard(
+                                icon: "drop.fill",
+                                title: "Water Saved",
+                                value: formattedNumber(Double(uniqueDateCount) * 1100),
+                                color: .cyan,
+                                unit: "gallons"
+                            )
+                            
+                            ImpactMetricCard(
+                                icon: "tree.fill",
+                                title: "Land Saved",
+                                value: formattedNumber(Double(uniqueDateCount) * 30),
+                                color: .orange,
+                                unit: "sq ft"
+                            )
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    
+                    // Achievements Preview
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Achievements")
+                                .font(.title3.bold())
+                                .foregroundStyle(.primary)
+                            
+                            Spacer()
+                            
+                            Button {
+                                showAchievements = true
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Text("\(achievementManager.unlockedCount)/\(achievementManager.totalCount)")
+                                        .font(.subheadline.weight(.semibold))
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption)
+                                }
+                                .foregroundStyle(.secondary)
+                            }
+                        }
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 12) {
+                                ForEach(achievementManager.achievements.prefix(6)) { achievement in
+                                    CompactAchievementBadge(achievement: achievement)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
                     
                     // Calendar Section
                     VStack(alignment: .leading, spacing: 12) {
@@ -63,7 +197,7 @@ struct HomeScreenView: View {
                             )
                                 .onChange(of: anyDays) { newValue in
                                     self.viewModel.saveDays(days: newValue)
-                                    self.updateUniqueDateCount()
+                                    self.updateMetrics()
                                 }
                                 .background(
                                     RoundedRectangle(cornerRadius: 16)
@@ -97,6 +231,12 @@ struct HomeScreenView: View {
                             Label("Profile", systemImage: "person.circle")
                         }
                         
+                        Button {
+                            showAchievements = true
+                        } label: {
+                            Label("Achievements", systemImage: "trophy")
+                        }
+                        
                         Divider()
                         
                         Button(role: .destructive) {
@@ -128,6 +268,19 @@ struct HomeScreenView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                 .edgesIgnoringSafeArea(.all)
         }
+        .sheet(isPresented: $showCelebration) {
+            if let milestone = celebrationMilestone {
+                CelebrationView(milestone: milestone)
+            }
+        }
+        .sheet(isPresented: $showAchievements) {
+            AchievementsView(achievementManager: achievementManager)
+        }
+        .sheet(isPresented: $showShareSheet) {
+            if let image = shareImage {
+                ShareSheet(items: [image, "Check out my vegan impact! 🌱"])
+            }
+        }
     }
     
     func load() {
@@ -137,12 +290,48 @@ struct HomeScreenView: View {
                     guard let days = sess.veganDays else {return}
                     print("HERE LIES THE TOTAL COUNT TO CHECK AGAINST: \(days.count-1)")
                     self.anyDays = days
-                    self.updateUniqueDateCount()
+                    self.updateMetrics()
                     loadDatesIsComplete = true
                     showingTransition = false
                 }
             }
       }
+    
+    func updateMetrics() {
+        updateUniqueDateCount()
+        
+        // Update streak
+        let previousStreak = streakManager.currentStreak
+        streakManager.calculateStreak(from: anyDays)
+        
+        // Check for milestone
+        if let milestone = streakManager.checkForMilestone() {
+            celebrationMilestone = milestone
+            
+            // Small delay to ensure UI is ready
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                showCelebration = true
+            }
+        }
+        
+        // Check for achievements
+        let newAchievements = achievementManager.checkAchievements(
+            daysCount: uniqueDateCount,
+            currentStreak: streakManager.currentStreak,
+            recipesCooked: 0, // TODO: Track this
+            restaurantsVisited: 0, // TODO: Track this
+            friendsInvited: 0, // TODO: Track this
+            challengesCompleted: challengeManager.completedCount
+        )
+        
+        // Show achievement notifications (could be improved with custom UI)
+        for achievement in newAchievements {
+            print("🏆 Achievement unlocked: \(achievement.name)")
+            // Haptic feedback
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
+    }
     
     func updateUniqueDateCount() {
         let formatter = DateFormatter()
@@ -154,6 +343,31 @@ struct HomeScreenView: View {
         let uniqueDateStrings = Set(dateStrings)
         uniqueDateCount = uniqueDateStrings.count
         viewModel.dateCount = uniqueDateCount
+    }
+    
+    func shareImpact() {
+        let image = ShareManager.generateImpactImage(
+            days: uniqueDateCount,
+            animals: uniqueDateCount,
+            co2: Double(uniqueDateCount) * 6.4,
+            water: Double(uniqueDateCount) * 1100,
+            land: Double(uniqueDateCount) * 30
+        )
+        
+        shareImage = image
+        showShareSheet = true
+        
+        // Haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
+    private func formattedNumber(_ value: Double, decimals: Int = 0) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = decimals
+        formatter.minimumFractionDigits = decimals
+        return formatter.string(from: NSNumber(value: value)) ?? "\(Int(value))"
     }
     
     func calculatedAnimalSavingsText(_ days: [Date]) -> some View {
@@ -193,87 +407,6 @@ struct HomeScreenView: View {
 }
 
 // MARK: - New Impact Metrics Components
-
-struct ImpactMetricsSection: View {
-    let dateCount: Int
-    
-    private var numberFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 1
-        formatter.minimumFractionDigits = 0
-        return formatter
-    }
-    
-    private func formattedNumber(_ value: Double, decimals: Int = 0) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = decimals
-        formatter.minimumFractionDigits = decimals
-        return formatter.string(from: NSNumber(value: value)) ?? "\(Int(value))"
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Your Impact")
-                    .font(.title3.bold())
-                    .foregroundStyle(.primary)
-                
-                Spacer()
-                
-                Text("\(dateCount) day\(dateCount == 1 ? "" : "s")")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Your Impact: \(dateCount) vegan day\(dateCount == 1 ? "" : "s")")
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 16) {
-                ImpactMetricCard(
-                    icon: "leaf.fill",
-                    title: "Animals Saved",
-                    value: formattedNumber(Double(dateCount)),
-                    color: .green,
-                    unit: "animal\(dateCount == 1 ? "" : "s")"
-                )
-                
-                ImpactMetricCard(
-                    icon: "cloud.fill",
-                    title: "CO₂ Saved",
-                    value: formattedNumber(Double(dateCount) * 6.4, decimals: 1),
-                    color: .blue,
-                    unit: "lbs"
-                )
-                
-                ImpactMetricCard(
-                    icon: "drop.fill",
-                    title: "Water Saved",
-                    value: formattedNumber(Double(dateCount) * 1100),
-                    color: .cyan,
-                    unit: "gallons"
-                )
-                
-                ImpactMetricCard(
-                    icon: "tree.fill",
-                    title: "Land Saved",
-                    value: formattedNumber(Double(dateCount) * 30),
-                    color: .orange,
-                    unit: "sq ft"
-                )
-            }
-        }
-        .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color(.secondarySystemBackground))
-        )
-        .accessibilityElement(children: .contain)
-    }
-}
 
 struct ImpactMetricCard: View {
     let icon: String
@@ -318,6 +451,50 @@ struct ImpactMetricCard: View {
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(title): \(value) \(unit)")
     }
+}
+
+// MARK: - Supporting Views
+
+struct CompactAchievementBadge: View {
+    let achievement: Achievement
+    
+    var body: some View {
+        VStack(spacing: 6) {
+            ZStack {
+                Circle()
+                    .fill(achievement.isUnlocked ? achievement.color.color.opacity(0.15) : Color(.systemGray6))
+                    .frame(width: 50, height: 50)
+                
+                Image(systemName: achievement.icon)
+                    .font(.system(size: 20))
+                    .foregroundStyle(achievement.isUnlocked ? achievement.color.color : .gray)
+                
+                if !achievement.isUnlocked {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 10))
+                        .foregroundStyle(.gray)
+                        .offset(x: 15, y: 15)
+                }
+            }
+            
+            Text(achievement.name)
+                .font(.caption2)
+                .foregroundStyle(achievement.isUnlocked ? .primary : .secondary)
+                .lineLimit(1)
+        }
+        .frame(width: 70)
+    }
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Preview
