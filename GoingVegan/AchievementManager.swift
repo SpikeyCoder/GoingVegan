@@ -55,7 +55,7 @@ class AchievementManager: ObservableObject {
                 id: "centuryClub",
                 name: "Century Club",
                 description: "Reach 100 vegan days",
-                icon: "100.square.fill",
+                icon: "trophy.fill",
                 color: .blue,
                 requirement: .days(100)
             ),
