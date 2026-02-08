@@ -12,17 +12,19 @@ class StreakManager: ObservableObject {
     @Published var currentStreak: Int = 0
     @Published var longestStreak: Int = 0
     @Published var lastCheckInDate: Date?
+    @Published var streakFreezeUsed: Bool = false
     
     private let userDefaults = UserDefaults.standard
     private let currentStreakKey = "currentStreak"
     private let longestStreakKey = "longestStreak"
     private let lastCheckInKey = "lastCheckInDate"
+    private let streakFreezeUsedKey = "streakFreezeUsed"
     
     init() {
         loadStreak()
     }
     
-    func calculateStreak(from dates: [Date]) {
+    func calculateStreak(from dates: [Date], referralManager: ReferralManager? = nil, subscriptionManager: SubscriptionManager? = nil) async {
         guard !dates.isEmpty else {
             currentStreak = 0
             saveStreak()
@@ -48,9 +50,52 @@ class StreakManager: ObservableObject {
         
         // Check if most recent check-in was today or yesterday
         if mostRecentDay != today && mostRecentDay != yesterday {
-            currentStreak = 0
-            saveStreak()
-            return
+            // Check if we can use a streak freeze
+            let daysBetween = calendar.dateComponents([.day], from: mostRecentDay, to: today).day ?? 0
+            
+            if daysBetween == 2 && !streakFreezeUsed {
+                // Missed one day, try to use streak freeze
+                if let referralManager = referralManager,
+                   let subscriptionManager = subscriptionManager {
+                    
+                    // Access main actor-isolated properties
+                    let isPremium = await MainActor.run { subscriptionManager.isPremium }
+                    let availableFreezes = await MainActor.run { referralManager.availableStreakFreezes }
+                    
+                    if isPremium || availableFreezes > 0 {
+                        // Use streak freeze
+                        if !isPremium {
+                            await MainActor.run { _ = referralManager.useStreakFreeze() }
+                        }
+                        
+                        streakFreezeUsed = true
+                        NotificationManager.shared.sendStreakFreezeUsedNotification()
+                        
+                        // Continue calculating streak
+                    } else {
+                        // No freeze available, streak is broken
+                        currentStreak = 0
+                        saveStreak()
+                        return
+                    }
+                } else {
+                    // No managers available, streak is broken
+                    currentStreak = 0
+                    saveStreak()
+                    return
+                }
+            } else {
+                // Too many days missed or freeze already used
+                currentStreak = 0
+                streakFreezeUsed = false
+                saveStreak()
+                return
+            }
+        } else {
+            // Check-in is current, reset freeze usage
+            if mostRecentDay == today {
+                streakFreezeUsed = false
+            }
         }
         
         // Calculate current streak
@@ -108,6 +153,7 @@ class StreakManager: ObservableObject {
     private func saveStreak() {
         userDefaults.set(currentStreak, forKey: currentStreakKey)
         userDefaults.set(longestStreak, forKey: longestStreakKey)
+        userDefaults.set(streakFreezeUsed, forKey: streakFreezeUsedKey)
         if let lastCheckIn = lastCheckInDate {
             userDefaults.set(lastCheckIn, forKey: lastCheckInKey)
         }
@@ -117,6 +163,7 @@ class StreakManager: ObservableObject {
         currentStreak = userDefaults.integer(forKey: currentStreakKey)
         longestStreak = userDefaults.integer(forKey: longestStreakKey)
         lastCheckInDate = userDefaults.object(forKey: lastCheckInKey) as? Date
+        streakFreezeUsed = userDefaults.bool(forKey: streakFreezeUsedKey)
     }
 }
 

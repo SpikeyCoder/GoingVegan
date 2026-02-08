@@ -300,17 +300,20 @@ struct HomeScreenView: View {
     func updateMetrics() {
         updateUniqueDateCount()
         
-        // Update streak
-        let previousStreak = streakManager.currentStreak
-        streakManager.calculateStreak(from: anyDays)
-        
-        // Check for milestone
-        if let milestone = streakManager.checkForMilestone() {
-            celebrationMilestone = milestone
+        // Update streak asynchronously
+        Task {
+            await streakManager.calculateStreak(from: anyDays)
             
-            // Small delay to ensure UI is ready
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                showCelebration = true
+            // Check for milestone on main actor
+            await MainActor.run {
+                if let milestone = streakManager.checkForMilestone() {
+                    celebrationMilestone = milestone
+                    
+                    // Small delay to ensure UI is ready
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showCelebration = true
+                    }
+                }
             }
         }
         
@@ -484,17 +487,6 @@ struct CompactAchievementBadge: View {
         }
         .frame(width: 70)
     }
-}
-
-struct ShareSheet: UIViewControllerRepresentable {
-    let items: [Any]
-    
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Preview

@@ -29,7 +29,10 @@ class ChallengeManager: ObservableObject {
         if let lastDate = userDefaults.object(forKey: lastChallengeKey) as? Date,
            calendar.isDate(lastDate, inSameDayAs: today),
            let savedChallengeId = userDefaults.string(forKey: "todaysChallengeId"),
-           let challenge = allChallenges.first(where: { $0.id == savedChallengeId }) {
+           var challenge = allChallenges.first(where: { $0.id == savedChallengeId }) {
+            // Load completion status
+            let isCompleted = userDefaults.bool(forKey: "todaysChallengeCompleted")
+            challenge.isCompleted = isCompleted
             todaysChallenge = challenge
             return
         }
@@ -47,9 +50,10 @@ class ChallengeManager: ObservableObject {
     }
     
     func completeChallenge() {
-        guard let challenge = todaysChallenge, !challenge.isCompleted else { return }
+        guard var challenge = todaysChallenge, !challenge.isCompleted else { return }
         
-        todaysChallenge?.isCompleted = true
+        challenge.isCompleted = true
+        todaysChallenge = challenge
         completedCount += 1
         
         userDefaults.set(true, forKey: "todaysChallengeCompleted")
@@ -62,10 +66,6 @@ class ChallengeManager: ObservableObject {
     
     private func loadProgress() {
         completedCount = userDefaults.integer(forKey: completedCountKey)
-        
-        if let isCompleted = userDefaults.object(forKey: "todaysChallengeCompleted") as? Bool {
-            todaysChallenge?.isCompleted = isCompleted
-        }
     }
     
     private let allChallenges: [Challenge] = [

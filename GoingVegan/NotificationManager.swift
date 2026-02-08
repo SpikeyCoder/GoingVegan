@@ -103,4 +103,49 @@ class NotificationManager {
     func clearBadge() {
         UNUserNotificationCenter.current().setBadgeCount(0)
     }
+    
+    func sendReferralRewardNotification(reward: ReferralReward) {
+        let content = UNMutableNotificationContent()
+        content.title = "Reward Unlocked! 🎁"
+        content.body = "\(reward.title): \(reward.description)"
+        content.sound = .default
+        
+        let request = UNNotificationRequest(
+            identifier: "referral_reward_\(reward.id)",
+            content: content,
+            trigger: nil // Send immediately
+        )
+        
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func sendReferralSuccessNotification(friendName: String) {
+        let content = UNMutableNotificationContent()
+        content.title = "Friend Joined! 🎉"
+        content.body = "\(friendName) just completed their first vegan day using your code!"
+        content.sound = .default
+        
+        let request = UNNotificationRequest(
+            identifier: "referral_success_\(UUID().uuidString)",
+            content: content,
+            trigger: nil
+        )
+        
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func sendStreakFreezeUsedNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Streak Freeze Used! ❄️"
+        content.body = "We protected your streak for you. Keep going!"
+        content.sound = .default
+        
+        let request = UNNotificationRequest(
+            identifier: "streak_freeze_\(UUID().uuidString)",
+            content: content,
+            trigger: nil
+        )
+        
+        UNUserNotificationCenter.current().add(request)
+    }
 }

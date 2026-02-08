@@ -36,6 +36,15 @@
 		C12E9BB72F393FE7000A4EF6 /* TransitionView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */; };
 		C12E9BB92F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */; };
 		C12E9BBB2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */; };
+		C12E9BBD2F39477D000A4EF6 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BBC2F39477D000A4EF6 /* SubscriptionManager.swift */; };
+		C12E9BBF2F39479D000A4EF6 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BBE2F39479D000A4EF6 /* PaywallView.swift */; };
+		C12E9BC12F3947C9000A4EF6 /* ReferralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC02F3947C9000A4EF6 /* ReferralManager.swift */; };
+		C12E9BC32F3947EE000A4EF6 /* ReferralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC22F3947EE000A4EF6 /* ReferralView.swift */; };
+		C12E9BC52F394816000A4EF6 /* StreakFreezeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC42F394816000A4EF6 /* StreakFreezeView.swift */; };
+		C12E9BC72F39481E000A4EF6 /* PremiumBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC62F39481E000A4EF6 /* PremiumBadge.swift */; };
+		C12E9BC92F394833000A4EF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC82F394833000A4EF6 /* SettingsView.swift */; };
+		C12E9BCB2F39485F000A4EF6 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BCA2F39485F000A4EF6 /* Products.storekit */; };
+		C12E9BCD2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */; };
 		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
 		C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EA4612A030E8E00D50263 /* RecipeImage.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
@@ -151,6 +160,15 @@
 		C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionView 2.swift"; sourceTree = "<group>"; };
 		C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LAUNCH_CHECKLIST.md; sourceTree = "<group>"; };
 		C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FIX_INSTRUCTIONS.md; sourceTree = "<group>"; };
+		C12E9BBC2F39477D000A4EF6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		C12E9BBE2F39479D000A4EF6 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		C12E9BC02F3947C9000A4EF6 /* ReferralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralManager.swift; sourceTree = "<group>"; };
+		C12E9BC22F3947EE000A4EF6 /* ReferralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralView.swift; sourceTree = "<group>"; };
+		C12E9BC42F394816000A4EF6 /* StreakFreezeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakFreezeView.swift; sourceTree = "<group>"; };
+		C12E9BC62F39481E000A4EF6 /* PremiumBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumBadge.swift; sourceTree = "<group>"; };
+		C12E9BC82F394833000A4EF6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C12E9BCA2F39485F000A4EF6 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
+		C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = REFERRAL_AND_MONETIZATION_GUIDE.md; sourceTree = "<group>"; };
 		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C13EA4612A030E8E00D50263 /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +334,15 @@
 				C12E9BB62F393FE7000A4EF6 /* TransitionView 2.swift */,
 				C12E9BB82F393FEF000A4EF6 /* LAUNCH_CHECKLIST.md */,
 				C12E9BBA2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md */,
+				C12E9BBC2F39477D000A4EF6 /* SubscriptionManager.swift */,
+				C12E9BBE2F39479D000A4EF6 /* PaywallView.swift */,
+				C12E9BC02F3947C9000A4EF6 /* ReferralManager.swift */,
+				C12E9BC22F3947EE000A4EF6 /* ReferralView.swift */,
+				C12E9BC42F394816000A4EF6 /* StreakFreezeView.swift */,
+				C12E9BC62F39481E000A4EF6 /* PremiumBadge.swift */,
+				C12E9BC82F394833000A4EF6 /* SettingsView.swift */,
+				C12E9BCA2F39485F000A4EF6 /* Products.storekit */,
+				C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -532,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C12E9BAD2F393F0E000A4EF6 /* VIRAL_FEATURES_README.md in Resources */,
+				C12E9BCD2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md in Resources */,
 				C12E9BB12F393FAF000A4EF6 /* IMPLEMENTATION_COMPLETE.md in Resources */,
 				C12E9B812F38F242000A4EF6 /* UI_IMPROVEMENTS_IMPLEMENTED.md in Resources */,
 				C12E9B842F38F284000A4EF6 /* IMPLEMENTATION_SUMMARY.md in Resources */,
@@ -543,6 +571,7 @@
 				C12E9BAF2F393F6D000A4EF6 /* QUICK_START.md in Resources */,
 				C12E9BBB2F393FFA000A4EF6 /* FIX_INSTRUCTIONS.md in Resources */,
 				C12E9B7B2F38756D000A4EF6 /* ACCESSIBILITY_TESTING_GUIDE.md in Resources */,
+				C12E9BCB2F39485F000A4EF6 /* Products.storekit in Resources */,
 				C1448A5B298888FA006A9BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,8 +638,10 @@
 				C12E9BA32F393E88000A4EF6 /* DailyChallengeCard.swift in Sources */,
 				C144899F29723001006A9BEB /* LoginWithAppleViewModel.swift in Sources */,
 				C1448AEC298C8701006A9BEB /* LaunchViewController.swift in Sources */,
+				C12E9BC52F394816000A4EF6 /* StreakFreezeView.swift in Sources */,
 				C14489B0297242BC006A9BEB /* MDPDayOfMonth.swift in Sources */,
 				C14489B3297242BC006A9BEB /* MDPModel.swift in Sources */,
+				C12E9BC12F3947C9000A4EF6 /* ReferralManager.swift in Sources */,
 				C12E9BA52F393E9E000A4EF6 /* CelebrationView.swift in Sources */,
 				C1D29BAE29AE47E30072DF2B /* SignInWithAppleButton.swift in Sources */,
 				C1448AE4298B3DBD006A9BEB /* LaunchScreen.swift in Sources */,
@@ -620,6 +651,8 @@
 				C14489B4297242BC006A9BEB /* MDPContentView.swift in Sources */,
 				C14489C029773AA7006A9BEB /* RestaurantMapView.swift in Sources */,
 				C1448937296CD7D5006A9BEB /* Persistence.swift in Sources */,
+				C12E9BBF2F39479D000A4EF6 /* PaywallView.swift in Sources */,
+				C12E9BBD2F39477D000A4EF6 /* SubscriptionManager.swift in Sources */,
 				C14489B1297242BC006A9BEB /* MDPMonthYearPicker.swift in Sources */,
 				C1448ADC29897D61006A9BEB /* GoogleSignInButton.swift in Sources */,
 				C14489C229773C54006A9BEB /* MapViewAdvance.swift in Sources */,
@@ -629,12 +662,15 @@
 				C12E9BAB2F393ED0000A4EF6 /* NotificationManager.swift in Sources */,
 				C12E9B9F2F393E6E000A4EF6 /* ChallengeManager.swift in Sources */,
 				C12E9B992F38FD10000A4EF6 /* ViewsShareableImpactCard.swift in Sources */,
+				C12E9BC92F394833000A4EF6 /* SettingsView.swift in Sources */,
 				C1D29BB029AE4A690072DF2B /* SignInWithAppleCoordinator.swift in Sources */,
 				C14489A1297231F9006A9BEB /* HomeScreenView.swift in Sources */,
 				C1448AD42988B320006A9BEB /* AuthenticationViewModel.swift in Sources */,
 				C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */,
 				C14489B82976143D006A9BEB /* RecipeListView.swift in Sources */,
+				C12E9BC72F39481E000A4EF6 /* PremiumBadge.swift in Sources */,
 				C12E9BA92F393EC3000A4EF6 /* ShareManager.swift in Sources */,
+				C12E9BC32F3947EE000A4EF6 /* ReferralView.swift in Sources */,
 				C12E9B9D2F393E59000A4EF6 /* AchievementManager.swift in Sources */,
 				C14489A729724293006A9BEB /* MultiDatePicker.swift in Sources */,
 				C12E9B972F38FD01000A4EF6 /* ViewsAchievementsView.swift in Sources */,
