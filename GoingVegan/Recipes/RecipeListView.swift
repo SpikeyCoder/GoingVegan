@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import MapKit
 import Foundation
 import EventKit
 
@@ -18,7 +17,6 @@ struct RecipeListView: View {
     @State private var showingGroceryList = false
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         NavigationView {
@@ -170,7 +168,6 @@ struct Recipe: Codable, Hashable {
 // MARK: - Grocery List Screen
 struct groceryListScreen: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var showingAlert = false
@@ -331,7 +328,7 @@ struct groceryListScreen: View {
         
         // Request access to reminders
         if #available(iOS 17.0, *) {
-            eventStore.requestFullAccessToReminders { granted, error in
+            eventStore.requestFullAccessToReminders { granted, _ in
                 DispatchQueue.main.async {
                     if granted {
                         createReminders(in: eventStore)
@@ -342,7 +339,7 @@ struct groceryListScreen: View {
                 }
             }
         } else {
-            eventStore.requestAccess(to: .reminder) { granted, error in
+            eventStore.requestAccess(to: .reminder) { granted, _ in
                 DispatchQueue.main.async {
                     if granted {
                         createReminders(in: eventStore)

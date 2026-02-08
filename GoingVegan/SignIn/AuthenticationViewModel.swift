@@ -260,7 +260,7 @@ class AuthenticationViewModel: ObservableObject {
             let savedDatesCount = uniqueDatesString.count
             self.dateCount = savedDatesCount
             if savedDatesCount == 0 {
-                self.ref.child("users").child(sess.uid).updateChildValues(["veganDays*":nil])
+                self.ref.child("users").child(sess.uid).updateChildValues(["veganDays*": NSNull()])
             }
            while i < savedDatesCount{
             let dateString = "\(uniqueDatesString[i])"
