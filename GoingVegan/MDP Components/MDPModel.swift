@@ -77,10 +77,11 @@ class MDPModel: NSObject, ObservableObject {
         self.maxDate = maxDate
         setSelection(anyDays.wrappedValue)
         
-        // set the controlDate to be the first of the anyDays if the
-        // anyDays array is not empty.
-        if let useDate = anyDays.wrappedValue.first {
-            controlDate = useDate
+        // set the controlDate to be the most recent date, or today if there are no dates
+        if let mostRecentDate = anyDays.wrappedValue.max() {
+            controlDate = mostRecentDate
+        } else {
+            controlDate = Date()
         }
         buildDays()
     }
