@@ -37,7 +37,7 @@ class AuthenticationViewModel: ObservableObject {
     var appleCoordinator = SignInWithAppleCoordinator()
     var appleSignInDelegates: SignInWithAppleDelegates! = nil
     let onLoginEvent: ((SignInWithAppleToFirebaseResponse) -> ())?
-    var isPopulated = false
+    @Published var isPopulated = false
     var mealsAddedArray = [String]()
     var dateCount = 0
     
@@ -184,7 +184,7 @@ class AuthenticationViewModel: ObservableObject {
         if !self.creatingUser{
                 self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
                     if let user = user {
-                        if self.listenerCount > 0 && !self.creatingUser && !self.deletingUser{
+                        if !self.creatingUser && !self.deletingUser {
                             print("Got user: \(user)")
                             self.session = User(
                                 uid: user.uid,
@@ -192,10 +192,7 @@ class AuthenticationViewModel: ObservableObject {
                                 email: user.email,
                                 days: []
                             )
-                            
                             self.session = self.populateSavedData(userOptional: self.session)
-                            // Note: populateSavedData already fetches the vegan days data
-                            // No need for duplicate fetching here
                         }
                         self.listenerCount += 1
                     }
@@ -305,3 +302,4 @@ class SignInWithAppleDelegates: NSObject {
         self.authViewModel = viewModel
     }
 }
+

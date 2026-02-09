@@ -23,8 +23,10 @@ class ReferralManager: ObservableObject {
     private let successfulReferralsKey = "successfulReferrals"
     private let earnedRewardsKey = "earnedRewards"
     private let streakFreezesKey = "availableStreakFreezes"
+    private let referralAPI: ReferralAPI
     
-    init() {
+    init(api: ReferralAPI = DefaultReferralAPI()) {
+        self.referralAPI = api
         loadReferralData()
         if referralCode.isEmpty {
             generateReferralCode()
@@ -62,23 +64,32 @@ class ReferralManager: ObservableObject {
     
     func activateReferral(completion: @escaping (Bool) -> Void) {
         guard let referrerCode = referredByCode else {
-            completion(false)
+            DispatchQueue.main.async { completion(false) }
             return
         }
         
-        // In a real app, you'd call your backend to:
-        // 1. Verify the referrer code exists
-        // 2. Award rewards to both referrer and referee
-        // 3. Track the successful referral
-        
-        // For now, simulate backend call
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        Task { [weak self] in
             guard let self = self else { return }
-            
-            // Award new user bonus (1 streak freeze)
-            self.earnReward(.newUserBonus)
-            
-            completion(true)
+            do {
+                let isValid = try await referralAPI.verifyReferrer(code: referrerCode)
+                guard isValid else {
+                    await MainActor.run { completion(false) }
+                    return
+                }
+                
+                try await referralAPI.awardReferrer(forCode: referrerCode)
+                try await referralAPI.trackSuccessfulReferral(referrerCode: referrerCode, refereeReferralCode: self.referralCode)
+                
+                await MainActor.run {
+                    self.earnReward(.newUserBonus)
+                    completion(true)
+                }
+            } catch {
+                print("Referral activation failed: \(error)")
+                await MainActor.run {
+                    completion(false)
+                }
+            }
         }
     }
     
@@ -372,3 +383,4 @@ struct ReferralReward: Identifiable, Codable, Equatable {
         dateEarned: Date()
     )
 }
+

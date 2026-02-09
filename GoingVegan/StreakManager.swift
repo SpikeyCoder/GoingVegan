@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class StreakManager: ObservableObject {
     @Published var currentStreak: Int = 0
     @Published var longestStreak: Int = 0
@@ -26,8 +27,10 @@ class StreakManager: ObservableObject {
     
     func calculateStreak(from dates: [Date], referralManager: ReferralManager? = nil, subscriptionManager: SubscriptionManager? = nil) async {
         guard !dates.isEmpty else {
-            currentStreak = 0
-            saveStreak()
+            await MainActor.run {
+                self.currentStreak = 0
+                self.saveStreak()
+            }
             return
         }
         
@@ -40,8 +43,10 @@ class StreakManager: ObservableObject {
         let sortedUniqueDays = uniqueDays.sorted(by: >)
         
         guard let mostRecentDay = sortedUniqueDays.first else {
-            currentStreak = 0
-            saveStreak()
+            await MainActor.run {
+                self.currentStreak = 0
+                self.saveStreak()
+            }
             return
         }
         
@@ -74,21 +79,27 @@ class StreakManager: ObservableObject {
                         // Continue calculating streak
                     } else {
                         // No freeze available, streak is broken
-                        currentStreak = 0
-                        saveStreak()
+                        await MainActor.run {
+                            self.currentStreak = 0
+                            self.saveStreak()
+                        }
                         return
                     }
                 } else {
                     // No managers available, streak is broken
-                    currentStreak = 0
-                    saveStreak()
+                    await MainActor.run {
+                        self.currentStreak = 0
+                        self.saveStreak()
+                    }
                     return
                 }
             } else {
                 // Too many days missed or freeze already used
-                currentStreak = 0
-                streakFreezeUsed = false
-                saveStreak()
+                await MainActor.run {
+                    self.currentStreak = 0
+                    self.streakFreezeUsed = false
+                    self.saveStreak()
+                }
                 return
             }
         } else {
@@ -112,15 +123,17 @@ class StreakManager: ObservableObject {
             }
         }
         
-        currentStreak = streak
-        lastCheckInDate = mostRecentDay
-        
-        // Update longest streak
-        if currentStreak > longestStreak {
-            longestStreak = currentStreak
+        await MainActor.run {
+            self.currentStreak = streak
+            self.lastCheckInDate = mostRecentDay
+            
+            // Update longest streak
+            if self.currentStreak > self.longestStreak {
+                self.longestStreak = self.currentStreak
+            }
+            
+            self.saveStreak()
         }
-        
-        saveStreak()
     }
     
     func isStreakAtRisk() -> Bool {
@@ -246,3 +259,4 @@ enum Milestone: Identifiable {
         }
     }
 }
+

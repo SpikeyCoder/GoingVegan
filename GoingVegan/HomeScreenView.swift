@@ -15,7 +15,7 @@ struct HomeScreenView: View {
     @State private var anyDays = [Date]()
     var counterModel = CounterModel()
     var dateFormatter = DateFormatter()
-    var viewModel: AuthenticationViewModel
+    @ObservedObject var viewModel: AuthenticationViewModel
     @State var loadDatesIsComplete: Bool = false
     @State private var showingTransition = true
     @State private var uniqueDateCount: Int = 0
@@ -262,15 +262,28 @@ struct HomeScreenView: View {
         }
         .onAppear {
             self.load()
+            // Fallback timeout to avoid indefinite loading overlay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                if showingTransition {
+                    showingTransition = false
+                }
+            }
         }
-        .sheet(isPresented: $showingTransition) {
-            TransitionView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                .edgesIgnoringSafeArea(.all)
+        .onChange(of: viewModel.isPopulated) { populated in
+            if populated {
+                if let sess = viewModel.session, let days = sess.veganDays {
+                    self.anyDays = days
+                    self.updateMetrics()
+                    loadDatesIsComplete = true
+                }
+                showingTransition = false
+            }
         }
-        .sheet(isPresented: $showCelebration) {
-            if let milestone = celebrationMilestone {
-                CelebrationView(milestone: milestone)
+        .overlay {
+            if showingTransition {
+                TransitionView()
+                    .transition(.opacity)
+                    .zIndex(1)
             }
         }
         .sheet(isPresented: $showAchievements) {

@@ -45,6 +45,8 @@
 		C12E9BC92F394833000A4EF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BC82F394833000A4EF6 /* SettingsView.swift */; };
 		C12E9BCB2F39485F000A4EF6 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BCA2F39485F000A4EF6 /* Products.storekit */; };
 		C12E9BCD2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */; };
+		C12E9BCF2F3951A4000A4EF6 /* ReferralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BCE2F3951A3000A4EF6 /* ReferralAPI.swift */; };
+		C12E9BD12F3952E1000A4EF6 /* StubbedReferralBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E9BD02F3952E1000A4EF6 /* StubbedReferralBackend.swift */; };
 		C13DF78F29A6F06B00014BC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DF78E29A6F06B00014BC4 /* ContentView.swift */; };
 		C13EA4622A030E8E00D50263 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EA4612A030E8E00D50263 /* RecipeImage.swift */; };
 		C144892E296CD7D4006A9BEB /* GoingVeganApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144892D296CD7D4006A9BEB /* GoingVeganApp.swift */; };
@@ -169,6 +171,8 @@
 		C12E9BC82F394833000A4EF6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C12E9BCA2F39485F000A4EF6 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = REFERRAL_AND_MONETIZATION_GUIDE.md; sourceTree = "<group>"; };
+		C12E9BCE2F3951A3000A4EF6 /* ReferralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralAPI.swift; sourceTree = "<group>"; };
+		C12E9BD02F3952E1000A4EF6 /* StubbedReferralBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedReferralBackend.swift; sourceTree = "<group>"; };
 		C13DF78E29A6F06B00014BC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C13EA4612A030E8E00D50263 /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		C144892A296CD7D4006A9BEB /* GoingVegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoingVegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +347,8 @@
 				C12E9BC82F394833000A4EF6 /* SettingsView.swift */,
 				C12E9BCA2F39485F000A4EF6 /* Products.storekit */,
 				C12E9BCC2F3948A8000A4EF6 /* REFERRAL_AND_MONETIZATION_GUIDE.md */,
+				C12E9BCE2F3951A3000A4EF6 /* ReferralAPI.swift */,
+				C12E9BD02F3952E1000A4EF6 /* StubbedReferralBackend.swift */,
 			);
 			path = GoingVegan;
 			sourceTree = "<group>";
@@ -514,7 +520,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					C1448929296CD7D4006A9BEB = {
 						CreatedOnToolsVersion = 14.2;
@@ -677,6 +683,8 @@
 				C12E9BB72F393FE7000A4EF6 /* TransitionView 2.swift in Sources */,
 				C12E9B9B2F393E41000A4EF6 /* StreakManager.swift in Sources */,
 				C12E9BB32F393FCB000A4EF6 /* StreakCard 2.swift in Sources */,
+				C12E9BD12F3952E1000A4EF6 /* StubbedReferralBackend.swift in Sources */,
+				C12E9BCF2F3951A4000A4EF6 /* ReferralAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +766,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -780,6 +789,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -820,6 +830,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -835,6 +846,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -854,7 +866,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -898,7 +909,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"GoingVegan/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -932,11 +942,9 @@
 		C1448958296CD7D5006A9BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -952,11 +960,9 @@
 		C1448959296CD7D5006A9BEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -972,10 +978,8 @@
 		C144895B296CD7D5006A9BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.armstrong.GoingVeganUITests;
@@ -990,10 +994,8 @@
 		C144895C296CD7D5006A9BEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUKDK2C25K;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.armstrong.GoingVeganUITests;
